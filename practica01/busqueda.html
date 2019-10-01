@@ -9,23 +9,47 @@
     <meta name="description" content="Página con el formurario de búsqueda para la web PI - Pictures & Images">
     <title>PI - Búsqueda</title>
 </head>
-<body>
-    <header id="cabecera">
-        <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
-       	<h1>Pictures & Images</h1>
+<body id="inicio">
+
+    <!-- CABECERA: Logotipo, Título web y Barra de navegación -->
+    <header>
+        <a href="index.html">
+            <figure>
+                <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
+            </figure>
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="">Búsqueda</a></li>
-                <li><a href="">Registro</a></li>
+                <li><a href="busqueda.html">Búsqueda</a></li>
+                <li><a href="registro.html">Registro</a></li>
                 <li><a href="">Acceso</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- CONTENIDO: Título contenido, Formulario -->
     <main>
+        <section>
+            <h1>Búsqueda de Foto</h1>
+            <form>
+                <label for="title">Título</label>
+                <input type="text" id="title" placeholder="Introduce el título"><br>
+
+                <label for="date">Fecha</label>
+                <input type="date" id="date"><br>
+
+                <label for="country">País</label>
+                <input type="text" id="country" placeholder="Introduce el país"><br><br>
+
+                <input type="submit" value="Buscar">
+            </form>
+        </section>
     </main>
+
+    <!-- PIE DE PÁGINA: Autores, Copyright, Enlace al comienzo de la página -->
     <footer>
-        <p>Alejandro Castro Valero - Gabriel Martínez Antón - &copy; 2019 PI - <a href="#cabecera">Inicio</a></p>
+        <p>Alejandro Castro Valero - Gabriel Martínez Antón - &copy; 2019 PI - <a href="#inicio">Inicio</a></p>
     </footer>
 </body>
 </html>
