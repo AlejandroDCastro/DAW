@@ -40,30 +40,30 @@
                 <input type="text" id="usu" autofocus required pattern="^[a-zA-Z][a-zA-Z0-9]{3,19}" placeholder="Introduce un nombre"><br><br>
 
                 <label for="pwd">Contraseña:</label>
-                <input type="password" id="pwd" required placeholder="Introduce una contraseña"><br><br>
+                <input type="password" id="pwd" required placeholder="Introduce una contraseña" minlength="4"><br><br>
 
                 <label for="pwd2">Repetir contraseña:</label>
-                <input type="password" id="pwd2" required><br><br>
+                <input type="password" id="pwd2" required minlength="4"><br><br>
                 
                 <label for="mail">Dirección de email:</label>
-                <input type="email" id="mail" placeholder="Introduce tu email"><br><br>
+                <input type="email" id="mail" placeholder="Introduce tu email" required><br><br>
 
                 <label for="sex">Sexo:</label>
-                <input type="radio" name="sex" value="hombre" id="sex"> Hombre
+                <input type="radio" name="sex" value="hombre" id="sex" required> Hombre
                 <input type="radio" name="sex" value="mujer"> Mujer<br><br>
 
                 <label for="date">Fecha de nacimiento:</label>
-                <input type="date" id="date"><br><br>
+                <input type="date" id="date" required><br><br>
                 <!-- Nota: Internet Explorer 11, o versiones anteriores, o Safari no dan soporte para input="date" -->
 
                 <label for="country">País:</label>
-                <input type="text" id="country" placeholder="Introduce tu país"><br><br>
+                <input type="text" id="country" placeholder="Introduce tu país" required><br><br>
 
                 <label for="city">Ciudad:</label>
-                <input type="text" id="city" placeholder="Introduce tu ciudad"><br><br>
+                <input type="text" id="city" placeholder="Introduce tu ciudad" required><br><br>
 
                 <label for="photo">Foto:</label>
-                <input type="file" id="photo" accept="image/*"><br><br>
+                <input type="file" id="photo" accept="image/*" required><br><br>
 
                 <progress value="3" max="9"></progress><br><br><br>
 
