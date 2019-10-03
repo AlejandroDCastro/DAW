@@ -6,39 +6,52 @@
     <meta name="author" content="Alejandro Castro Valero">
     <meta name="author" content="Gabriel Martínez Antón">
     <meta name="keywords" content="HTML5, web, picture, image">
-    <meta name="description" content="Página con el resultado de la búsqueda para la web PI - Pictures & Images">
-    <title>PI - Resultado</title>
+    <meta name="description" content="Página inicial para la web PI - Pictures & Images">
+    <title>PI - Pictures & Images</title>
 </head>
-<body id="inicio">
+<body>
+    <header id="cabecera">
+        <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
+        <h1>Pictures & Images</h1>
+        <nav>
+            <ul>
+                <li><a href="indexsinreg.html">Inicio</a></li>
+                <li><a href="busqueda.html">Búsqueda</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            
 
-        <!-- CABECERA: Logotipo, Título web y Barra de navegación -->
-        <header>
-            <a href="index.html">
-                <figure>
-                    <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
-                </figure>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="busqueda.html">Búsqueda</a></li>
-                    <li><a href="registro.html">Registro</a></li>
-                    <li><a href="">Acceso</a></li>
-                </ul>
-            </nav>
-        </header>
-    
-        <!-- CONTENIDO:  -->
-        <main>
-            <section>
-                <h1></h1>
-                
-            </section>
-        </main>
-    
-        <!-- PIE DE PÁGINA: Autores, Copyright, Enlace al comienzo de la página -->
-        <footer><br>
-            <p>Alejandro Castro Valero - Gabriel Martínez Antón - &copy; 2019 PI - <a href="#inicio">Inicio</a></p>
-        </footer>
-    </body>
-    </html>
+            <!-- Carga las últimas 5 fotos -->
+            <h1>Resultado de búsqueda</h1>
+            <a href="detalle.html"><img src="Images/arbol.jpg" alt="Arbol"></a>
+                <p>T&iacute;tulo: A estudiar que ya es hora</p>
+                <p>Fecha: 30-02-2019 20:55</p>
+                <p>Pa&iacute;s: Espa&ntilde;a</p>
+            <a href="detalle.html"><img src="Images/gallina.jpg" alt="Gallina"></a>
+                <p>T&iacute;tulo: A estudiar que ya es hora</p>
+                <p>Fecha: 30-02-2019 20:55</p>
+                <p>Pa&iacute;s: Espa&ntilde;a</p>
+            <a href="detalle.html"><img src="Images/burro.jpg" alt="Burro"></a>
+                <p>T&iacute;tulo: A estudiar que ya es hora</p>
+                <p>Fecha: 30-02-2019 20:55</p>
+                <p>Pa&iacute;s: Espa&ntilde;a</p>
+            <a href="detalle.html"><img src="Images/estudiante.jpg" alt="Estudiante"></a>
+                <p>T&iacute;tulo: A estudiar que ya es hora</p>
+                <p>Fecha: 30-02-2019 20:55</p>
+                <p>Pa&iacute;s: Espa&ntilde;a</p>
+            <a href="detalle.html"><img src="Images/synth.jpg" alt="Synth"></a>
+                <p>T&iacute;tulo: A estudiar que ya es hora</p>
+                <p>Fecha: 30-02-2019 20:55</p>
+                <p>Pa&iacute;s: Espa&ntilde;a</p>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA: Autores, Copyright, Enlace al comienzo de la página -->
+    <footer><br>
+        <p>Alejandro Castro Valero - Gabriel Martínez Antón - &copy; 2019 PI - <a href="#cabecera">Volver arriba</a></p>
+    </footer>
+</body>
+</html>
