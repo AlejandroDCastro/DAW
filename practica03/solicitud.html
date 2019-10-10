@@ -6,12 +6,12 @@
     <meta name="author" content="Alejandro Castro Valero">
     <meta name="author" content="Gabriel Martínez Antón">
     <meta name="keywords" content="HTML5, web, picture, image">
-    <meta name="description" content="Página inicial para la web PI - Pictures & Images">
+    <meta name="description" content="Página de solicitud de impresión de álbum para la web PI - Pictures & Images">
     <title>PI - Solicitud de álbum</title>
 </head>
 <body>
     <header id="cabecera">
-         <a href="index.html">
+         <a href="indexconreg.html">
             <figure>
                 <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
             </figure>
@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="indexconreg.html">Inicio</a></li>
                 <li><a href="busqueda.html">Búsqueda</a></li>
-                <li><a href="perfil.html">Acceso</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
                 <li><a href="index.html">Salir</a></li>
             </ul>
             <ul>
@@ -71,19 +71,19 @@
         </section><br><br>
         <section>
             <h2>Formulario de solicitud</h2>
-            <p>Rellena el siguiente formulario aportando todos los detalles para confeccionar tu álbum.</p>
-            <form action="reciboalbum.html">
+            <p>Rellena el siguiente formulario aportando todos los detalles para confeccionar tu álbum. (*) Indica un campo obligatorio.</p>
+            <form action="respuesta.html">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" placeholder="Escribe tu nombre" maxlength="200" required autofocus><br><br>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre" maxlength="200" required autofocus> (*)<br><br>
 
                 <label for="titulo">Título del álbum:</label>
-                <input type="text" id="titulo" placeholder="Escribe su título" required maxlength="200"><br><br>
+                <input type="text" id="titulo" placeholder="Escribe su título" required maxlength="200"> (*)<br><br>
 
                 <label for="texto">Texto adicional:</label>
                 <textarea id="texto" placeholder="Dedicatoria, descrición de su contenido, etc." maxlength="4000" rows="5" cols="80"></textarea><br><br>
 
                 <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" placeholder="Escribe tu email" required maxlength="200"><br><br>
+                <input type="email" id="email" placeholder="Escribe tu email" required maxlength="200"> (*)<br><br>
 
                 <label for="direccion">Dirección:</label>
                 <input type="text" id="direccion" placeholder="Calle" required>
@@ -93,7 +93,7 @@
                 <input type="text" id="cp" placeholder="CP" required size="5">
                 <input type="text" id="localidad" placeholder="Localidad" size="10" required>
                 <input type="text" id="provincia" placeholder="Provincia" size="10" required>
-                <input list="countries" id="country" placeholder="País" required>
+                <input list="countries" id="country" placeholder="País" required> (*)
                 <datalist id="countries">
                     <option value="Afganistán"></option>
                     <option value="Albania"></option>
@@ -312,10 +312,10 @@
 
                 <label for="album">Álbum de PI:</label>
                 <select id="album">
-                    <option value="álbum 1">álbum 1</option>
-                    <option value="álbum 2">álbum 2</option>
-                    <option value="álbum 3">álbum 3</option>
-                </select><br><br>
+                    <option value="album 1">Álbum 1</option>
+                    <option value="album 2">Álbum 2</option>
+                    <option value="album 3">Álbum 3</option>
+                </select> (*)<br><br>
 
                 <label for="fecha">Fecha de recepción:</label>
                 <input id="fecha" type="date"> Fecha aproximada de recepción<br><br>
