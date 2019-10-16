@@ -39,13 +39,25 @@ header {
             }
 
                 header > nav > ul > li > a {
+                    color: #fff;
                     text-decoration: none;
                     height: 2.3em;
                     display: flex; /*Necesario para que a ocupe todo el li*/
                     justify-content: center;
                     align-items: center;
+                    background-color: var(--color1);
+                }
+
+                header > nav > ul > li > a:hover {
+                    color: var(--color3);
+                    background-color: #fff;
+                    transition: .3s;
                 }
 
 main {
+    background-color: #fff;
+}
 
+footer {
+    background-color: var(--color2);
 }
