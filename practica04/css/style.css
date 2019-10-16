@@ -20,12 +20,31 @@ body {
 
 header {
     background: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
     header > figure {
+        margin: auto;
+    }
+
+    header > nav {
         width: 100%;
     }
 
-        header > figure > a {
-            margin: auto;
+        header > nav > ul {
+            padding: auto;
+            display: flex;
+            list-style-type: none;
         }
+/*
+            header > nav > ul > li {
+                flex-grow: 1;
+            }
+
+                header > nav > ul > li > a {
+                    text-decoration: none;
+                }
+
+    */
