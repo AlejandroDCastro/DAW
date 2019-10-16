@@ -15,17 +15,37 @@
 
 body {
     margin: 10px;
-    background-color: var(--color2);
+    background-color: var(--color1);
 }
 
 header {
     background: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
     header > figure {
-        width: 100%;
+        margin: auto;
     }
 
-        header > figure > a {
-            margin: auto;
+        header > nav > ul {
+            display: flex;
+            list-style-type: none;
         }
+
+            header > nav > ul > li {
+                flex-grow: 1;
+            }
+
+                header > nav > ul > li > a {
+                    text-decoration: none;
+                    height: 2.3em;
+                    display: flex; /*Necesario para que a ocupe todo el li*/
+                    justify-content: center;
+                    align-items: center;
+                }
+
+main {
+
+}
