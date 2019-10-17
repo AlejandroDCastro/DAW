@@ -198,8 +198,8 @@ section>section>ul>li
 .seccionfoto
 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
 }
     .seccionfoto>article
@@ -214,5 +214,6 @@ section>section>ul>li
 
         .seccionfoto>article>h3,.seccionfoto>article>p
         {
+            width: 100%;
             text-align: center;
         }
