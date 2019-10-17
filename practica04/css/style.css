@@ -18,11 +18,74 @@
     margin: 0;
 }
 
+a
+{
+    text-decoration-line: none;
+}
+
+    a > img:hover
+    {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+
 body {
     margin: 10px;
     background-color: var(--color1);
     font-family: 'Imprima', sans-serif;
 }
+
+
+#detalle
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formini
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    #formini>p
+    {
+        text-align: center;
+    }
+
+    #formini>form
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+footer {
+    background-color: var(--color2);
+    padding: 30px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    footer > p {
+        color: #fff;
+    }
+
+        footer > a {
+            color: #fff;
+        }
+
+        footer > a:hover {
+            text-decoration: none;
+        }
 
 header {
     background-color: #fff;
@@ -61,6 +124,12 @@ header {
                     transition: .3s;
                 }
 
+h1,h2
+{
+    text-align: center;
+}
+
+
 main {
     background-color: #fff;
 }
@@ -74,23 +143,76 @@ main {
             margin: 25px; 
         }
 
-footer {
-    background-color: var(--color2);
-    padding: 30px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (min-width: 620px)
+{
+    section>section>ul>li
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
-    footer > p {
-        color: #fff;
+section>section
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+section>section>a
+{
+    text-decoration: none;
+    background-color: var(--color2);
+    width: 40%;
+    text-align: center;
+    font-size: 2em;
+    padding-top: 5px 10px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+section>section>a:hover
+{
+    opacity: 0.7;
+}
+
+section>section>h3
+{
+    width: 100%;
+    text-align: center;
+    margin: 15px 1px;
+}
+
+section>section>ul>li
+{
+    list-style: none;
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.seccionfoto
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .seccionfoto>article
+    {
+        margin-bottom: 10px;
     }
 
-        footer > a {
-            color: #fff;
+        .seccionfoto>article>img
+        {
+            width: 100%;
         }
 
-        footer > a:hover {
-            text-decoration: none;
+        .seccionfoto>article>h3,.seccionfoto>article>p
+        {
+            text-align: center;
         }
