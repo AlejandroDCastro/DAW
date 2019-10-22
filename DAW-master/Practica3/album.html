@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de solicitar album</title>
+</head>
+<body>
+
+<header>
+    <a href="index.html">
+        <figure>
+            <img src="img/logo_placeholder.jpg" alt="logo" height="110" width="200">
+        </figure>
+    </a>
+</header>
+
+<p>Lorem ipsum dolor sit amet consectetur adipiscing elit purus lacus lacinia ac, mi dignissim
+    sem etiam sollicitudin vestibulum dui platea praesent sodales urna, vulputate quisque varius proin in arcu id semper penatibus sagittis.</p>
+
+<table>
+
+    <tr>
+        <th>Tarifas</th>
+        <th>Numero de paginas</th>
+        <th>Resolucion</th>
+        <th>Color de la portada</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Blanco y negro</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Blanco y negro</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Color</td>
+    </tr>
+</table>
+<br>
+
+<form>
+    Nombre y apellidos:<br>
+    <input required type="text" name="nombre" value="Nombre y apellidos" maxlength="200">
+    <br><br>
+
+    Titulo del album:<br>
+    <input required type="text" name="titulo" value="Titulo del album" maxlength="200">
+    <br><br>
+
+    Texto adicional:<br>
+    <textarea rows="4" cols="50" maxlength="4000">Texto adicional</textarea>
+    <br><br>
+
+    Correo electronico:<br>
+    <input required type="text" name="correo" value="Correo electronico" maxlength="200">
+    <br><br>
+
+    Direccion de la calle:<br>
+    <input type="text" name="calle" value="Direccion de la calle" maxlength="200">
+    <br><br>
+
+    Codigo postal:<br>
+    <input type="number" name="cp" value="000000">
+    <br><br>
+
+    Provincia:<br>
+    <input type="text" name="provincia" value="Provincia">
+    <br><br>
+
+    Pais:<br>
+    <input type="text" name="pais" value="Pais">
+    <br><br>
+
+    Color de la portada:<br>
+    <input type="color">
+    <br><br>
+
+    Numero de copias:<br>
+    <input required type="number" name="copias" min="1" value="1">
+    <br><br>
+
+    Resolucion de las fotos:<br>
+    <input required type="number" name="resolucion" min="150" max="900" step="150" value="150">
+    <br><br>
+
+    Albumes de fotos:<br>
+    <select required name="albumes">
+        <option value="">Elige</option>
+        <option value="album1">Album 1</option>
+        <option value="album2">Album 2</option>
+    </select>
+    <br><br>
+
+    Fecha de recepcion:<br>
+    <input type="date" name="fecha">
+    <br><br>
+
+    Impresion a color:<br>
+    <select name="impresion">
+        <option value="B&N">Blanco y negro</option>
+        <option value="C">Color</option>
+    </select>
+    <br><br>
+
+    <input type="submit" name="solicitar" value="Solicitar">
+</form>
+
+<footer>
+    <p>
+        <a href="acerca.html"><strong> Acerca de nosotros</strong></a>
+    </p>
+</footer>
+
+</body>
+</html>

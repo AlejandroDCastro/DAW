@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="fontello-c200ab24/css/fontello.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="with=device-width, initial-scale=1.0">
+	<title>Pagina de registro de nuevo usuario</title>
+</head>
+<body>
+	<header>
+		<a href="index.html">
+			<figure>
+				<img src="img/logo_placeholder.jpg" alt="logo" height="110" width="200">
+			</figure>
+		</a>
+		<a id="link-buscar" href="buscar.html">
+			<span class="icon-search"></span>
+		</a>
+	</header>
+
+	<section id="contenedor-registro">
+		<h1>Registro de nuevo usuario</h1>
+		
+		<form>
+            <label for="hombre"><input checked id="hombre" type="radio" name="gender" value="Hombre">Hombre</label>
+            <label for="mujer"><input id="mujer" type="radio" name="gender" value="Mujer">Mujer</label>
+            <label for="otro"><input id="otro" type="radio" name="gender" value="Otro">Otro</label><br><br>
+
+            <label for="nombreusuario">Usuario: <input required id="nombreusuario" type="text" name="nombreUsuario"></label><br><br>
+            <label for="pass">Contraseña: <input required id="pass" type="password" name="pass"></label>
+            <label for="pass2">Repetir: <input required id="pass2" type="password" name="pass"></label><br><br>
+            <label for="email">Correo: <input required id="email" type="email" name="email"></label><br><br>
+            <label for="ciudad">Ciudad: <input required id="ciudad" type="text" name="ciudad"></label>
+            <label for="pais">Pais: <input required id="pais" type="text" name="pais"></label><br><br>
+			
+			<img src="img/img_placeholder.jpg" width="300" height="200"><br>
+
+            <div class="input-file-container">  
+		    <input style="display:none;" class="input-file" id="my-file" type="file">
+		    <label tabindex="0" for="my-file" class="input-file-trigger icon-upload">Seleccione una imagen</label>
+		 	</div>
+		  
+
+		  <input type="submit" name="enviar" value="Registrarse">
+			
+		</form>
+	</section>
+
+	<footer id="acercade">
+		<p>
+		   <a href="acerca.html"><strong> Acerca de nosotros</strong></a>
+		</p>
+	</footer>
+</body>
+</html>

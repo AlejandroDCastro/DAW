@@ -1,0 +1,364 @@
+/*-----------------------------------------OBJETOS---------------------------------------------*/
+/* La parte mas importante para imprimir las paginas */
+@page {
+    size: A4 portrait;
+    margin: 0;
+    -webkit-print-color-adjust: exact;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background-color: white;
+}
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
+
+header {
+    display: none;
+}
+
+header {
+    display: none;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    background-color: black;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    text-align: center;
+}
+
+h3 {
+    font-family: Georgia, serif;
+    text-align: left;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+a {
+    font-family: Georgia, serif;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: medium;
+}
+
+button {
+    width: 100%;
+    margin: 2% 0 2% 0;
+    padding: 2%;
+    text-align: center;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    color: black;
+    box-shadow: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
+    font-family: Georgia, serif;
+}
+
+input[type=text], input[type=pass], input[type=email], select, input[type=date], input[type=number], textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #ff1aaf;
+    box-shadow: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+input, select, textarea, table, button {
+    font-size: 1.1em;
+}
+
+/*-----------------------------------------CLASES---------------------------------------------*/
+
+.white {
+    color: black;
+}
+
+.logo {
+    width: 8em;
+}
+
+.text_shadow {
+    text-shadow: none;
+}
+
+.toggle {
+    position: relative;
+    display: block;
+    height: 2em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+    width: 2.5em;
+}
+
+.toggle:before {
+    content: "";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    display: block;
+    background: #9A9999;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    width: 2.1em;
+    height: 0.8em;
+}
+
+.toggle span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    display: block;
+    background: black;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.float_right {
+    float: right;
+}
+
+.margin_auto {
+    margin: auto;
+}
+
+.label_blanco {
+    color: black;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.padding20 {
+    padding: 20px;
+}
+
+.row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.imageGrid {
+    line-height: 3em;
+}
+
+.margin_top_icon {
+    margin-top: 1em;
+    color: white;
+}
+
+.margin_right_icon {
+    margin-right: 2em;
+}
+
+.imageGrid .foto {
+    width: 33.33%;
+    min-height: 17em;
+    line-height: 1.2;
+    display: inline-flex;
+    flex-wrap: wrap;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+    margin-right: -4.2px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.imageGrid .foto:before {
+    content: '';
+    background-color: rgba(15, 15, 15, 0.5);
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+}
+
+.imageGrid .foto:hover:before {
+    display: none;
+
+}
+
+.imageGrid .foto .titulo_foto {
+    text-align: center;
+    vertical-align: middle;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.5em;
+}
+
+.imageGrid .foto .titulo_foto .info_foto {
+    display: none;
+}
+
+.imageGrid .foto:hover .titulo_foto .info_foto {
+    display: block;
+}
+
+.detalle-foto {
+    display: table;
+    width: 100%;
+}
+
+.margin_info_foto {
+    margin: 50% 5% 5% 10%;
+}
+
+.col-4 {
+    width: 85%;
+}
+
+.col-4-special {
+    width: 100%;
+}
+
+.col-8 {
+    width: 85%;
+}
+
+.padding_input_top {
+    padding-top: 3%;
+}
+
+.split-menu {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    top: 4.5em;
+    overflow-x: hidden;
+    padding-top: 2em;
+}
+
+.izq-menu {
+    top: 25em;
+    bottom: 0;
+    height: 50%;
+}
+
+.dcha-menu {
+    top: 5em;
+    height: 50%;
+}
+
+.split-foto {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    top: 4.5em;
+    overflow-x: hidden;
+    padding-top: 2em;
+}
+
+.izq-foto {
+    top: 25em;
+    bottom: 0;
+    height: 60%;
+    overflow-y: hidden;
+}
+
+.dcha-foto {
+    top: 5em;
+    height: 40%;
+}
+
+.margin_info_foto {
+    margin: 20% 5% 5% 10%;
+}
+
+.margin_menu {
+    margin: 11% 5% 5% 10%
+}
+
+/*-----------------------------------------IDs---------------------------------------------*/
+
+#background-album-top {
+    background-image: none;
+}
+
+#backgroud-album-bot {
+    background-image: none;
+}
+
+#background-index-top {
+    background-image: none;
+}
+
+#background-buscar {
+    background-image: none;
+}
+
+#background-menu {
+    background-image: none;
+}
+
+#background-registro {
+    background-image: none;
+}
+
+#background-resAlbum {
+    background-image: none;
+}
+
+#background-resBuscar {
+    background-image: none;
+}
+
+#br_none {
+    display: none;
+}
+
+#input_pass_login {
+    background-image: url("img/lock.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#recuerdame:checked + .toggle span {
+    background: linear-gradient(to right, #8c6ed9 0%, #facd42 100%);
+    transform: translateX(20px);
+    transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+    box-shadow: none;
+
+}
+
+#tarifas {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: none;
+}
+
+#back_album {
+    background-image: none !important;
+    background-color: #0e0e0e !important;
+}
+
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="fontello-c200ab24/css/fontello.css">
+	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="with=device-width, initial-scale=1.0">
+	<title>Pagina principal</title>
+</head>
+<body>
+	<header>
+		<a href="index.html">
+			<figure>
+				<img src="img/logo_placeholder.jpg" alt="logo" height="110" width="200">
+			</figure>
+		</a>
+		<a id="link-buscar" href="buscar.html">
+			<span class="icon-search"></span>
+		</a>
+	</header>
+
+	<section id="inicioSesion">
+		<h2>Iniciar sesion</h2>
+		<form action="menu.html">
+			<div>
+				<label for="name-user"> Nombre usuario: <input required id="name-user" name="user"></label>
+				<label for="pass"> Contraseña: <input required id="pass" type="password" name="pass"><span class="icon-lock"></span></label>
+			</div>
+			
+            <br><br>
+			<input type="submit" name="enviar" value="Iniciar sesion" style="cursor:pointer"><br><br>
+			<p>¿Todavía no tienes cuenta? <a href="registro.html"><u>Registrate aquí</u></a></p>
+		</form>
+	</section>
+	
+	<h2 id="ultimasFotosIndex">Ultimas fotos</h2>
+	<section id="contenedor-fotos">
+		
+		<article class="fotoIndex">
+			<a href="foto.html"><figure>
+				<img src="img/img_placeholder.jpg" alt="foto">
+			</figure></a>
+			
+			<p><strong>Fecha</strong></p>
+			<a href="foto.html"><h3>Titulo foto</h3></a>
+		</article>
+
+		<article class="fotoIndex">
+			<a href="foto.html"><figure>
+				<img src="img/img_placeholder.jpg" alt="foto">
+			</figure></a>
+            <p><strong>Fecha</strong></p>
+			<a href="foto.html"><h3>Titulo foto</h3></a>
+		</article>
+
+		<article class="fotoIndex">
+			<a href="foto.html"><figure>
+				<img src="img/img_placeholder.jpg" alt="foto">
+			</figure></a>
+            <p><strong>Fecha</strong></p>
+			<a href="foto.html"><h3>Titulo foto</h3></a>
+		</article>
+
+		<article class="fotoIndex">
+			<a href="foto.html"><figure>
+				<img src="img/img_placeholder.jpg" alt="foto">
+			</figure></a>
+            <p><strong>Fecha</strong></p>
+			<a href="foto.html"><h3>Titulo foto</h3></a>
+		</article>
+
+		<article class="fotoIndex">
+			<a href="foto.html"><figure>
+				<img src="img/img_placeholder.jpg" alt="foto">
+			</figure></a>
+            <p><strong>Fecha</strong></p>
+			<a href="foto.html"><h3>Titulo foto</h3></a>
+		</article>
+	</section>
+
+	<footer id="acercade">
+		<p>
+            <a href="acerca.html"><strong> Acerca de nosotros</strong></a>
+		</p>
+	</footer>
+</body>
+</html>
