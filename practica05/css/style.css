@@ -245,6 +245,34 @@ table, tr, th, td {
 
 
 
+/*Otros estilos aparte*/
+
+section#accesibilidad > p {
+    width: 70%;
+    margin: 30px auto;
+}
+
+    section#accesibilidad > p > span {
+        font-family: 'Satisfy', sans-serif;
+    }
+
+header > p {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+}
+
+    header > p > a {
+        color: var(--color3);
+    }
+
+    header > p > a:hover {
+        text-decoration: none;
+    }
+
+
+
+
 /*Media Queries para Responsive Web Design*/
 
 @media all and (max-width: 800px) {
@@ -271,8 +299,13 @@ table, tr, th, td {
     form#formulario{
         width: 70%;
     }
+}
 
+@media all and (max-width: 600px) {
 
+    section#accesibilidad > p {
+        width: 90%;
+    }
 }
 
 @media all and (max-width: 450px) {
@@ -288,14 +321,6 @@ table, tr, th, td {
     footer > p {
         margin-bottom: 20px;
     }
-}
-
-@media all and (max-width: 420px)
-{
-    body
-        {
-        margin: 0;
-        }
 }
 
 
@@ -390,3 +415,20 @@ section>section>ul>li
             width: 100%;
             text-align: center;
         }
+
+
+        
+
+@media all and (max-width: 780px) {
+
+    section>section>a {
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 420px)
+{
+    body {
+        margin: 0;
+    }
+}
