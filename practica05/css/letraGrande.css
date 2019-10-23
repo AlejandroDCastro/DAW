@@ -1,0 +1,107 @@
+
+/*CSS para el cambio en el tamaño de letra*/
+
+header > nav > ul > li {
+    font-size: 1.6em;
+}
+
+    header > nav > ul > li > a {
+        height: 2.3em;
+    }
+
+main > section {
+    font-size: 1.5em;
+}
+
+    main > section > h1 {
+        font-size: 3em;
+        margin: 40px 25px 60px 35px;
+    }
+
+footer > p {
+    font-size: 1.5em;
+}
+
+footer > a {
+    font-size: 1.5em;
+}
+
+.formulario::placeholder {
+    color: #000;
+    opacity: .6;
+    font-size: 1.3em;
+}
+
+
+
+
+/*Media Queries para Responsive Web Design*/
+
+@media all and (max-width: 800px) {
+
+    form#formulario> div > input#photo {
+        width: 135px;
+    }
+
+    section#solicitud > div {
+        display: initial;
+    }
+
+    section#solicitud > div > section:first-child {
+        width: 100%;
+    }
+
+    section#solicitud > div > section:last-child {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 780px) {
+
+    section>section>a {
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 700px) {
+
+    form#formulario{
+        width: 70%;
+    }
+}
+
+@media all and (max-width: 600px) {
+
+    section#accesibilidad > p {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 560px) {
+    
+    #formini {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 450px) {
+
+    form#formulario{
+        width: 90%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer > p {
+        margin-bottom: 20px;
+    }
+}
+
+@media all and (max-width: 420px) {
+    
+    body {
+        margin: 0;
+    }
+}

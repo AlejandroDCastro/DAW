@@ -101,12 +101,6 @@ footer {
 
 
 
-/*
-    ALEJANDRO CASTRO VALERO
-*/
-
-
-
 /*CSS para la página busqueda.html y registro.html*/
 
 .formulario {
@@ -273,59 +267,6 @@ header > p {
 
 
 
-/*Media Queries para Responsive Web Design*/
-
-@media all and (max-width: 800px) {
-
-    form#formulario> div > input#photo {
-        width: 135px;
-    }
-
-    section#solicitud > div {
-        display: initial;
-    }
-
-    section#solicitud > div > section:first-child {
-        width: 100%;
-    }
-
-    section#solicitud > div > section:last-child {
-        width: 100%;
-    }
-}
-
-@media all and (max-width: 700px) {
-
-    form#formulario{
-        width: 70%;
-    }
-}
-
-@media all and (max-width: 600px) {
-
-    section#accesibilidad > p {
-        width: 90%;
-    }
-}
-
-@media all and (max-width: 450px) {
-
-    form#formulario{
-        width: 90%;
-    }
-
-    footer {
-        flex-direction: column;
-    }
-
-    footer > p {
-        margin-bottom: 20px;
-    }
-}
-
-
-
-
 /*
     GABRIEL MARTÍNEZ ANTÓN
 */
@@ -333,6 +274,7 @@ header > p {
 #formini
 {
     width: 40%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -416,8 +358,42 @@ section>section>ul>li
             text-align: center;
         }
 
+#formini>h2 {
+    margin-bottom: 20px;
+}
 
+#formini>p>a:hover {
+    text-decoration: none;
+}
+
+section>section:last-child>h2 {
+    margin: 40px auto 25px auto;
+}
         
+
+
+
+
+/*Media Queries para Responsive Web Design*/
+
+@media all and (max-width: 800px) {
+
+    form#formulario> div > input#photo {
+        width: 135px;
+    }
+
+    section#solicitud > div {
+        display: initial;
+    }
+
+    section#solicitud > div > section:first-child {
+        width: 100%;
+    }
+
+    section#solicitud > div > section:last-child {
+        width: 100%;
+    }
+}
 
 @media all and (max-width: 780px) {
 
@@ -426,8 +402,44 @@ section>section>ul>li
     }
 }
 
-@media all and (max-width: 420px)
-{
+@media all and (max-width: 700px) {
+
+    form#formulario{
+        width: 70%;
+    }
+}
+
+@media all and (max-width: 600px) {
+
+    section#accesibilidad > p {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 560px) {
+    
+    #formini {
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 450px) {
+
+    form#formulario{
+        width: 90%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer > p {
+        margin-bottom: 20px;
+    }
+}
+
+@media all and (max-width: 420px) {
+    
     body {
         margin: 0;
     }
