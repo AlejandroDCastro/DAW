@@ -251,7 +251,7 @@ section#accesibilidad > p {
     }
 
 header > p {
-    position: fixed;
+    position: absolute;
     right: 15px;
     top: 15px;
 }

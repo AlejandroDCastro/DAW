@@ -32,17 +32,17 @@ footer > a {
     font-size: 1.3em;
 }
 
+form#formulario> div > input[type=submit] {
+    height: 65px;
+}
+
 
 
 
 /*Media Queries para Responsive Web Design*/
 
-@media all and (max-width: 800px) {
-
-    form#formulario> div > input#photo {
-        width: 135px;
-    }
-
+@media all and (max-width: 1000px) {
+    
     section#solicitud > div {
         display: initial;
     }
@@ -56,39 +56,21 @@ footer > a {
     }
 }
 
-@media all and (max-width: 780px) {
+@media all and (max-width: 900px) {
 
     section>section>a {
         width: 80%;
     }
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 790px) {
 
-    form#formulario{
-        width: 70%;
-    }
-}
-
-@media all and (max-width: 600px) {
-
-    section#accesibilidad > p {
-        width: 90%;
-    }
-}
-
-@media all and (max-width: 560px) {
-    
     #formini {
         width: 90%;
     }
 }
 
-@media all and (max-width: 450px) {
-
-    form#formulario{
-        width: 90%;
-    }
+@media all and (max-width: 630px) {
 
     footer {
         flex-direction: column;
@@ -96,12 +78,5 @@ footer > a {
 
     footer > p {
         margin-bottom: 20px;
-    }
-}
-
-@media all and (max-width: 420px) {
-    
-    body {
-        margin: 0;
     }
 }
