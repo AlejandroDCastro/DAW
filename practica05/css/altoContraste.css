@@ -171,6 +171,12 @@ section#solicitud > div > section:last-child > p {
     color: var(--colorC1);
 }
 
+#solicitud > p,
+section > section > ul > li,
+#accesibilidad > p {
+    color: #fff;
+}
+
 section#accesibilidad > p > span {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
