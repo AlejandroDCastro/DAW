@@ -39,17 +39,22 @@ main {
     text-align: left;
 }
 
+    #formini > form > label {
+        width: 100%;
+    }
+
     #formini > p > a {
         color: var(--colorC2);
     }
 
-section > section > h3 {
-    text-align: left;
-}
-
 section > section > a {
     background-color: var(--colorC2);
     color: var(--colorC1);
+}
+
+section > section > a:hover {
+    opacity: 1;
+    background-color: #ffff4d;
 }
 
 section > section > ul > li {
@@ -119,4 +124,13 @@ tr:not(th):hover {
 
 section#solicitud > div > section:last-child {
     background-color: var(--colorC2);
+}
+
+section#solicitud > div > section:last-child > h2,
+section#solicitud > div > section:last-child > p {
+    color: var(--colorC1);
+}
+
+section#accesibilidad > p > span {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
