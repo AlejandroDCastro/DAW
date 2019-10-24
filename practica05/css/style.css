@@ -312,6 +312,7 @@ section>section>a
     padding-top: 5px 10px;
     margin-bottom: 5px;
     color: #fff;
+    border-radius: 1%;
 }
 
 section>section>a:hover
@@ -346,12 +347,8 @@ section>section>ul>li
         margin-bottom: 40px;
     }
 
-        .seccionfoto>article>img
-        {
-            width: 100%;
-        }
-
-        .seccionfoto>article>h3,.seccionfoto>article>p
+        .seccionfoto>article>h3,
+        .seccionfoto>article>p
         {
             width: 100%;
             text-align: center;

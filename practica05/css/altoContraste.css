@@ -31,9 +31,9 @@ main {
     font-weight: bold;
 }
 
-label {
-    text-align: left;
-}
+    main > section > h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
 
 #formini > p {
     text-align: left;
@@ -43,16 +43,21 @@ label {
         color: var(--colorC2);
     }
 
-section > section > a {
-    text-align: left;
-}
-
 section > section > h3 {
     text-align: left;
 }
 
+section > section > a {
+    background-color: var(--colorC2);
+    color: var(--colorC1);
+}
+
 section > section > ul > li {
     text-align: left;
+}
+
+.seccionfoto>article>a>img {
+    border: 5px solid var(--colorC2);
 }
 
 .seccionfoto > article > h3,
@@ -73,3 +78,45 @@ footer {
     footer > a {
         color: var(--colorC2);
     }
+
+.formulario {
+    color: var(--colorC1);
+}
+
+form#formulario {
+    background-color: var(--colorC2);
+}
+
+    form#formulario > div > label:first-child {
+        color: var(--colorC1);
+    }
+
+    form#formulario> div > input[type=submit] {
+        background-color: var(--colorC1);
+        color: var(--colorC2);
+    }
+
+    form#formulario> div > input[type=submit]:hover {
+        background-color: #333;
+    }
+
+    form#formulario > div > input[type=radio]+label {
+        color: var(--colorC1);
+        font-size: 0.85em;
+    }
+
+table, tr, th, td {
+    border: 2px solid var(--colorC2);
+}
+
+th {
+    background-color: #333;
+}
+
+tr:not(th):hover {
+    background-color: #333;
+}
+
+section#solicitud > div > section:last-child {
+    background-color: var(--colorC2);
+}
