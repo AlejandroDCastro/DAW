@@ -12,8 +12,39 @@ body {
 }
 
 header {
-    background-color: #fff;
+    background-color: var(--colorC1);
 }
+
+figure {
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+    header > div {
+        display: flex;
+        margin-bottom: 35px;
+    }
+
+        header > div > a {
+            width: 100%;
+            color: var(--colorC2);
+            font-weight: bold;
+            font-size: 1.5em;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    header > figure > a > img:first-child {
+        display: none;
+    }
+
+    header > figure > a > img:last-child {
+        display: block;
+    }
+
+    header > div > a {
+        display: block;
+    }
 
     header > nav > ul > li > a {
         background-color: var(--colorC2);
@@ -21,7 +52,11 @@ header {
     }
 
     header > nav > ul > li > a:hover {
-        background-color: var(--colorC1);
+        background-color: #3a3a3a;
+        color: var(--colorC2);
+    }
+
+    header > p:last-child > a {
         color: var(--colorC2);
     }
 
@@ -33,6 +68,7 @@ main {
 
     main > section > h1 {
         font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 25px 25px 60px 0;
     }
 
 #formini > p {
@@ -63,6 +99,10 @@ section > section > ul > li {
 
 .seccionfoto>article>a>img {
     border: 5px solid var(--colorC2);
+}
+
+.seccionfoto>article>a>img:hover {
+    border: 5px solid #fff;
 }
 
 .seccionfoto > article > h3,

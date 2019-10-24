@@ -36,6 +36,21 @@ form#formulario> div > input[type=submit] {
     height: 65px;
 }
 
+header > p > a {
+    font-size: 1.3em;
+}
+
+header > figure > a > img:first-child {
+    display: block;
+}
+
+header > figure > a > img:last-child {
+    display: none;
+}
+
+header > div > a {
+    display: none;
+}
 
 
 

@@ -250,20 +250,31 @@ section#accesibilidad > p {
         font-family: 'Satisfy', sans-serif;
     }
 
-header > p {
+header > p:last-child {
     position: absolute;
     right: 15px;
     top: 15px;
 }
 
-    header > p > a {
+    header > p:last-child > a {
         color: var(--color3);
     }
 
-    header > p > a:hover {
+    header > p:last-child > a:hover {
         text-decoration: none;
     }
 
+header > figure > a > img:first-child {
+    display: block;
+}
+
+header > figure > a > img:last-child {
+    display: none;
+}
+
+header > div > a {
+    display: none;
+}
 
 
 
@@ -352,6 +363,10 @@ section>section>ul>li
         {
             width: 100%;
             text-align: center;
+        }
+
+        .seccionfoto>article>h3:hover {
+            opacity: 0.7;
         }
 
         .seccionfoto>article>h3>a {
