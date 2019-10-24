@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+a
+{
+	color: blue;
+}
+
+body, main,h2,h3
+{
+	font-family: sans-serif;
+	font-size: 12pt;
+}
+
+form#formulario
+{
+	margin-top: 79pt;
+}
+
+form#formulario> div {
+        padding: 5pt;
+    }
+
+    form#formulario> div:first-child {
+        padding-top: 0;
+    }
+
+    form#formulario> div:last-child {
+        margin-top: 0;
+    }
+
+form#formulario> div > input[type=submit]
+{
+    height: 50pt;
+    font-size: 14pt;
+    background-color: white;
+    border: 5px solid black;
+}
+
+#formini>p>a:after
+{
+	content:" <" attr(href) ">";
+}
+
+header, footer, nav
+{
+	display:none;
+}
+
+h3>a:after {
+	content:" <" attr(href) ">";
+}
+
+img
+{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    width: 150pt;
+}
+
+input, label
+{
+	font-size: 12pt;
+}
+
+main::after
+{
+	content: 'http://localhost/DAW/Practica%205/index.html © 2019 PI';
+	display: block;
+	text-align: center;
+	border-top: 1pt solid black;
+	border-bottom: 1pt solid black;
+	padding: 2pt;
+	font-size: 12pt;
+	page-break-after: avoid;
+}
+
+main>section>h1
+{
+	font-family: sans-serif;
+	font-size: 20pt;
+	margin: 0;
+}
+
+main>section>div>section>h2
+{
+	margin-top: 120pt;
+}
+
+main>section>div>section>table
+{
+	page-break-after: always;
+}
+
+p
+{
+	font-size: 12pt;
+}
+
+.printCentro
+{
+	margin-top: 150pt;
+}
+
+.printCentro>img
+{
+	width: 300pt;
+}
+
+.printCentro>h2
+{
+	font-size: 20pt;
+}
+
+
+section>section>a
+{
+	text-decoration: underline;
+	width: 100%;
+	border: 2pt solid black;
+	color: blue;
+}
+
+.seccionfoto>article>h3>a {
+    text-decoration: underline;
+    color: blue;
+}
+
+section>section>a:after
+{
+	content:" <" attr(href) ">";
+}
+
+section>section>ul+a
+{
+	border: none;
+	width: 40%;
+	font-size: 15pt;
+	margin-top: 5pt;
+}
+
+section#solicitud > div {
+    display: block;
+}
+
+section#solicitud > p
+{
+	font-size: 12pt;
+}
+
+section#solicitud > div > section
+{
+   	padding: 0;
+}
+
+section#solicitud > div > section > h2
+{
+    padding: 0;
+}
+
+section#solicitud > div > section:last-child > form#formulario
+{
+    margin-top: 0;
+}
+
+textarea
+{
+	font-size: 12pt;
+}
