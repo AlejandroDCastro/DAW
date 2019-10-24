@@ -281,8 +281,7 @@ header > p {
     justify-content: center;
 }
 
-    #formini>p
-    {
+    #formini>p {
         text-align: center;
     }
 
@@ -344,7 +343,7 @@ section>section>ul>li
 }
     .seccionfoto>article
     {
-        margin-bottom: 10px;
+        margin-bottom: 40px;
     }
 
         .seccionfoto>article>img
@@ -356,6 +355,11 @@ section>section>ul>li
         {
             width: 100%;
             text-align: center;
+        }
+
+        .seccionfoto>article>h3>a {
+            text-decoration: none;
+            color: #000;
         }
 
 #formini>h2 {

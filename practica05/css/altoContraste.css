@@ -1,0 +1,75 @@
+
+/*CSS para el estilo de alto contraste*/
+
+:root {
+    --colorC1: #000;
+    --colorC2: #ff0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--colorC2);
+}
+
+header {
+    background-color: #fff;
+}
+
+    header > nav > ul > li > a {
+        background-color: var(--colorC2);
+        color: var(--colorC1);
+    }
+
+    header > nav > ul > li > a:hover {
+        background-color: var(--colorC1);
+        color: var(--colorC2);
+    }
+
+main {
+    background-color: var(--colorC1);
+    color: var(--colorC2);
+    font-weight: bold;
+}
+
+label {
+    text-align: left;
+}
+
+#formini > p {
+    text-align: left;
+}
+
+    #formini > p > a {
+        color: var(--colorC2);
+    }
+
+section > section > a {
+    text-align: left;
+}
+
+section > section > h3 {
+    text-align: left;
+}
+
+section > section > ul > li {
+    text-align: left;
+}
+
+.seccionfoto > article > h3,
+.seccionfoto > article > p {
+    text-align: left;
+}
+
+.seccionfoto > article > h3 > a {
+    color: var(--colorC2);
+}
+
+footer {
+    background-color: var(--colorC1);
+    font-weight: bold;
+}
+
+    footer > p,
+    footer > a {
+        color: var(--colorC2);
+    }
