@@ -184,12 +184,16 @@ section#solicitud > div {
             padding: 0 0 5px 5px;
         }
 
+        section#solicitud > div > section > h2:nth-child(3) {
+            padding-top: 30px;
+        }
+
     section#solicitud > div > section:first-child {
-        width: 30%;
+        width: 40%;
     }
 
     section#solicitud > div > section:last-child {
-        width: 70%;
+        width: 60%;
         background-color: var(--color2);
         border-radius: .3%;
     }
@@ -199,7 +203,7 @@ section#solicitud > div {
             color: #fff;
         }
 
-        section#solicitud > div > section:last-child > form#formulario{
+        section#solicitud > div > section:last-child > form#formulario {
             width: 100%;
             margin-top: 25px;
         }
@@ -212,7 +216,7 @@ section#solicitud > div {
                 height: 80px;
             }
 
-/*Para la tabla*/
+/*Para la tabla tarifas*/
 table {
     width: 100%;
     border-collapse: collapse;
@@ -229,11 +233,12 @@ tr:not(th):hover {
 th, td {
     text-align: left;
     padding: 5px;
+    width: 100px;
+    height: 20px;
 }
 
 table, tr, th, td {
     border: 2px solid #000;
-    height: 50px;
 }
 
 
@@ -278,9 +283,6 @@ header > div > a {
 
 
 
-/*
-    GABRIEL MARTÍNEZ ANTÓN
-*/
 
 #formini
 {
@@ -392,11 +394,7 @@ section>section:last-child>h2 {
 
 /*Media Queries para Responsive Web Design*/
 
-@media all and (max-width: 800px) {
-
-    form#formulario> div > input#photo {
-        width: 135px;
-    }
+@media all and (max-width: 1000px) {
 
     section#solicitud > div {
         display: initial;
@@ -408,6 +406,13 @@ section>section:last-child>h2 {
 
     section#solicitud > div > section:last-child {
         width: 100%;
+    }
+}
+
+@media all and (max-width: 800px) {
+
+    form#formulario> div > input#photo {
+        width: 135px;
     }
 }
 
