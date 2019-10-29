@@ -11,14 +11,14 @@ function $$(selector, numero) {
 
 
 // Sentencia que se ejecuta al cargar la página
-document.addEventListener("DOMContentLoaded", load, false);
+document.addEventListener("load", load, false);
+
 
 function load() {
     
     // Control del formulario de inicio de sesión
     $("#formini>form").addEventListener("submit", comprobarLogin);
 }
-
 
 
 function comprobarLogin() {
