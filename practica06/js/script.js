@@ -9,6 +9,23 @@ function $$(selector, numero) {
 }
 
 
+document.addEventListener("DOMContentLoaded", load, false);
+
+
+// Función que se ejecuta cuando se carga el DOM de la página web
+function load() {
+    switch (location.href) {
+        case "http://localhost/DAW/practica06/solicitud.html":
+            calcularTabla();
+            break;
+        case "http://localhost/DAW/practica06/index.html":
+            $("#formini>form").onsubmit = function() {
+                return comprobarLogin();
+            };
+            break;
+    }
+}
+
 
 // Función para hacer login correctamente
 function comprobarLogin() {
