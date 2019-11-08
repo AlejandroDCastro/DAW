@@ -43,30 +43,30 @@
     <main>
         <section>
             <h1>Registro de Usuario</h1>
-            <form id="formulario">
+            <form id="formulario" onsubmit="return comprobarRegistro();">
                 <div>
-                    <label for="usu">Nombre de usuario:</label>
+                    <label for="usu">Nombre de usuario(*):</label>
                     <input type="text" id="usu" placeholder="Introduce un nombre" class="formulario">
                 </div>
                 <div>
-                    <label for="pwd">Contraseña:</label>
+                    <label for="pwd">Contraseña(*):</label>
                     <input type="password" id="pwd" placeholder="Introduce una contraseña" class="formulario">
                 </div>
                 <div>
-                    <label for="pwd2">Repetir contraseña:</label>
+                    <label for="pwd2">Repetir contraseña(*):</label>
                     <input type="password" id="pwd2" class="formulario">
                 </div>
                 <div>
-                    <label for="mail">Dirección de email:</label>
+                    <label for="mail">Dirección de email(*):</label>
                     <input type="text" id="mail" placeholder="Introduce tu email" class="formulario">
                 </div>
                 <div>
-                    <label>Sexo:</label>
+                    <label>Sexo(*):</label>
                     <input type="radio" name="sex" value="hombre" id="hombre"> <label for="hombre">Hombre</label><br>
                     <input type="radio" name="sex" value="mujer" id="mujer"> <label for="mujer">Mujer</label>
                 </div>
                 <div>
-                    <label for="date">Fecha de nacimiento:</label>
+                    <label for="date">Fecha de nacimiento(*):</label>
                     <input type="text" id="date" class="formulario" placeholder="dd/mm/yyyy">
                 </div>
                 <div>
