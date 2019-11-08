@@ -9,6 +9,29 @@ function $$(selector, numero) {
 }
 
 
+document.addEventListener("DOMContentLoaded", load, false);
+
+
+// Función que se ejecuta cuando se carga el DOM de la página web
+function load() {
+    switch (location.href) {
+        case "http://localhost/DAW/practica06/solicitud.html":
+            calcularTabla();
+            break;
+        case "http://localhost/DAW/practica06/index.html":
+            $("#formini>form").onsubmit = function() {
+                return comprobarLogin();
+            };
+            break;
+        case "http://localhost/DAW/practica06/registro.html":
+            $("#formulario").onsubmit = function() {
+                return comprobarRegistro();
+            };
+            break;
+    }
+}
+
+
 
 // Función para hacer login correctamente
 function comprobarLogin() {
@@ -24,7 +47,14 @@ function comprobarLogin() {
             caracteres2_ += (i<password_.length && password_.charAt(i)!=" ") ? 1 : 0;
         }
         
-        devuelve_ = (caracteres1_==0 || caracteres2_==0) ? false : true;
+        if (caracteres1_==0 || caracteres2_==0) {
+            devuelve_ = false;
+            alert("Login inválido.");
+        } else {
+            devuelve_ = true;
+        }
+    } else {
+        alert("Debes rellenar todos los campos.");
     }
 
     return devuelve_;
@@ -38,9 +68,15 @@ function calcularTabla() {
         new_table_ = creaEncabezados();
 
     // Calculamos y creamos los valores de las celdas...
-    var td_ = undefined, tr_ = undefined, precio_pag_ = 0.10;
+    var td_ = undefined, tr_ = undefined, precio_pag_ = 0.10, precio_ = 0;
     for (let i=1; i<=15; i++) {
         tr_ = document.createElement("tr");
+        if (i >= 5  &&  i <= 11) {
+            precio_pag_ = 0.08;
+        } else if (i > 11) {
+            precio_pag_ = 0.07;
+        }
+        precio_ += precio_pag_;
         for (let j=1; j<=6; j++) {
             td_ = document.createElement("td");
             switch (j) {
@@ -51,22 +87,17 @@ function calcularTabla() {
                     td_.textContent = 3*i;
                     break;
                 case 3:
-                    td_.textContent = (i*precio_pag_).toPrecision(2);
+                    td_.textContent = precio_.toFixed(2);
                     break;
                 case 4:
-                    td_.textContent = (3*precio_pag_ + 3*i*0.02).toPrecision(2);
+                    td_.textContent = (precio_ + (3*i)*0.02).toFixed(2);
                     break;
                 case 5:
-                    td_.textContent = (3*precio_pag_ + 3*i*0.05).toPrecision(2);
+                    td_.textContent = (precio_ + (3*i)*0.05).toFixed(2);
                     break;
                 case 6:
-                    td_.textContent = (3*precio_pag_ + 3*i*0.05 + 3*i*0.02).toPrecision(2);
+                    td_.textContent = (precio_ + ((3*i)*0.05) + ((3*i)*0.02)).toFixed(2);
                     break;
-            }
-            if (i == 4) {
-                precio_pag_ = 0.8;
-            } else if (i == 11) {
-                precio_pag_ = 0.7;
             }
             tr_.appendChild(td_);
         }
