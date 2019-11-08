@@ -23,6 +23,11 @@ function load() {
                 return comprobarLogin();
             };
             break;
+        case "http://localhost/DAW/practica06/registro.html":
+            $("#formulario").onsubmit = function() {
+                return comprobarRegistro();
+            };
+            break;
     }
 }
 
@@ -246,7 +251,10 @@ function comprobarRegistro()
                         }
                         else
                         {
-                            nNumeros++;
+                            if(letra >= '0' && letra <= '9')
+                            {
+                                nNumeros++;
+                            }
                         }
                     }
 
@@ -430,33 +438,3 @@ function comprobarRegistro()
 
 
 
-
-
-
-
-/*
-        //Definimos las expresiones regulares para cada input.
-        var ernombre = new RegExp("^[^0-9][a-zA-Z0-9]{2,14}$"),
-            ercontrasenya = new RegExp("^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])[\w-]{6,15}$"),
-            eremail = new RegExp("^(?!^\.)(?!.*\.$)(?!.*?\.\.)[\w!#$%&'*+\-\/=?^`{|}~.]{0,63}[^\.]$");
-
-        //Comprobamos que las contraseás coinciden.
-        
-
-        //Comprobamos que el patron de nombre este bien.
-        if(ernombre.test(nombre_))
-        {
-            devuelve_ = true;
-        }
-        else
-        {
-            alert("El formato del nombre no es correcto.");
-            return false;
-        }
-
-        //Comprobamos que el patron de la contraseña este bien.
-        if(ercontrasenya.test(contra_))
-        {
-            devuelve_ = true;
-        }
-        */
