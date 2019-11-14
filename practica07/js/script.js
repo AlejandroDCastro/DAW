@@ -49,29 +49,25 @@ function load() {
 
     // En función de la página en la que nos encontremos...
     switch (location.href) {
-        case "http://localhost/DAW/practicaOptativaJS/solicitud.html":
-        case "http://localhost/DAW/practicaOptativaJS/solicitud.html?":
-        case "http://localhost/DAW/practicaOptativaJS/solicitud.html#cabecera":
+        case "http://localhost/DAW/practica07/solicitud.html":
+        case "http://localhost/DAW/practica07/solicitud.html#cabecera":
             calcularTabla();
             break;
-        case "http://localhost/DAW/practicaOptativaJS/":
-        case "http://localhost/DAW/practicaOptativaJS/index.html":
-        case "http://localhost/DAW/practicaOptativaJS/index.html?":
-        case "http://localhost/DAW/practicaOptativaJS/index.html#cabecera":
+        case "http://localhost/DAW/practica07/":
+        case "http://localhost/DAW/practica07/index.html":
+        case "http://localhost/DAW/practica07/index.html#cabecera":
             $("#formini>form").onsubmit = function() {
                 return comprobarLogin();
             };
             break;
-        case "http://localhost/DAW/practicaOptativaJS/registro.html":
-        case "http://localhost/DAW/practicaOptativaJS/registro.html?":
-        case "http://localhost/DAW/practicaOptativaJS/registro.html#cabecera":
+        case "http://localhost/DAW/practica07/registro.html":
+        case "http://localhost/DAW/practica07/registro.html#cabecera":
             $("#formulario").onsubmit = function() {
                 return comprobarRegistro();
             };
             break;
-        case "http://localhost/DAW/practicaOptativaJS/resultado.html":
-        case "http://localhost/DAW/practicaOptativaJS/resultado.html?":
-        case "http://localhost/DAW/practicaOptativaJS/resultado.html#cabecera":
+        case "http://localhost/DAW/practica07/resultado.html":
+        case "http://localhost/DAW/practica07/resultado.html#cabecera":
             $("#ordenacion>select").addEventListener("change", determinaOrdenacion);
             break;
     }
@@ -79,7 +75,6 @@ function load() {
     $("header>select").addEventListener("change", cambiaEstilo);
     // En cualquier página...
     var estilo_seleccionado_ = getCookie("estilo");
-    console.log("get: " + getCookie("estilo"));
     if (estilo_seleccionado_ != null  &&  estilo_seleccionado_ != "") {
         $("header>select").value = estilo_seleccionado_;
         cambiaEstilo();
@@ -236,7 +231,6 @@ function cambiaEstilo() {
     var estilo_ = $("header>select").value,
         arrayEstilos_ = document.getElementsByTagName("link");
 
-        console.log("Cambia estilo " + estilo_);
     for (let i=0; i<arrayEstilos_.length; i++) {
 
         // Sólo aquellas etiquetas link que hacen referencia a un estilo 
@@ -249,11 +243,9 @@ function cambiaEstilo() {
             // predeterminado y siempre tiene que utilizarse...
             if ((arrayEstilos_[i].getAttribute("title") != null  &&  arrayEstilos_[i].getAttribute("title") == estilo_)  ||  arrayEstilos_[i].getAttribute("href").indexOf("style.css") != -1) {
                 arrayEstilos_[i].disabled = false;
-                console.log(arrayEstilos_[i].getAttribute("href"));
                 // Guardamos en una cookie el estilo de la web durante 45 días...
                 if (arrayEstilos_[i].getAttribute("href").indexOf("style.css") == -1) {
                     setCookie("estilo", estilo_, 45);
-                    console.log("setCookie: " + getCookie("estilo"));
                 }
             } else {
                 arrayEstilos_[i].disabled = true;
