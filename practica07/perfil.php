@@ -51,12 +51,12 @@
                 <a href="">Mis datos</a>
                 <a href="">Darme de baja</a>
                 <a href="">Mis álbumes</a>
-                <a href="">Crear álbum</a>
+                <a href="crearAlbum.php">Crear álbum</a>
                 <a href="solicitud.html">Solicitar album</a>
                 <a href="index.html">Salir</a>
             </section>
         </section>
-    </main>
+    </main><?php
     <!-- PIE DE PÁGINA: Autores, Copyright, Enlace al comienzo de la página -->
     <footer>
         <p>Alejandro Castro Valero<br>Gabriel Martínez Antón</p>
