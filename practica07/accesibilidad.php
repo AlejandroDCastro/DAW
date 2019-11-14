@@ -1,60 +1,19 @@
-<!DOCTYPE html> <!-- Especificación para indicar que la página está escrita en HTML5 -->
-<html lang="es"> <!-- Idioma Español -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="generator" content="Sublime Text 3">
-    <meta name="author" content="Alejandro Castro Valero">
-    <meta name="author" content="Gabriel Martínez Antón">
-    <meta name="keywords" content="HTML5, web, picture, image">
-    <meta name="description" content="Página con una declaración de accesibilidad para la web PI - Pictures & Images">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
-    <link rel="alternate stylesheet" href="css/letraGrande.css" title="Letra Grande">
-    <link rel="alternate stylesheet" href="css/altoContraste.css" title="Alto Contraste">
-    <link rel="alternate stylesheet" href="css/combinado.css" title="Letra Grande y Alto Contraste">
-    <link rel="shortcut icon" href="Images/logotipo2.png" type="image/png">
-    <script src="js/script.js"></script>
-    <title>PI - Accesibilidad</title>
-</head>
-<body>
-    <header id="cabecera">
-        <figure>
-            <a href="index.html">
-                <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
-                <img src="Images/logotipo2.png" alt="Logotipo de PI">
-            </a>
-        </figure>
-        <div><a href="index.html">PI - Pictures & Images</a></div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><i class="icon-home"></i>Inicio</a></li>
-                <li><a href="busqueda.html"><i class="icon-search"></i>Búsqueda</a></li>
-                <li><a href="registro.html"><i class="icon-wpforms"></i>Registro</a></li>
-            </ul>
-        </nav>
-        <select>
-            <option value="Estilo Base">Estilo Base</option>
-            <option value="Letra Grande">Letra Grande</option>
-            <option value="Alto Contraste">Alto Contraste</option>
-            <option value="Letra Grande y Alto Contraste">Letra Grande y Alto Contraste</option>
-        </select>
-    </header>
-    <main>
-        <section id="accesibilidad" class="printCentro">
-            <h1>Accesibilidad</h1>
-            <p><span>Pictures & Images</span> (PI) es un sitio web concienciado sobre el desarrollo de contenido accesible, con el objetivo de que nuestros usuarios puedan disfrutar de todo nuestro material y de otros usuarios, que ponemos a su disposición. Dentro de este espíritu se trabaja por tener un sitio web totalmente accesible siguiendo las pautas de accesibilidad al contenido en la web 1.0 del W3C, cumpliendo los criterios de conformidad de nivel AA, y sobretodo de nivel AAA.</p>
-            <p>La página dispone de un etiquetado semántico sólido y coherente, que otorga un significado a cada objeto de la estuctura. Todas las imágenes tienen asociadas un texto alternativo asociado, junto al título y otros textos. Los colores usados permiten la visualización correcta de todos los elementos en el sitio web.</p>
-            <p>Para mostrar los diferentes estilos accesibles de PI, es necesario ir a la sección de estilos definida para el navegador usado.</p>
-        </section>
-    </main>
+<?php
 
-    <!-- PIE DE PÁGINA: Autores, Copyright, Enlace al comienzo de la página -->
-    <footer>
-        <p>Alejandro Castro Valero<br>Gabriel Martínez Antón</p>
-        <p>© 2019 PI</p>
-        <a href="#cabecera">Volver arriba</a>
-    </footer>
-</body>
-</html>
+    // Incluímos el head con el doctype
+    require_once("head.php");
+
+    // Incluímos la etiqueta <body> junto al header
+    require_once("header.php");
+?>
+<main>
+    <section id="accesibilidad" class="printCentro">
+        <h1>Accesibilidad</h1>
+        <p><span>Pictures & Images</span> (PI) es un sitio web concienciado sobre el desarrollo de contenido accesible, con el objetivo de que nuestros usuarios puedan disfrutar de todo nuestro material y de otros usuarios, que ponemos a su disposición. Dentro de este espíritu se trabaja por tener un sitio web totalmente accesible siguiendo las pautas de accesibilidad al contenido en la web 1.0 del W3C, cumpliendo los criterios de conformidad de nivel AA, y sobretodo de nivel AAA.</p>
+        <p>La página dispone de un etiquetado semántico sólido y coherente, que otorga un significado a cada objeto de la estuctura. Todas las imágenes tienen asociadas un texto alternativo asociado, junto al título y otros textos. Los colores usados permiten la visualización correcta de todos los elementos en el sitio web.</p>
+        <p>Para mostrar los diferentes estilos accesibles de PI, es necesario ir a la sección de estilos definida para el navegador usado.</p>
+    </section>
+</main>
+<?php
+    require_once("footer.php");
+?>

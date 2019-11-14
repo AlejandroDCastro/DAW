@@ -15,6 +15,5 @@
     <link rel="alternate stylesheet" href="css/altoContraste.css" title="Alto Contraste">
     <link rel="alternate stylesheet" href="css/combinado.css" title="Letra Grande y Alto Contraste">
     <link rel="shortcut icon" href="Images/logotipo2.png" type="image/png">
-    <script src="js/script.js"></script>
     <title>PI - Pictures & Images</title>
 </head>

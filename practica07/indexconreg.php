@@ -21,21 +21,21 @@
 <body>
     <header id="cabecera">
         <figure>
-            <a href="indexconreg.html">
+            <a href="indexconreg.php">
                 <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
                 <img src="Images/logotipo2.png" alt="Logotipo de PI">
             </a>
         </figure>
-        <div><a href="index.html">PI - Pictures & Images</a></div>
+        <div><a href="index.php">PI - Pictures & Images</a></div>
         <nav>
             <ul>
-                <li><a href="indexconreg.html"><i class="icon-home"></i>Inicio</a></li>
-                <li><a href="busqueda.html"><i class="icon-search"></i>Búsqueda</a></li>
-                <li><a href="perfil.html"><i class="icon-user"></i>Perfil</a></li>
-                <li><a href="index.html"><i class="icon-logout"></i>Salir</a></li>
+                <li><a href="indexconreg.php"><i class="icon-home"></i>Inicio</a></li>
+                <li><a href="busqueda.php"><i class="icon-search"></i>Búsqueda</a></li>
+                <li><a href="perfil.php"><i class="icon-user"></i>Perfil</a></li>
+                <li><a href="index.php"><i class="icon-logout"></i>Salir</a></li>
             </ul>
         </nav>
-        <p><a href="accesibilidad.html">Accesibilidad</a></p>
+        <p><a href="accesibilidad.php">Accesibilidad</a></p>
         <select>
             <option value="Estilo Base">Estilo Base</option>
             <option value="Letra Grande">Letra Grande</option>
@@ -52,46 +52,46 @@
                 <h2>Últimas Fotos</h2>
                 <div class="seccionfoto">
                     <article>
-                        <a href="detalle.html">
+                        <a href="detalle.php">
                             <img width="400" src="Images/arbol.jpg" alt="Arbol">
                         </a>
-                        <h3><a href="detalle.html">Porque los árboles no dan Wi-Fi</a></h3>
+                        <h3><a href="detalle.php">Porque los árboles no dan Wi-Fi</a></h3>
                         <p>Fecha: 15-01-2018 20:55</p>
                         <p>Autor: Kevin Serna García</p>
                         <p>País: España</p>
                     </article>
                     <article>
-                        <a href="detalle.html">
+                        <a href="detalle.php">
                             <img width="400" src="Images/gallina.jpg" alt="Gallina">
                         </a>
-                        <h3><a href="detalle.html">Gallinas que no sufren</a></h3>
+                        <h3><a href="detalle.php">Gallinas que no sufren</a></h3>
                         <p>Fecha: 01-05-2019 15:34</p>
                         <p>Autor: Miguel Hernández</p>
                         <p>País: Suiza</p>
                     </article>
                     <article>
-                        <a href="detalle.html">
+                        <a href="detalle.php">
                             <img width="400" src="Images/burro.jpg" alt="Burro">
                         </a>
-                        <h3><a href="detalle.html">Cuando veo a mi crush</a></h3>
+                        <h3><a href="detalle.php">Cuando veo a mi crush</a></h3>
                         <p>Fecha: 27-02-2017 23:00</p>
                         <p>Autor: José Manuel García Baeza</p>
                         <p>País: Argentina</p>
                     </article>
                     <article>
-                        <a href="detalle.html">
+                        <a href="detalle.php">
                             <img width="400" src="Images/estudiante.jpg" alt="Estudiante">
                         </a>
-                        <h3><a href="detalle.html">A estudiar que ya es hora</a></h3>
+                        <h3><a href="detalle.php">A estudiar que ya es hora</a></h3>
                         <p>Fecha: 02-08-2017 10:30</p>
                         <p>Autor: Pedro Sánchez</p>
                         <p>País: Andorra</p>
                     </article>
                     <article>
-                        <a href="detalle.html">
+                        <a href="detalle.php">
                             <img width="400" src="Images/synth.jpg" alt="Synth">
                         </a>
-                        <h3><a href="detalle.html">Ilusión infinita</a></h3>
+                        <h3><a href="detalle.php">Ilusión infinita</a></h3>
                         <p>Fecha: 20-12-2016 00:55</p>
                         <p>Autor: Albert Rivera</p>
                         <p>País: Chile</p>
