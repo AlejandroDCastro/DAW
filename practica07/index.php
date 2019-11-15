@@ -1,24 +1,36 @@
 <?php
-
+    $titulo = "Index";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("header.php");
+    require_once("headersinreg.php");
 ?>
+
 <main>
     <section>
         <h1>Inicio</h1>
         
         <!-- Formulario para acceder como usuario registrado -->
         <section id="formini">
+
             <h2>Inicia Sesión</h2>
-            <form action="indexconreg.php" method="POST">
+
+            <!--Miramos si en la url nos ha llegado un fallo y se lo mostramos al usuario-->
+            <?php 
+
+            if(isset($_GET["fallo"])==true){
+                 echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h1>";
+            }
+
+            ?>
+
+            <form action="resLogin.php" method="POST">
                 <label for="nombre">Nombre: </label>
-                <input type="text" id="nombre" placeholder="Introduce tu nombre">
+                <input type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre">
 
                 <label for="pass">Contraseña: </label>
-                <input type="password" id="pass" placeholder="Introduce tu contraseña">
+                <input type="password" name="pass" id="pass" placeholder="Introduce tu contraseña">
 
                 <input type="submit" value="Entrar">
             </form>
@@ -30,46 +42,46 @@
             <h2>Últimas Fotos</h2>
             <div class="seccionfoto">
                 <article>
-                    <a href="detalle.php">
+                    <a href="detalle.php?id=1">
                         <img width="400" src="Images/arbol.jpg" alt="Arbol">
                     </a>
-                    <h3><a href="detalle.php">Porque los árboles no dan Wi-Fi</a></h3>
+                    <h3><a href="detalle.php?id=1">Porque los árboles no dan Wi-Fi</a></h3>
                     <p>Fecha: 15-01-2018 20:55</p>
                     <p>Autor: Kevin Serna García</p>
                     <p>País: España</p>
                 </article>
                 <article>
-                    <a href="detalle.php">
+                    <a href="detalle.php?id=2">
                         <img width="400" src="Images/gallina.jpg" alt="Gallina">
                     </a>
-                    <h3><a href="detalle.php">Gallinas que no sufren</a></h3>
+                    <h3><a href="detalle.php?id=2">Gallinas que no sufren</a></h3>
                     <p>Fecha: 01-05-2019 15:34</p>
                     <p>Autor: Miguel Hernández</p>
                     <p>País: Suiza</p>
                 </article>
                 <article>
-                    <a href="detalle.php">
+                    <a href="detalle.php?id=3">
                         <img width="400" src="Images/burro.jpg" alt="Burro">
                     </a>
-                    <h3><a href="detalle.php">Cuando veo a mi crush</a></h3>
+                    <h3><a href="detalle.php?id=3">Cuando veo a mi crush</a></h3>
                     <p>Fecha: 27-02-2017 23:00</p>
                     <p>Autor: José Manuel García Baeza</p>
                     <p>País: Argentina</p>
                 </article>
                 <article>
-                    <a href="detalle.php">
+                    <a href="detalle.php?id=4">
                         <img width="400" src="Images/estudiante.jpg" alt="Estudiante">
                     </a>
-                    <h3><a href="detalle.php">A estudiar que ya es hora</a></h3>
+                    <h3><a href="detalle.php?id=4">A estudiar que ya es hora</a></h3>
                     <p>Fecha: 02-08-2017 10:30</p>
                     <p>Autor: Pedro Sánchez</p>
                     <p>País: Andorra</p>
                 </article>
                 <article>
-                    <a href="detalle.php">
+                    <a href="detalle.php?id=5">
                         <img width="400" src="Images/synth.jpg" alt="Synth">
                     </a>
-                    <h3><a href="detalle.php">Ilusión infinita</a></h3>
+                    <h3><a href="detalle.php?id=5">Ilusión infinita</a></h3>
                     <p>Fecha: 20-12-2016 00:55</p>
                     <p>Autor: Albert Rivera</p>
                     <p>País: Chile</p>
