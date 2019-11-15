@@ -5,7 +5,7 @@
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("header.php");
+    require_once("headerconreg.php");
 ?>
 
 <main>
@@ -57,13 +57,6 @@
                 echo '</ul>';
 
             ?>
-           <!-- <ul>
-                <li><b>Nombre</b>: Alexander Caster</li>
-                <li><b>Título del álbum</b>: Mi loco viaje a Madagascar</li>
-                <li><b>Correo electrónico</b>: alexandercaster@outlook.es</li>
-                <li><b>Dirección</b>: C/ Virgen del Rosario Nº4 03350 Novelda, Alicante, España</li>
-                <li><b>Álbum</b>: Álbum 1</li>
-            </ul>-->
 
             <a href="perfil.php">Aceptar</a>
         </section>

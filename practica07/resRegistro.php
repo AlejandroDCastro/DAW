@@ -12,6 +12,8 @@
 	if(isset($_POST['sex']))
 	{
 		$sex = $_POST['sex'];
+	} else {
+		$sex = "";
 	}
 	$fecha = $_POST['fecha'];
 	$pais = $_POST['pais'];
@@ -53,7 +55,7 @@
 				echo "<li><b>Ciudad:</b> $ciudad</li>";
 			}
 
-			echo "</ul><a href='index.php'>Aceptar</a></section></section></main>";
+			echo "</ul><a href='indexconreg.php'>Aceptar</a></section></section></main>";
 		}
 		else
 		{

@@ -5,7 +5,7 @@
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("header.php");
+    require_once("headerconreg.php");
 ?>
 
 <!-- CONTENIDO: Título contenido, Formulario -->
