@@ -1,4 +1,5 @@
 <?php
+    $titulo = "Perfil - Pictures & Images";
 
     // Incluímos el head con el doctype
     require_once("head.php");
@@ -16,8 +17,8 @@
             <a href="">Darme de baja</a>
             <a href="">Mis álbumes</a>
             <a href="crearAlbum.php">Crear álbum</a>
-            <a href="solicitud.html">Solicitar album</a>
-            <a href="index.html">Salir</a>
+            <a href="solicitud.php">Solicitar album</a>
+            <a href="index.php">Salir</a>
         </section>
     </section>
 </main>
