@@ -1,5 +1,6 @@
 
 /*CSS para el cambio en el tamaño de letra*/
+@import url("style.css");
 
 header > nav > ul > li {
     font-size: 1.6em;

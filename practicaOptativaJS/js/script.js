@@ -1,6 +1,7 @@
 // Variables globales
 var ordenacion_inicial_;
 var articles_inicial_;
+var estilo_seleccionado_;
 
 
 // Funciones para simplificar funciones de manipulación del DOM
@@ -76,15 +77,14 @@ function load() {
             break;
     }
     
-    $("header>select").addEventListener("change", cambiaEstilo);
     // En cualquier página...
-    var estilo_seleccionado_ = getCookie("estilo");
-    console.log("get: " + getCookie("estilo"));
+    $("header>select").addEventListener("change", cambiaEstilo);
+
+    estilo_seleccionado_ = getCookie("estilo");
     if (estilo_seleccionado_ != null  &&  estilo_seleccionado_ != "") {
         $("header>select").value = estilo_seleccionado_;
-        cambiaEstilo();
+        mantenEstilo();
     }
-   
 }
 
 
@@ -231,36 +231,67 @@ function creaEncabezados() {
 
 
 
-// Función para cambiar el estilo del sitio web
+// Función para mantener el estilo del sitio web
+function mantenEstilo() {
+    var estilo_ = $("header>select").value,
+        links_ = document.getElementsByTagName("link");
+        
+    for (let i=0; i<links_.length; i++) {
+        if (getCookie("estilo") != ""  &&  links_[i].getAttribute("href").indexOf("style.css") != -1) {
+            links_[i].setAttribute("href", estilo_);
+            break;
+        }
+    }
+}
+
+
+
+// Función para cambiar el estilo de una página web
+function cambiaEstilo() {
+    var estilo_ = $("header>select").value,
+        links_ = document.getElementsByTagName("link");
+
+    for (let i=0; i<links_.length; i++) {
+        if ((getCookie("estilo") == ""  &&  links_[i].getAttribute("href").indexOf("style.css") != -1)  ||  
+        (getCookie("estilo") != ""  &&  links_[i].getAttribute("href") == getCookie("estilo"))) {
+            links_[i].setAttribute("href", estilo_);
+            setCookie("estilo", estilo_, 45);
+            break;
+        }
+    }
+}
+
+
+
+/*
+Funciona para cambiar el estilo pero no funciona para mantenerlo
+
 function cambiaEstilo() {
     var estilo_ = $("header>select").value,
         arrayEstilos_ = document.getElementsByTagName("link");
 
-        console.log("Cambia estilo " + estilo_);
     for (let i=0; i<arrayEstilos_.length; i++) {
 
         // Sólo aquellas etiquetas link que hacen referencia a un estilo 
         // y que no sea para impresión...
         if (arrayEstilos_[i].getAttribute("rel") != null  &&  arrayEstilos_[i].getAttribute("rel").indexOf("stylesheet") != -1  &&  arrayEstilos_[i].getAttribute("media") == null) {
-            arrayEstilos_[i].disabled = true;
-
             // Si tiene título es un estilo preferido o alternativo, 
             // si no tiene título es un estilo 
             // predeterminado y siempre tiene que utilizarse...
-            if ((arrayEstilos_[i].getAttribute("title") != null  &&  arrayEstilos_[i].getAttribute("title") == estilo_)  ||  arrayEstilos_[i].getAttribute("href").indexOf("style.css") != -1) {
-                arrayEstilos_[i].disabled = false;
-                console.log(arrayEstilos_[i].getAttribute("href"));
-                // Guardamos en una cookie el estilo de la web durante 45 días...
-                if (arrayEstilos_[i].getAttribute("href").indexOf("style.css") == -1) {
+            if (arrayEstilos_[i].getAttribute("title") != null  &&  arrayEstilos_[i].getAttribute("title").length > 0) {
+                if (arrayEstilos_[i].getAttribute("title") == estilo_) {
+                    arrayEstilos_[i].disabled = false;
+
+                    // Guardamos el estilo en una cookie...
                     setCookie("estilo", estilo_, 45);
-                    console.log("setCookie: " + getCookie("estilo"));
+                } else {
+                    arrayEstilos_[i].disabled = true;
                 }
-            } else {
-                arrayEstilos_[i].disabled = true;
             }
         }
     }
-}
+}*/
+
 
 
 
@@ -299,7 +330,6 @@ function comprobarRegistro() {
     }
 
     // Dirección de email...
-    //expValida_ = new RegExp("^(?!^\\.)(?!.*\\.$)(?!.*?\\.\\.)[\\w!#$%&'*+\\-\\/=?^`{|}~.]{0,64}[^\\.]@[a-zA-Z0-9\\-]{0,63}(?!@\\-)(?:\\.(?!\\-).*)(?:\\.*(?!\\-))$");
     expValida_ = new RegExp("^(?!^\\.)(?!.*\\.$)(?!.*?\\.\\.)[\\w!#$%&'*+\\-\\/=?^`{|}~.]{0,64}[^\\.]@[a-zA-Z0-9\\-]+(?:\\.(?!\\-)[a-zA-Z0-9\\-]+(?!\\-)){0,63}(?!@\\-)$");
     if (email_ != "") {
         respuesta_ += (expValida_.test(email_)) ? "" : "\n - Dirección de email: Cadena inválida.";
