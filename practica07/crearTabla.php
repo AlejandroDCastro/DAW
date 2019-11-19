@@ -7,22 +7,26 @@
     echo '<table>';
 
     // Primera fila...
-    echo '<tr>
+    echo <<<priFILA
+        <tr>
             <th></th>
             <th></th>
             <th colspan="2">Blanco y negro</th>
             <th colspan="2">Color</th>
-        </tr>';
+        </tr>
+        priFILA;
 
     // Segunda fila...
-    echo '<tr>
+    echo <<<segFILA
+        <tr>
             <th>Número de páginas</th>
             <th>Número de fotos</th>
             <th>150-300 dpi</th>
             <th>450-900 dpi</th>
             <th>150-300 dpi</th>
             <th>450-900 dpi</th>
-        </tr>';
+        </tr>
+        segFILA;
 
     // Calculamos y creamos los valores de las celdas...
     $precio_pag_ = 0.10;
