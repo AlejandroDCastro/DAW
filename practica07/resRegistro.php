@@ -1,10 +1,11 @@
 <?php
+	session_start();
 
 	$titulo = "Registro correcto";
     // Incluímos el head con el doctype
     require_once("head.php");
 
-//Recogemos todos los campos del registro menos la foto
+	//Recogemos todos los campos del registro menos la foto
 	$usuario = $_POST['usuario'];
 	$pass = $_POST['pass'];
 	$pass2 = $_POST['pass2'];
@@ -55,7 +56,7 @@
 				echo "<li><b>Ciudad:</b> $ciudad</li>";
 			}
 
-			echo "</ul><a href='indexconreg.php'>Aceptar</a></section></section></main>";
+			echo "</ul><a href='index.php'>Aceptar</a></section></section></main>";
 		}
 		else
 		{

@@ -1,10 +1,12 @@
 <?php
+    session_start();
+
     $titulo = "Perfil";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("headerconreg.php");
+    require_once("header.php");
 ?>
     <main>
         <section>
@@ -16,7 +18,7 @@
                 <a href="">Mis álbumes</a>
                 <a href="crearAlbum.php">Crear álbum</a>
                 <a href="solicitud.php">Solicitar album</a>
-                <a href="index.php">Salir</a>
+                <a href="salir.php">Salir</a>
             </section>
         </section>
     </main>

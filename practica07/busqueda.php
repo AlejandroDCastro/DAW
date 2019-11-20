@@ -1,10 +1,12 @@
 <?php
+    session_start();
+
     $titulo = "Busqueda";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("headersinreg.php");
+    require_once("header.php");
 ?>
     <!-- CONTENIDO: Título contenido, Formulario -->
     <main>

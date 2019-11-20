@@ -1,28 +1,39 @@
 <?php
-    $titulo = "Index";
+
+    // Iniciar una nueva sesión o reanudar la existente...
+	session_start();
+
+    $titulo = "Inicio - Pictures & Images";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("headersinreg.php");
+    require_once("header.php");
 ?>
 
 <main>
     <section>
         <h1>Inicio</h1>
         
+        <?php
+
+            if(!isset($_SESSION["logueado"])) {
+
+        ?>
+        
         <!-- Formulario para acceder como usuario registrado -->
         <section id="formini">
-
             <h2>Inicia Sesión</h2>
 
             <!--Miramos si en la url nos ha llegado un fallo y se lo mostramos al usuario-->
             <?php 
-
-            if(isset($_GET["fallo"])==true){
-                 echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h1>";
-            }
-
+                if(isset($_GET["fallo"])) {
+                    if ($_GET["fallo"] == 1) {
+                        echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h1>";
+                    } else {
+                        echo "<h3 style='color:red; text-align:center;'>Acceso denegado. Es necesario registro previo.</h1>";
+                    }
+                }
             ?>
 
             <form action="resLogin.php" method="POST">
@@ -36,6 +47,12 @@
             </form>
             <p>¿Aún no te has registrado? <a href="registro.php">Regístrate</a></p>
         </section>
+
+        <?php
+
+            }
+
+        ?>
 
         <!-- Carga las últimas 5 fotos -->
         <section>

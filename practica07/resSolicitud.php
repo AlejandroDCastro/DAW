@@ -1,11 +1,13 @@
 <?php
+    session_start();
+
     $titulo = "Confirmar solicitud - Pictures & Images";
 
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("headerconreg.php");
+    require_once("header.php");
 ?>
 
 <main>
