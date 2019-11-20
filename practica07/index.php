@@ -27,13 +27,15 @@
 
             <!--Miramos si en la url nos ha llegado un fallo y se lo mostramos al usuario-->
             <?php 
+
                 if(isset($_GET["fallo"])) {
                     if ($_GET["fallo"] == 1) {
-                        echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h1>";
-                    } else {
-                        echo "<h3 style='color:red; text-align:center;'>Acceso denegado. Es necesario registro previo.</h1>";
+                        echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h3>";
+                    } elseif ($_GET["fallo"] == 2) {
+                        echo "<h3 style='color:red; text-align:center;'>Acceso denegado. Es necesario inicio de sesión.</h3>";
                     }
                 }
+
             ?>
 
             <form action="resLogin.php" method="POST">

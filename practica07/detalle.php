@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $titulo = "Detalle";
+    $titulo = "Detalle - Pictures & Images";
     // Incluímos el head con el doctype
     require_once("head.php");
 

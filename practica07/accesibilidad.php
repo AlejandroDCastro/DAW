@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    $titulo = "Accesibilidad";
+    $titulo = "Accesibilidad - Pictures & Images";
+
     // Incluímos el head con el doctype
     require_once("head.php");
 

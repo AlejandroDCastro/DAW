@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    $titulo = "Busqueda";
+    $titulo = "Búsqueda - Pictures & Images";
+    
     // Incluímos el head con el doctype
     require_once("head.php");
 

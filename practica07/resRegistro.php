@@ -2,8 +2,10 @@
 	session_start();
 
 	$titulo = "Registro correcto";
-    // Incluímos el head con el doctype
-    require_once("head.php");
+
+	require_once("head.php");
+	
+	require_once("header.php");
 
 	//Recogemos todos los campos del registro menos la foto
 	$usuario = $_POST['usuario'];
@@ -21,16 +23,22 @@
 	$ciudad = $_POST['ciudad'];
 
 
-	if($usuario != "" && $pass != "" && $pass2 != "")
+	if($usuario != ""  &&  $pass != ""  &&  $pass2 != "")
 	{
 		if($pass == $pass2)
 		{
-			//Creamos la pagina con los datos introducidos por el usuario.
+
+			// Creamos la pagina con los datos introducidos por el usuario.
 			echo "<main><section><h1>Registro correcto</h1>
-					<section class='printCentro'><h2>Inserción realizada, tus datos son:</h2><ul>
+					<section class='printCentro'><h2>Registro realizado con éxito, tus datos son:</h2><ul>
 					<li><b>Nombre:</b> $usuario</li>
-					<li><b>Contraseña:</b> $pass</li>";
-			//Dependiendo de si ha rellenado los otros campos, aparecen tambien en pantalla.
+					<li><b>Contraseña:</b> ";
+					for ($i=0; $i<strlen($pass); $i++) {
+						echo "*";
+					}
+					echo "</li>";
+
+			// Dependiendo de si ha rellenado los otros campos, aparecen tambien en pantalla.
 			if($mail != "")
 			{
 				echo "<li><b>Email:</b> $mail</li>";
@@ -56,14 +64,17 @@
 				echo "<li><b>Ciudad:</b> $ciudad</li>";
 			}
 
-			echo "</ul><a href='index.php'>Aceptar</a></section></section></main>";
+			echo "</ul><a href='perfil.php'>Aceptar</a></section></section></main>";
+
+			// Cada vez que un usuario se registra lo normal es que aparezca ya logueado...
+			$_SESSION["logueado"] = "OK";
 		}
 		else
 		{
 			$host = $_SERVER['HTTP_HOST']; 
 			$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		 	$extra = 'registro.php'; 
-		 	header("Location: http://$host$uri/$extra?nocoinciden"); 
+		 	$extra = 'registro.php?error=2'; 
+		 	header("Location: http://$host$uri/$extra"); 
 			exit;
 		}
 	}
@@ -71,8 +82,8 @@
 	{
 		$host = $_SERVER['HTTP_HOST']; 
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	 	$extra = 'registro.php'; 
-	 	header("Location: http://$host$uri/$extra?faltan"); 
+	 	$extra = 'registro.php?error=1'; 
+	 	header("Location: http://$host$uri/$extra"); 
 		exit;
 	}
 ?>
