@@ -4,6 +4,8 @@
     if(!isset($_SESSION["logueado"])) {
     
         $titulo = "Registro - Pictures & Images";
+        $estilo = "css/style.css";
+        
         // Incluímos el head con el doctype
         require_once("head.php");
 

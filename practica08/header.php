@@ -14,7 +14,7 @@
 
                 <?php
 
-                    if (isset($_SESSION["logueado"])  &&  $_SESSION["logueado"] == "OK") {
+                    if (isset($_SESSION["logueado"])) {
                         echo '<li><a href="perfil.php"><i class="icon-user"></i>Perfil</a></li>
                             <li><a href="salir.php"><i class="icon-logout"></i>Salir</a></li>';
                     } else {
@@ -27,9 +27,9 @@
         </nav>
         <p><a href="accesibilidad.php">Accesibilidad</a></p>
         <select>
-            <option value="Estilo Base">Estilo Base</option>
-            <option value="Letra Grande">Letra Grande</option>
-            <option value="Alto Contraste">Alto Contraste</option>
-            <option value="Letra Grande y Alto Contraste">Letra Grande y Alto Contraste</option>
+            <option value="css/style.css">Estilo Base</option>
+            <option value="css/letraGrande.css">Letra Grande</option>
+            <option value="css/altoContraste.css">Alto Contraste</option>
+            <option value="css/combinado.css">Letra Grande y Alto Contraste</option>
         </select>
     </header>

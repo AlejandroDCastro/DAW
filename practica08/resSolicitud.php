@@ -1,9 +1,10 @@
 <?php
     session_start();
 
-    if (isset($_SESSION["logueado"])  &&  $_SESSION["logueado"] == "OK") {
+    if (isset($_SESSION["logueado"])) {
 
         $titulo = "Confirmar solicitud - Pictures & Images";
+        $estilo = $_SESSION["estilo"];
 
         // Incluímos el head con el doctype
         require_once("head.php");

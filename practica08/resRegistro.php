@@ -2,6 +2,7 @@
 	session_start();
 
 	$titulo = "Registro correcto";
+	$estilo = "css/style.css";
 
 	require_once("head.php");
 	

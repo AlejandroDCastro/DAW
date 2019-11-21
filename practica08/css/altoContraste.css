@@ -1,5 +1,6 @@
 
 /*CSS para el estilo de alto contraste*/
+@import url("style.css");
 
 :root {
     --colorC1: #000;

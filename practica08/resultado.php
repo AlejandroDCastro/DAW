@@ -2,6 +2,12 @@
     session_start();
     
     $titulo = "Resultado - Pictures & Images";
+    if (isset($_SESSION["logueado"])) {
+        $estilo = $_SESSION["estilo"];
+    } else {
+        $estilo = "css/style.css";
+    }
+
     // Incluímos el head con el doctype
     require_once("head.php");
 

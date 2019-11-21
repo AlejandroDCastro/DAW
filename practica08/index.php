@@ -4,6 +4,12 @@
 	session_start();
 
     $titulo = "Inicio - Pictures & Images";
+    if (isset($_SESSION["logueado"])) {
+        $estilo = $_SESSION["estilo"];
+    } else {
+        $estilo = "css/style.css";
+    }
+
     // Incluímos el head con el doctype
     require_once("head.php");
 
@@ -32,13 +38,13 @@
                     if ($_GET["fallo"] == 1) {
                         echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h3>";
                     } elseif ($_GET["fallo"] == 2) {
-                        echo "<h3 style='color:red; text-align:center;'>Acceso denegado. Es necesario inicio de sesión.</h3>";
+                        echo "<h3 style='color:red; text-align:center;'>Acceso denegado. Login necesario.</h3>";
                     }
                 }
 
             ?>
 
-            <form action="resLogin.php" method="POST">
+            <form action="acceso.php" method="POST">
                 <label for="nombre">Nombre: </label>
                 <input type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre">
 
