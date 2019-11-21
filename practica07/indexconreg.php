@@ -1,47 +1,20 @@
 <?php
-    $titulo = "Index";
+    $titulo = "Indexregistrado";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("headersinreg.php");
+    require_once("headerconreg.php");
 ?>
-
-<main>
-    <section>
-        <h1>Inicio</h1>
-        
-        <!-- Formulario para acceder como usuario registrado -->
-        <section id="formini">
-
-            <h2>Inicia Sesión</h2>
-
-            <!--Miramos si en la url nos ha llegado un fallo y se lo mostramos al usuario-->
-            <?php 
-
-            if(isset($_GET["fallo"])==true){
-                 echo "<h3 style='color:red; text-align:center;'>Usuario o contraseña incorrectos</h1>";
-            }
-
-            ?>
-
-            <form action="resLogin.php" method="POST">
-                <label for="nombre">Nombre: </label>
-                <input type="text" name="nombre" id="nombre" placeholder="Introduce tu nombre">
-
-                <label for="pass">Contraseña: </label>
-                <input type="password" name="pass" id="pass" placeholder="Introduce tu contraseña">
-
-                <input type="submit" value="Entrar">
-            </form>
-            <p>¿Aún no te has registrado? <a href="registro.php">Regístrate</a></p>
-        </section>
-
-        <!-- Carga las últimas 5 fotos -->
+    <main>
         <section>
-            <h2>Últimas Fotos</h2>
-            <div class="seccionfoto">
-                <article>
+            <h1>Inicio</h1>
+
+            <!-- Carga las últimas 5 fotos -->
+            <section>
+                <h2>Últimas Fotos</h2>
+                <div class="seccionfoto">
+                    <article>
                     <a href="detalle.php?id=1">
                         <img width="400" src="Images/arbol.jpg" alt="Arbol">
                     </a>
@@ -86,10 +59,10 @@
                     <p>Autor: Albert Rivera</p>
                     <p>País: Chile</p>
                 </article>
-            </div>
+                </div>
+            </section>
         </section>
-    </section>
-</main>
+    </main>
 <?php
     require_once("footer.php");
 ?>

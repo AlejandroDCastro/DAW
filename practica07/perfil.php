@@ -1,48 +1,25 @@
 <?php
-    session_start();
+    $titulo = "Perfil";
+    // Incluímos el head con el doctype
+    require_once("head.php");
 
-    if (isset($_SESSION["logueado"])  &&  $_SESSION["logueado"] == "OK") {
-
-        $titulo = "Perfil - Pictures & Images";
-        // Incluímos el head con el doctype
-        require_once("head.php");
-
-        // Incluímos la etiqueta <body> junto al header
-        require_once("header.php");
+    // Incluímos la etiqueta <body> junto al header
+    require_once("headerconreg.php");
 ?>
-
-        <main>
-            <section>
-                <h1>Perfil de usuario</h1>
-                <section class="printCentro">
-                    <h2>Alexander Caster</h2>
-                    
-                    <?php
-
-                        if (isset($_GET["error"])  &&  $_GET["error"] == 1) {
-                            echo "<h3 style='color:red; text-align:center;'>Ya estás registrado como usuario de PI</h3>";
-                        }
-
-                    ?>
-
-                    <a href="">Mis datos</a>
-                    <a href="">Darme de baja</a>
-                    <a href="">Mis álbumes</a>
-                    <a href="crearAlbum.php">Crear álbum</a>
-                    <a href="solicitud.php">Solicitar album</a>
-                    <a href="salir.php">Salir</a>
-                </section>
+    <main>
+        <section>
+            <h1>Perfil de usuario</h1>
+            <section class="printCentro">
+                <h2>Alexander Caster</h2>
+                <a href="">Mis datos</a>
+                <a href="">Darme de baja</a>
+                <a href="">Mis álbumes</a>
+                <a href="crearAlbum.php">Crear álbum</a>
+                <a href="solicitud.php">Solicitar album</a>
+                <a href="index.php">Salir</a>
             </section>
-        </main>
-
+        </section>
+    </main>
 <?php
-        require_once("footer.php");
-
-    } else {
-
-        $host = $_SERVER['HTTP_HOST']; 
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		$extra = 'index.php?fallo=2'; 
-        header("Location: http://$host$uri/$extra");
-    }
+    require_once("footer.php");
 ?>

@@ -1,12 +1,10 @@
 <?php
-    session_start();
-
-    $titulo = "Detalle - Pictures & Images";
+    $titulo = "Detalle";
     // Incluímos el head con el doctype
     require_once("head.php");
 
     // Incluímos la etiqueta <body> junto al header
-    require_once("header.php");
+    require_once("headersinreg.php");
 
     //Obtenemos el id que nos pasan por parametro
     $id = $_GET['id'];
