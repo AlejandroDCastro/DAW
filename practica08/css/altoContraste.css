@@ -1,0 +1,183 @@
+
+/*CSS para el estilo de alto contraste*/
+@import url("style.css");
+
+:root {
+    --colorC1: #000;
+    --colorC2: #ff0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--colorC2);
+}
+
+header {
+    background-color: var(--colorC1);
+}
+
+figure {
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+    header > div {
+        display: flex;
+        margin-bottom: 35px;
+    }
+
+        header > div > a {
+            width: 100%;
+            color: var(--colorC2);
+            font-weight: bold;
+            font-size: 1.5em;
+            text-decoration: none;
+            text-align: center;
+        }
+
+    header > figure > a > img:first-child {
+        display: none;
+    }
+
+    header > figure > a > img:last-child {
+        display: block;
+    }
+
+    header > div > a {
+        display: block;
+    }
+
+    header > nav > ul > li > a {
+        background-color: var(--colorC2);
+        color: var(--colorC1);
+    }
+
+    header > nav > ul > li > a:hover {
+        background-color: #3a3a3a;
+        color: var(--colorC2);
+    }
+
+    header > p > a {
+        color: var(--colorC2);
+    }
+
+main {
+    background-color: var(--colorC1);
+    color: var(--colorC2);
+    font-weight: bold;
+}
+
+    main > section > h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 25px 25px 60px 0;
+    }
+
+#formini > p {
+    text-align: left;
+}
+
+    #formini > form > label {
+        width: 100%;
+    }
+
+    #formini > p > a {
+        color: var(--colorC2);
+    }
+
+section > section > a {
+    background-color: var(--colorC2);
+    color: var(--colorC1);
+}
+
+section > section > a:hover {
+    opacity: 1;
+    background-color: #ffff4d;
+}
+
+section > section > ul > li {
+    text-align: left;
+}
+
+.seccionfoto>article>a>img {
+    border: 5px solid var(--colorC2);
+}
+
+.seccionfoto>article>a>img:hover {
+    border: 5px solid #fff;
+}
+
+.seccionfoto > article > h3,
+.seccionfoto > article > p {
+    text-align: left;
+}
+
+.seccionfoto > article > h3 > a {
+    color: var(--colorC2);
+}
+
+footer {
+    background-color: var(--colorC1);
+    font-weight: bold;
+}
+
+    footer > p,
+    footer > a {
+        color: var(--colorC2);
+    }
+
+.formulario {
+    color: var(--colorC1);
+}
+
+form#formulario {
+    background-color: var(--colorC2);
+}
+
+    form#formulario > div > label:first-child {
+        color: var(--colorC1);
+    }
+
+    form#formulario> div > input[type=submit] {
+        background-color: var(--colorC1);
+        color: var(--colorC2);
+    }
+
+    form#formulario> div > input[type=submit]:hover {
+        background-color: #333;
+    }
+
+    form#formulario > div > input[type=radio]+label {
+        color: var(--colorC1);
+        font-size: 0.85em;
+    }
+
+table, tr, th, td {
+    border: 2px solid var(--colorC2);
+}
+
+th {
+    background-color: #333;
+}
+
+tr:not(th):hover {
+    background-color: #333;
+}
+
+section#solicitud > div > section:last-child {
+    background-color: var(--colorC2);
+}
+
+section#solicitud > div > section:last-child > h2,
+section#solicitud > div > section:last-child > p {
+    color: var(--colorC1);
+}
+
+#solicitud > p,
+section > section > ul > li,
+#accesibilidad > p {
+    color: #fff;
+}
+
+section#accesibilidad > p > span {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
