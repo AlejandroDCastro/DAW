@@ -80,7 +80,10 @@
 
                 <label for="pass">Contraseña: </label>
                 <input type="password" name="pass" id="pass" placeholder="Introduce tu contraseña">
-
+                
+                <label for="recuerdame">Recuerdame:</label>
+                <input type="checkbox" name="recuerdame" id="recuerdame" value="si">
+                
                 <input type="submit" value="Entrar">
             </form>
             <p>¿Aún no te has registrado? <a href="registro.php">Regístrate</a></p>
