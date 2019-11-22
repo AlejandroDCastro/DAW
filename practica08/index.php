@@ -3,18 +3,30 @@
     // Iniciar una nueva sesión o reanudar la existente...
 	session_start();
 
-    $titulo = "Inicio - Pictures & Images";
-    if (isset($_SESSION["logueado"])) {
-        $estilo = $_SESSION["estilo"];
-    } else {
-        $estilo = "css/style.css";
+    //La primera vez que entra a la pagina y se esta recordando, va directamente a acceso.
+    if(isset($_COOKIE['recordar']) && !isset($_SESSION["logueado"]))
+    {
+        $host = $_SERVER['HTTP_HOST'];                         
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');    
+        $extra = 'acceso.php';
+        header("Location: http://$host$uri/$extra");   
     }
 
-    // Incluímos el head con el doctype
-    require_once("head.php");
+    else
+    {
 
-    // Incluímos la etiqueta <body> junto al header
-    require_once("header.php");
+        $titulo = "Inicio - Pictures & Images";
+        if (isset($_SESSION["logueado"])) {
+            $estilo = $_SESSION["estilo"];
+        } else {
+            $estilo = "css/style.css";
+        }
+
+        // Incluímos el head con el doctype
+        require_once("head.php");
+
+        // Incluímos la etiqueta <body> junto al header
+        require_once("header.php");
 ?>
 
 <main>
@@ -22,6 +34,24 @@
         <h1>Inicio</h1>
         
         <?php
+
+        //Si existe la cookie de usuario, permitimos que acceda a la parte privada directamente.
+            if(isset($_COOKIE['recordar']))
+            {
+                //Convertimos el string a array.
+                $datos = $_COOKIE['recordar'];
+                $datosArray = json_decode($datos,true);
+                $dia = $datosArray[2]['mday'];
+                $mes = $datosArray[2]['mon'];
+                $anyo = $datosArray[2]['year'];
+                $minutos = $datosArray[2]['minutes'];
+                $horas = $datosArray[2]['hours'];
+
+                echo"<p style = text-align:center;>Hola <b>$datosArray[0]</b>, 
+                su última visita fue el <b>$dia/$mes/$anyo</b> 
+                a las <b>$horas:$minutos</b></p>";
+
+            }
 
             if(!isset($_SESSION["logueado"])) {
 
@@ -117,4 +147,5 @@
 </main>
 <?php
     require_once("footer.php");
+}
 ?>

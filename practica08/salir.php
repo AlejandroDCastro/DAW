@@ -7,7 +7,9 @@
     // Borra la cookie que almacena la sesión 
     if(isset($_COOKIE[session_name()])) { 
         setcookie(session_name(), '', time() - 42000, '/'); 
-    } 
+    }
+    
+    setcookie('recordar','',time() - 42000,'/');
     
     // Finalmente, destruye la sesión, no destruye ninguna de las variables globales asociadas con la sesión
     session_destroy();
