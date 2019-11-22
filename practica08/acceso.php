@@ -23,6 +23,9 @@
 		//Convertimos el string a array.
         $datos = $_COOKIE['recordar'];
         $datosArray = json_decode($datos,true);
+        $datos = array($datosArray[0],$datosArray[1],getdate());
+		$datosString = json_encode($datos);
+		setcookie('recordar', $datosString, time() + 90*24*60*60, '/', null, false, true);
         $nombre = $datosArray[0];
         $pass = $datosArray[1];
 		for($var = 0; $var<4; $var++)
@@ -39,7 +42,6 @@
 				}
 				$extra = 'index.php';
 				$_SESSION['logueado'] = $nombre;
-				$_SESSION['password'] = $pass;
 				$_SESSION['estilo'] = $estilo;
 				break;
 			}
@@ -96,7 +98,6 @@
 
 				$extra = 'perfil.php';
 				$_SESSION['logueado'] = $nombre;
-				$_SESSION['password'] = $pass;
 				$_SESSION['estilo'] = $estilo;
 				break;
 			}

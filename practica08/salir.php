@@ -9,7 +9,10 @@
         setcookie(session_name(), '', time() - 42000, '/'); 
     }
     
-    setcookie('recordar','',time() - 42000,'/');
+    if (isset($_COOKIE['recordar'])) {
+        setcookie('recordar','',time() - 42000,'/');
+    }
+    
     
     // Finalmente, destruye la sesión, no destruye ninguna de las variables globales asociadas con la sesión
     session_destroy();
