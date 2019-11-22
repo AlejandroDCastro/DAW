@@ -1,6 +1,6 @@
 <?php
 
-    // Iniciar una nueva sesión o reanudar la existente...
+    // Iniciar una nueva sesión o reanudar la existente....
 	session_start();
 
     //La primera vez que entra a la pagina y se esta recordando, va directamente a acceso.
