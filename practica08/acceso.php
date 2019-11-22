@@ -49,7 +49,10 @@
 	//---------------ACCESO POR FORMULARIO------------------
 	else
 	{
-
+		//Recogemos el nombre y el password que nos envia el usuario.
+		$nombre = $_POST['nombre'];
+		$pass = $_POST['pass'];
+		
 		//Comprobamos que el nombre y contraseña introducidos coincida con algun usuario creado.
 		for($var = 0; $var<4; $var++)
 		{
