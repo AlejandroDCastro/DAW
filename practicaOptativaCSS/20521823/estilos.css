@@ -1,0 +1,352 @@
+/*
+Pizarra
+Alejandro Castro Valero
+mailto: acv52@ arroba @alu.ua.es
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand|Kaushan+Script&display=swap');
+
+:root {
+    --color1: #f2f2f2;
+    --color2: #b87d21;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#contenedor {
+    color: var(--color1);
+    font-family: 'Just Another Hand', cursive;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+/* CSS para INTRO*/
+
+#intro {
+    width: 100%;
+    height: 598px;
+    background: url("pizarra-grande.png") no-repeat top;
+    background-size: 100% 100%;
+    padding: 60px 100px;
+}
+
+    #intro > #titulo {
+        width: 100%;
+    }
+
+        #intro > #titulo > h1,
+        #intro > #titulo > h2,
+        #apartados > div > h3 {
+            text-align: center;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        #intro > #titulo > h1 {
+            font-size: 3em;
+        }
+
+        #intro > #titulo > h2 {
+            font-size: 2em;
+        }
+
+    #intro > #resumen {
+        float: left;
+        width: 70%;
+        font-size: 1.65em;
+        padding-top: 18px;
+    }
+
+        #intro > #resumen > p,
+        #intro > #comentario > p {
+            padding-top: 7px;
+        }
+
+        #intro > #resumen > ul {
+            padding-left: 50px;
+        }
+
+    #intro > #resumen {
+        float: left;
+        width: 70%;
+        font-size: 1.65em;
+        padding-top: 18px;
+    }
+
+        #intro > #resumen > p {
+            padding-top: 7px;
+        }
+
+        #intro > #resumen > ul {
+            padding-left: 50px;
+        }
+
+    #intro > #comentario {
+        width: 25%;
+        float: right;
+        font-size: 1.5em;
+        border: dashed 2px;
+        margin-top: 30px;
+        padding: 15px;
+    }
+
+        #intro > #comentario a {
+            color: var(--color1);
+        }
+
+        #intro > #comentario a:hover {
+            text-decoration: none;
+        }
+
+
+
+
+/* CSS para ENLACESINTRA */
+
+#enlacesintra {
+    width: 100%;
+    background-color: #905b08;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+    #enlacesintra > h3 {
+        float: left;
+        width: 20%;
+        font-family: 'Kaushan Script', cursive;
+    }
+
+    #enlacesintra > ul,
+    #enlaces ul,
+    #enlacesversiones > ul {
+        list-style: none;
+    }
+
+        #enlacesintra > ul > li {
+            width: 19.8%;
+            display: inline-block;
+        }
+
+            #enlacesintra > ul > li > a {
+                display: block;
+                text-decoration: none;
+                color: var(--color1);
+            }
+
+            #enlacesintra > ul > li > a:hover,
+            #enlacesintra > h3 {
+                background-color: var(--color2);
+                color: #000;
+            }
+
+            #enlacesintra > ul > li > a:hover {
+                -webkit-transition: all 300ms;
+                transition: all 300ms;
+            }
+
+
+
+/* CSS para APARTADOS*/
+
+#apartados {
+    width: 70%;
+    margin: auto;
+}
+
+    #apartados > div {
+        height: 500px;
+        background: url("pizarra-vieja.jpg") no-repeat;
+        background-size: 100% 100%;
+        margin-top: 125px;
+        padding: 40px 50px;
+    }
+
+        #apartados > div > h3 {
+            font-size: 2.3em;
+            padding-bottom: 10px;
+        }
+
+        #apartados > #objetivos > p {
+            padding-top: 15px;
+        }
+
+        #apartados > div > p {
+            font-size: 1.7em;
+            padding-top: 7px;
+        }
+
+        #apartados > #contenidos {
+            position: relative;
+        }
+
+            #apartados > #contenidos > ul {
+                padding-left: 30px;
+                font-size: 1.4em;
+                position: absolute;
+            }
+
+                #apartados > #contenidos > ul > li > ul {
+                    padding-left: 30px;
+                }
+
+        #apartados > #contenidos > .p2,
+        #apartados > #contenidos > .p3,
+        #apartados > #contenidos > .ul2 {
+            position: absolute;
+            right: 70px;
+            left: 430px;
+            line-height: 30px;
+        }
+
+        #apartados > #contenidos > .p2 {
+            top: 103px;
+        }
+
+        #apartados > #contenidos > .p3 {
+            top: 222px;
+        }
+
+        #apartados > #contenidos > .ul2 {
+            top: 260px;
+            left: 440px;
+        }
+    
+    #apartados > #profesores a,
+    #enlaces > div a {
+        color: var(--color1);
+    }
+
+    #apartados > #profesores a:hover,
+    #enlaces > div a:hover,
+    #enlacesversiones a:hover {
+        text-decoration: none;
+    }
+
+        #apartados > #profesores > dl,
+        #apartados > #bibliografia > dl {
+            padding-left: 20px;
+            font-size: 1.7em;
+        }
+
+        #apartados > #profesores dt {
+            padding-top: 7px;
+        }
+
+        #apartados > #profesores dd {
+            padding-left: 40px;
+        }
+
+        #apartados > #bibliografia dt {
+            padding-top: 17px;
+        }
+
+
+
+/* CSS para ENLACES */
+
+#enlaces {
+    margin-top: 120px;
+}
+
+    #enlaces > div {
+        width: 33%;
+        height: 250px;
+        display: inline-block;
+        background: url("pizarra-colores.png") center no-repeat;
+        background-size: 100% 100%;
+        padding: 50px 0 0 65px;
+    }
+
+        #enlaces > div > h3,
+        #enlacesversiones > h3 {
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        #enlaces > div > ul {
+            padding-left: 20px;
+            font-size: 1.2em;
+        }
+
+        #enlaces > #lselecciona > h3 {
+            color: #f00;
+        }
+
+    #enlaces > #lhistorico {
+        position: relative;
+        bottom: 48px;
+    }
+
+        #enlaces > #lhistorico > h3 {
+            color: #1aff1a;
+        }
+
+        #enlaces > #lrecursos > h3 {
+            color: #33ccff;
+        }
+
+
+
+/* CSS para ENLACESVERSIONES */
+
+#enlacesversiones {
+    width: 30%;
+    height: 230px;
+    margin: 120px auto 0 auto;
+    padding-top: 30px;
+    background: url("pizarra-sucia.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    text-align: center;
+}
+
+    #enlacesversiones > h3 {
+        color: #000;
+        font-size: 1.5em;
+        padding-bottom: 3px;
+    }
+
+    #enlacesversiones li {
+        font-size: 1.5em;
+    }
+
+    #enlacesversiones a {
+        color: #000;
+    }
+
+
+
+/* Fondos de página */
+
+#extraDiv1 {
+    background-color: var(--color2);
+    padding-bottom: 600px;
+    top: 0;
+}
+
+#extraDiv2 {
+    background: url("fondo.jpg");
+    padding-top: 1070px;
+    top: 640px;
+}
+
+#extraDiv3 {
+    background: url("fondo.jpg");
+    padding-top: 2300px;
+    top: 1710px;
+}
+
+#extraDiv1,
+#extraDiv2,
+#extraDiv3 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
