@@ -14,11 +14,14 @@
 
         //Obtenemos el id que nos pasan por parametro
         $id = $_GET['id'];
+
         //Convertimos la id de String a entero
         $id = (int) $id;
 
-        //Dependiendo de si sale un numero par, la foto cambiara.
-        if($id%2==0)
+        
+        
+
+        /*if($id%2==0)
         {
             echo 
             "<main>
@@ -54,7 +57,7 @@
                     </section>
                 </section>
             </main>";
-        }
+        }*/
     
         require_once("footer.php");
 
