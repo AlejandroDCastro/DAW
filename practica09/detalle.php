@@ -15,11 +15,41 @@
         //Obtenemos el id que nos pasan por parametro
         $id = $_GET['id'];
 
-        //Convertimos la id de String a entero
-        $id = (int) $id;
+        // Abrimos una conexion con el servidor de MySQL
+        include("conexionBD.php");
 
+        // Escribimos las sentencia SQL
+        $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.Titulo AS TAlbum, u.NomUsuario
+        FROM fotos f JOIN pais p ON p.IdPais=f.Pais
+        JOIN album a ON a.IdAlbum=f.Album
+        JOIN usuario u ON u.IdUsuario=a.Usuario
+        WHERE f.IdFoto = ?";
+
+        // Preparamos la plantilla para enviarla a la BD
+        $mysqli = $conexion->prepare($sentencia);
+
+        // Le pasamos un parametro
+        $mysqli->bind_param('i', $id);
         
-        
+
+        // Obtenemos los resultados
+        $fila = $resultado->fetch_assoc();
+        $fecha = $fila->format("d/m/Y");
+        echo "<main>
+            <section>
+                <h1>Detalle de foto</h1>
+                <section class='printCentro'>";
+
+        echo "
+        <img width='400' src='Images/$fila->Fichero' alt='$fila->Alternativo'>
+        <h2>$fila->Titulo</h2>
+        <p>Fecha: $fecha</p>
+        <p>País: $fila->NomPais</p>
+        <p>Pertenece al album: $fila->TAlbum</p>
+        <p>Usuario: $fila->NomUsuario</p>";
+
+        echo "</section></section></main>";
+
 
         /*if($id%2==0)
         {
