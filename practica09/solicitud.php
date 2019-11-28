@@ -5,12 +5,25 @@
 
         $titulo = "Solicitar Álbum - Pictures & Images";
         $estilo = $_SESSION["estilo"];
+        $usu = $_SESSION["logueado"];
 
         // Incluímos el head con el doctype
         require_once("head.php");
 
         // Incluímos la etiqueta <body> junto al header
         require_once("header.php");
+
+        include("conexionBD.php");
+        $sentencia = "SELECT a.Titulo FROM albumes a
+            JOIN usuarios u ON a.Usuario=u.IdUsuario
+            WHERE u.NomUsuario='$usu'";
+        
+        // Realizamos la consulta SQL a la BD
+        if (!($resultado = $conexion->query($sentencia))) {
+            echo '<p>Error al obtener lista de Albumes de la BD: ' .$conexion->error. '</p>';
+            exit;
+        }
+
 ?>
 
         <main>
@@ -116,9 +129,16 @@
                             <div>
                                 <label for="album">Álbum de PI (*):</label>
                                 <select id="album" name="album">
-                                    <option value="Álbum 1">Álbum 1</option>
-                                    <option value="Álbum 2">Álbum 2</option>
-                                    <option value="Álbum 3">Álbum 3</option>
+                                    <option value=""></option>
+                                    
+                                    <?php
+                                        while ($fila = $resultado->fetch_object()) {
+                                            echo "<option value='$fila->Titulo'>$fila->Titulo</option>";
+                                        }
+                                        $resultado->close();
+	                                    $conexion->close();
+                                    ?>
+
                                 </select>
                             </div>
                             <div>

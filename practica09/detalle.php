@@ -20,75 +20,59 @@
 
         // Escribimos las sentencia SQL
         $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.Titulo AS TAlbum, u.NomUsuario
-        FROM fotos f JOIN pais p ON p.IdPais=f.Pais
-        JOIN album a ON a.IdAlbum=f.Album
-        JOIN usuario u ON u.IdUsuario=a.Usuario
-        WHERE f.IdFoto = ?";
+            FROM fotos f LEFT JOIN paises p ON p.IdPais=f.Pais
+            JOIN albumes a ON a.IdAlbum=f.Album
+            JOIN usuarios u ON u.IdUsuario=a.Usuario
+            WHERE f.IdFoto = ?";
 
         // Preparamos la plantilla para enviarla a la BD
         $mysqli = $conexion->prepare($sentencia);
 
         // Le pasamos un parametro
         $mysqli->bind_param('i', $id);
-        
 
-        // Obtenemos los resultados
-        $fila = $resultado->fetch_assoc();
-        $fecha = $fila->format("d/m/Y");
-        echo "<main>
-            <section>
-                <h1>Detalle de foto</h1>
-                <section class='printCentro'>";
-
-        echo "
-        <img width='400' src='Images/$fila->Fichero' alt='$fila->Alternativo'>
-        <h2>$fila->Titulo</h2>
-        <p>Fecha: $fecha</p>
-        <p>País: $fila->NomPais</p>
-        <p>Pertenece al album: $fila->TAlbum</p>
-        <p>Usuario: $fila->NomUsuario</p>";
-
-        echo "</section></section></main>";
-
-
-        /*if($id%2==0)
-        {
-            echo 
-            "<main>
-                <section>
-
-                    <h1>Detalle de foto</h1>
-                    <section class='printCentro'>
-                        <img width='400' src='Images/arbol.jpg' alt='Arbol'>
-                        <h2>Los arboles no dan Wi-Fi</h2>
-                        <p>Fecha: 15-01-2018 20:55</p>
-                        <p>País: Espa&ntilde;a</p>
-                        <p>Pertenece al album: Raíces</p>
-                        <p>Usuario: Ninfa</p>
-                    </section>
-                </section>
-            </main>";
+        // Ejecutamos la sentencia
+        if (!$mysqli->execute()) {
+            echo '<p>Error al obtener la foto de la BD' .$conexion->connect_error. '</p>';
+            exit;
         }
 
-        else
-        {
-            echo 
-            "<main>
+        // Obtenemos los resultados
+        $resultado = $mysqli->get_result();
+        if ($resultado->num_rows) {
+            $fila = $resultado->fetch_object();
+            echo "<main>
                 <section>
-
                     <h1>Detalle de foto</h1>
-                    <section class='printCentro'>
-                        <img width='400' src='Images/estudiante.jpg' alt='Estudiante'>
-                        <h2>A estudiar que ya es hora</h2>
-                        <p>Fecha: 30-02-2019 20:55</p>
-                        <p>País: Andorra</p>
-                        <p>Pertenece al album: Currantes</p>
-                        <p>Usuario: Antonieta</p>
-                    </section>
-                </section>
-            </main>";
-        }*/
-    
+                    <section class='printCentro'>";
+            
+            echo "
+            <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+            <h2>$fila->Titulo</h2>
+            <p><b>Descripción</b>: $fila->Descripcion</p>";
+            if (isset($fila->Fecha)) {
+                $fecha = explode("-", $fila->Fecha);
+                echo "<p><b>Fecha</b>: $fecha[2]-$fecha[1]-$fecha[0]</p>";
+            } else {
+                echo "<p><b>Fecha</b>: No consta</p>";
+            }
+            if (isset($fila->NomPais)) {
+                echo "<p><b>País</b>: $fila->NomPais</p>";
+            } else {
+                echo "<p><b>País</b>: No consta</p>";
+            }
+            echo "
+            <p><b>Álbum</b>: $fila->TAlbum</p>
+            <p><b>Usuario</b>: $fila->NomUsuario</p>";
+
+            echo "</section></section></main>";
+        } else {
+            echo "<p style='margin: 145px auto;'>Esta foto no existe en la Base de Datos.</p>";
+        }
+
+        $resultado->close();
+        $conexion->close();
+        
         require_once("footer.php");
 
     } else {
