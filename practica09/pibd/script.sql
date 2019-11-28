@@ -21,7 +21,7 @@ create table `PAISES` (
     `IdPais` int not null auto_increment,
     `NomPais` text not null,
     constraint `PK_paises` primary key (`IdPais`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 -- Creamos la tabla ESTILOS
@@ -32,7 +32,7 @@ create table `ESTILOS` (
     `Descripcion` text not null,
     `Fichero` text not null,
     constraint `PK_paises` primary key (`IdEstilo`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 -- Creamos la tabla USUARIOS
@@ -52,7 +52,7 @@ create table `USUARIOS` (
     constraint `PK_usuarios` primary key (`IdUsuario`),
     constraint `FK_Pais` foreign key (`Pais`) references `PAISES` (`IdPais`),
     constraint `FK_Estilos` foreign key (`Estilo`) references `ESTILOS` (`IdEstilo`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 -- Creamos la tabla ALBUMES
@@ -64,7 +64,7 @@ create table `ALBUMES` (
     `Usuario` int not null,
     constraint `PK_paises` primary key (`IdAlbum`),
     constraint `FK_Usuario` foreign key (`Usuario`) references `USUARIOS` (`IdUsuario`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 -- Creamos la tabla FOTOS
@@ -82,7 +82,7 @@ create table `FOTOS` (
     constraint `PK_paises` primary key (`IdFoto`),
     constraint `FK_Pais2` foreign key (`Pais`) references `PAISES` (`IdPais`),
     constraint `FK_Album` foreign key (`Album`) references `ALBUMES` (`IdAlbum`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 -- Creamos la tabla FOTOS
@@ -104,7 +104,7 @@ create table `SOLICITUDES` (
     `Coste` real not null,
     constraint `PK_paises` primary key (`IdSolicitud`),
     constraint `FK_Album2` foreign key (`Album`) references `ALBUMES` (`IdAlbum`)
-) engine=MyISAM default charset=utf8;
+) engine=MyISAM default charset=utf8 collate=utf8_general_ci;
 
 
 
@@ -154,6 +154,7 @@ insert into `PAISES` (`NomPais`) values ("Afganistán"),
 
 -- Insertamos datos en ESTILOS
 insert into `ESTILOS` (`Nombre`, `Descripcion`, `Fichero`) values
+("Estilo Base", "Estilo estándar de la página web.", "css/style.css"),
 ("Letra Grande", "Incrementa el tamaño de las letras para mejorar la accesibilidad en ciertos grupos de personas.", "css/letraGrande.css"),
 ("Alto Contraste", "Utiliza colores con un mayor índice de contraste para mejorar la accesibilidad en ciertos grupos de personas, en concreto, el amarillo, el blanco, y el negro.", "css/altoContraste.css"),
 ("Letra Grande y Alto Contraste", "Utiliza un mayor tamaño de letra y colores con un mayor índice de contraste para mejorar la accesibilidad en ciertos grupos de personas", "css/combinado.css");
@@ -176,7 +177,7 @@ insert into `ALBUMES` (`Titulo`, `Descripcion`, `Usuario`) values
 -- Insertamos datos en FOTOS
 insert into `FOTOS` (`Titulo`, `Descripcion`, `Fecha`, `Pais`, `Album`, `Fichero`, `Alternativo`, `FRegistro`) values
 ("Porque los árboles no dan Wi-Fi", "Árbol sin hojas desnutrido para hacer entender la situación forestal.", str_to_date("14/01/2007", "%d/%m/%Y"), 44, 1, "Images/arbol.jpg", "Árbol sin hojas desnutrido", str_to_date("12/03/2018 22:53:01", "%d/%m/%Y %H:%i:%S")),
-("Gallinas que no sufren", "Gallinas bien cuidadas no estresadas que ponen huevos sanos.", str_to_date("20/09/20015", "%d/%m/%Y"), 5, 2, "Images/gallina.jpg", "Gallina con pico muy sana", str_to_date("01/01/2019 13:50:20", "%d/%m/%Y %H:%i:%S")),
+("Gallinas que no sufren", "Gallinas bien cuidadas no estresadas que ponen huevos sanos.", str_to_date("20/09/2015", "%d/%m/%Y"), 5, 2, "Images/gallina.jpg", "Gallina con pico muy sana", str_to_date("01/01/2019 13:50:20", "%d/%m/%Y %H:%i:%S")),
 ("Cuando veo a mi crush", "Normalmente se nos acelera el cora si vemos a nuestra crush pero yo normalmente hago el burro.", str_to_date("28/06/2004", "%d/%m/%Y"), 150, 1, "Images/burro.jpg", "Burro haciendo el burro", str_to_date("25/12/2019 20:53:01", "%d/%m/%Y %H:%i:%S"));
 insert into `FOTOS` (`Titulo`, `Descripcion`, `Album`, `Fichero`, `Alternativo`, `FRegistro`) values
 ("A estudiar que ya es hora", "¿Alguien podría explicar porque estudiamos tanto y suspendemos aún así?", 2, "Images/estudiante.jpg", "Estudiante desmotivada", str_to_date("12/03/2018 22:53:01", "%d/%m/%Y %H:%i:%S")),
