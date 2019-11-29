@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	// Iniciar una nueva sesión o reanudar la existente...
 	session_start();
@@ -14,7 +14,7 @@
 	$host = $_SERVER['HTTP_HOST'];							// devuelve el nombre del servidor
 	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 	// devuelve la parte del directorio indicado en la ruta del fichero
 	$extra = 'index.php?fallo=1';							// nueva página a redireccionar
-
+	
 	//---------------ACCESO POR COOKIE---------------------
 	if(isset($_COOKIE['recordar']))
 	{
@@ -28,7 +28,7 @@
 		$pass = $datosArray[1];
 		
 		// Enviamos parametro a la plantilla que tine la BD y ejecutamos
-		$mysqli->bind_param('i', $nombre);
+		$mysqli->bind_param('s', $nombre);
 		if (!$mysqli->execute()) {
             echo '<p>Error al obtener usuario de la BD' .$conexion->error. '</p>';
             exit;
@@ -49,14 +49,16 @@
 	//---------------ACCESO POR FORMULARIO------------------
 	else
 	{
+
 		//Recogemos el nombre y el password que nos envia el usuario.
 		$nombre = $_POST['nombre'];
 		$pass = $_POST['pass'];
-		
+
+
 		// Enviamos parametro a la plantilla que tine la BD y ejecutamos
-		$mysqli->bind_param('i', $nombre);
+		$mysqli->bind_param('s', $nombre);
 		if (!$mysqli->execute()) {
-            echo '<p>Error al obtener la foto de la BD' .$conexion->error. '</p>';
+            echo '<p>Error al obtener el usuario de la BD' .$conexion->error. '</p>';
             exit;
 		}
 
@@ -65,7 +67,6 @@
 		if ($resultado->num_rows) {
 			$fila = $resultado->fetch_object();
 			if($fila->Clave == $pass) {
-
 				//El usuario quiere se le recuerde.
 				if(isset($_POST['recuerdame']))
 				{

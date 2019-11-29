@@ -33,7 +33,8 @@
                     <a href="">Darme de baja</a>
                     <a href="misAlbumes.php">Mis álbumes</a>
                     <a href="crearAlbum.php">Crear álbum</a>
-                    <a href="solicitud.php">Solicitar album</a>
+                    <a href="meteFotoAlbum.php">Añadir foto a álbum</a>
+                    <a href="solicitud.php">Solicitar álbum</a>
                     <a href="salir.php">Salir</a>
                 </section>
             </section>

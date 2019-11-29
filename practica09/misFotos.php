@@ -3,7 +3,7 @@
 
     if (isset($_SESSION["logueado"])) {
 
-        $titulo = "Mis Álbumes - Pictures & Images";
+        $titulo = "Mis Fotos - Pictures & Images";
         $estilo = $_SESSION["estilo"];
         $usu = $_SESSION["logueado"];
 
@@ -17,14 +17,15 @@
         <main>
             <section>
                 <h1>Mis Fotos</h1>
-                <section class="seccionfoto">
+                <section class="seccionfoto" id="misFotos">
                     
                     <?php
 
                         include("conexionBD.php");
-                        $sentencia = "SELECT f.IdFoto, f.Titulo, f.FRegistro, f.Fichero, f.Alternativo, p.NomPais, a.Titulo AS TAlbum
-                        FROM fotos f JOIN paises p ON p.IdPais=f.Pais
-                        JOIN albumes a ON a.IdAlbum=f.Album";
+                        $sentencia = "SELECT f.IdFoto, f.Titulo, f.Fichero, f.Alternativo, a.IdAlbum, a.Titulo AS TAlbum
+                        FROM fotos f JOIN albumes a ON a.IdAlbum=f.Album
+                        JOIN usuarios u ON u.IdUsuario=a.Usuario
+                        WHERE u.NomUsuario='$usu'";
                         if (!($resultado = $conexion->query($sentencia))) {
                             echo '<p>Error al obtener lista de Fotos de la BD: ' .$conexion->error. '</p>';
                             exit;
@@ -33,12 +34,10 @@
                             while ($fila = $resultado->fetch_object()) {
                                 echo "<article>
                                     <a href='detalle.php?id=$fila->IdFoto'>
-                                        <img width='400' src='$fila->Fichero' alt='$fila->'>
+                                        <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
                                     </a>
-                                    <h3><a href="detalle.php?id=1">Porque los árboles no dan Wi-Fi</a></h3>
-                                    <p>Fecha: 15-01-2018 20:55</p>
-                                    <p>Autor: Kevin Serna García</p>
-                                    <p>País: España</p>
+                                    <h3><a href='detalle.php?id=$fila->IdFoto'>$fila->Titulo</a></h3>
+                                    <p>Álbum: <a href='verAlbumPublica.php?id=$fila->IdAlbum'>$fila->TAlbum</a></p>
                                 </article>";
                             }
                         } else {

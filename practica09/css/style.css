@@ -306,9 +306,16 @@ main > section > #ordenacion {
     color: var(--color3);
 }
 
-#misAlbumes > p > a:hover {
+#misAlbumes > p > a:hover,
+#misFotos a:hover {
     text-decoration: none;
 }
+
+#misFotos {
+    display: flex;
+    flex-direction: row;
+}
+
 
 
 

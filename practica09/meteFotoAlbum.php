@@ -1,0 +1,94 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION["logueado"])) {
+
+        $titulo = "Crear Álbum - Pictures & Images";
+        $estilo = $_SESSION["estilo"];
+        $usu = $_SESSION["logueado"];
+
+        // Incluímos el head con el doctype
+        require_once("head.php");
+
+        // Incluímos la etiqueta <body> junto al header
+        require_once("header.php");
+
+        include("conexionBD.php");
+        $sentencia = "SELECT a.Titulo FROM albumes a
+            JOIN usuarios u ON a.Usuario=u.IdUsuario
+            WHERE u.NomUsuario='$usu'";
+        
+        // Realizamos la consulta SQL a la BD
+        if (!($resultado = $conexion->query($sentencia))) {
+            echo '<p>Error al obtener lista de Albumes de la BD: ' .$conexion->error. '</p>';
+            exit;
+        }
+?>
+
+        <!-- CONTENIDO: Título contenido, Formulario -->
+        <main>
+            <section>
+                <h1>Añadir Foto a Álbum</h1>
+                <form id="formulario" method="POST">
+                    <div>
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" placeholder="Introduce el título" class="formulario">
+                    </div>
+                    <div>
+                        <label for="desc">Descripción:</label>
+                        <input type="text" id="desc" placeholder="Introduce la descripción" class="formulario">
+                    </div>
+                    <div>
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" class="formulario">
+                    </div>
+                    <div>
+                        <label for="country">País:</label>
+                        <input list="countries"  name="pais" id="country" placeholder="Introduce tu país" class="formulario">
+                        <datalist id="countries">
+                            <?php
+                                require_once("paises.php");
+                            ?>
+                        </datalist>
+                    </div>
+                    <div>
+                        <label for="photo">Foto:</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
+                    <div>
+                        <label for="alt">Texto Alternativo:</label>
+                        <input type="text" id="alt" placeholder="Introduce un texto alternativo" class="formulario">
+                    </div>
+                    <div>
+                        <label for="album">Álbum de PI (*):</label>
+                        <select id="album" name="album">
+                            <option value=""></option>
+                            
+                            <?php
+                                while ($fila = $resultado->fetch_object()) {
+                                    echo "<option value='$fila->Titulo'>$fila->Titulo</option>";
+                                }
+                                $resultado->close();
+                                $conexion->close();
+                            ?>
+
+                        </select>
+                    </div>
+                    <div>
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </section>
+        </main>
+
+<?php
+        require_once("footer.php");
+
+    } else {
+
+        $host = $_SERVER['HTTP_HOST']; 
+		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
+		$extra = 'index.php?fallo=2'; 
+        header("Location: http://$host$uri/$extra");
+    }
+?>

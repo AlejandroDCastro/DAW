@@ -22,9 +22,10 @@
 
                 //Mostramos lo que el usuario a introducido con el formulario de busqueda
                 $titulo = $_POST['titulo'];
-                $fecha = $_POST['fecha'];
+                $desde = $_POST['inicio'];
+                $hasta = $_POST['fin'];
                 $pais = $_POST['pais'];
-                $autor = $_POST['autor'];
+                //$autor = $_POST['autor'];
 
                 echo "<h2 style='text-align:center'>Filtrado por:</h2><br>";
 
@@ -34,17 +35,17 @@
                 {
                    echo "<p style='text-align:center; font-size: 20px'><b>Título:</b> $titulo</p>";
                 }
-                if($fecha != "")
+                if($desde != "")
                 {
-                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha:</b> $fecha</p>";
+                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha desde:</b> $inicio</p>";
+                }
+                if($hasta != "")
+                {
+                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha hasta:</b> $fin</p>";
                 }
                 if($pais != "")
                 {
                    echo "<p style='text-align:center; font-size: 20px'><b>País:</b> $pais</p>";
-                }
-                if($autor != "")
-                {
-                   echo "<p style='text-align:center; font-size: 20px'><b>Autor:</b> $autor</p>";
                 }
             ?>
 
@@ -62,58 +63,113 @@
                     <option value="p-d">País: Descendente</option>
                 </select>
             </div>
+            
+            <?php
+            /*
+            //-----------------USUARIO NO FILTRA LA BÚSQUEDA--------------------
+            if($titulo == "" && $inicio == "" && $fin == "" && $pais == "")
+            {
+                include("conexionBD.php");
 
-            <!-- Carga las últimas 5 fotos -->
-            <section>
-                <h2>Fotos</h2>
-                <div class="seccionfoto">
-                    <article>
-                    <a href="detalle.php?id=1">
-                        <img width="400" src="Images/arbol.jpg" alt="Arbol">
-                    </a>
-                    <h3><a href="detalle.php?id=1">Porque los árboles no dan Wi-Fi</a></h3>
-                    <p>Fecha: 15-01-2018 20:55</p>
-                    <p>Autor: Kevin Serna García</p>
-                    <p>País: España</p>
-                </article>
-                <article>
-                    <a href="detalle.php?id=2">
-                        <img width="400" src="Images/gallina.jpg" alt="Gallina">
-                    </a>
-                    <h3><a href="detalle.php?id=2">Gallinas que no sufren</a></h3>
-                    <p>Fecha: 01-05-2019 15:34</p>
-                    <p>Autor: Miguel Hernández</p>
-                    <p>País: Suiza</p>
-                </article>
-                <article>
-                    <a href="detalle.php?id=3">
-                        <img width="400" src="Images/burro.jpg" alt="Burro">
-                    </a>
-                    <h3><a href="detalle.php?id=3">Cuando veo a mi crush</a></h3>
-                    <p>Fecha: 27-02-2017 23:00</p>
-                    <p>Autor: José Manuel García Baeza</p>
-                    <p>País: Argentina</p>
-                </article>
-                <article>
-                    <a href="detalle.php?id=4">
-                        <img width="400" src="Images/estudiante.jpg" alt="Estudiante">
-                    </a>
-                    <h3><a href="detalle.php?id=4">A estudiar que ya es hora</a></h3>
-                    <p>Fecha: 02-08-2017 10:30</p>
-                    <p>Autor: Pedro Sánchez</p>
-                    <p>País: Andorra</p>
-                </article>
-                <article>
-                    <a href="detalle.php?id=5">
-                        <img width="400" src="Images/synth.jpg" alt="Synth">
-                    </a>
-                    <h3><a href="detalle.php?id=5">Ilusión infinita</a></h3>
-                    <p>Fecha: 20-12-2016 00:55</p>
-                    <p>Autor: Albert Rivera</p>
-                    <p>País: Chile</p>
-                </article>
-                </div>
-            </section>
+                    $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.FRegistro, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais ORDER BY f.FRegistro DESC";
+                    
+                    if(!($resultado = $conexion->query($sentencia))) {
+                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                        echo '</p>'; 
+                        exit;
+                    }
+                    echo 
+                    "<section>
+                        <h2>Fotos</h2>
+                        <div class='seccionfoto'>";
+
+                        while($fila = $resultado->fetch_object()) {
+                             echo "<article>
+                                <a href='detalle.php?id=$fila->IdFoto'>
+                                    <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                                </a>
+                                <h3><a href='detalle.php?id=1'>$fila->Titulo</a></h3>
+                                <p>Fecha: $fila->FRegistro</p>";
+                                //Si no tiene pais, no mostramos ese campo.
+                                if(!($fila->NomPais == ""))
+                                {
+                                    echo "<p>País: $fila->NomPais</p>";
+                                }
+                            echo 
+                            "</article>";
+                        }
+                    
+                    echo
+                        "</div>
+                    </section>";
+
+                    $resultado->close();
+
+                    $conexion->close(); 
+            }
+            */
+
+
+            include("conexionBD.php");
+
+            //Lo pasamos a un formato que reconozca mysqli.
+            $titulo = mysqli_real_escape_string($conexion, $titulo);
+            $desde = mysqli_real_escape_string($conexion, $desde);
+            $hasta = mysqli_real_escape_string($conexion, $hasta);
+            $pais = mysqli_real_escape_string($conexion, $pais);
+
+            $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.FRegistro, f.Alternativo, p.NomPais
+            FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais
+            WHERE f.Titulo LIKE '%$titulo%'
+            AND f.FRegistro BETWEEN '$desde' AND '$hasta' AND p.IdPais = '%$pais%' ORDER BY f.FRegistro DESC";
+            
+            if(!($resultado = $conexion->query($sentencia))) {
+                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                echo '</p>'; 
+                exit;
+            }
+
+            //Si no se ha encontrado ninguna coincidencia en la base de datos con la busqueda.
+            if (mysqli_num_rows($resultado) == 0) {
+                echo "<p style= 'text-align:center; font-size: 20px;'><b>No se encontró ninguna foto con ese filtro</b></p>";
+
+                $resultado->close();
+
+                $conexion->close(); 
+            }
+
+            else
+            {
+                echo 
+                "<section>
+                    <h2>Fotos</h2>
+                    <div class='seccionfoto'>";
+
+                    while($fila = $resultado->fetch_object()) {
+                            echo "<article>
+                            <a href='detalle.php?id=$fila->IdFoto'>
+                                <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                            </a>
+                            <h3><a href='detalle.php?id=1'>$fila->Titulo</a></h3>
+                            <p>Fecha: $fila->FRegistro</p>";
+                            //Si no tiene pais, no mostramos ese campo.
+                            if(!($fila->NomPais == ""))
+                            {
+                                echo "<p>País: $fila->NomPais</p>";
+                            }
+                        echo 
+                        "</article>";
+                    }
+                
+                echo
+                    "</div>
+                </section>";
+                $resultado->close();
+
+                $conexion->close(); 
+            }
+
+            ?>
         </section>
     </main>
 <?php

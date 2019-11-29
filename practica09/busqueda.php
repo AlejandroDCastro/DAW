@@ -26,8 +26,12 @@
                     </div>
 
                     <div>
-                        <label for="date">Fecha:</label>
-                        <input type="date" name="fecha" id="date" class="formulario">
+                        <label for="inicio">Desde:</label>
+                        <input type="date" name="inicio" id="inicio" class="formulario">
+                    </div>
+                    <div>
+                        <label for="fin">Hasta:</label>
+                        <input type="date" name="fin" id="fin" class="formulario">
                     </div>
 
                     <div>
@@ -39,10 +43,12 @@
                             ?>
                         </datalist>
                     </div>
-                    <div>
-                        <label for="author">Autor:</label>
-                        <input type="text" name="autor" id="author" placeholder="Introduce el autor" class="formulario">
-                    </div>
+                    <!--
+                        <div>
+                            <label for="author">Autor:</label>
+                            <input type="text" name="autor" id="author" placeholder="Introduce el autor" class="formulario">
+                        </div>
+                    -->
                     <div>
                         <input type="submit" value="Buscar">
                     </div>
