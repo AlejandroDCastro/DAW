@@ -26,12 +26,8 @@
                     </div>
 
                     <div>
-                        <label for="inicio">Desde:</label>
-                        <input type="date" name="inicio" id="inicio" class="formulario">
-                    </div>
-                    <div>
-                        <label for="fin">Hasta:</label>
-                        <input type="date" name="fin" id="fin" class="formulario">
+                        <label for="date">Fecha:</label>
+                        <input type="date" name="date" id="date" class="formulario">
                     </div>
 
                     <div>

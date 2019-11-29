@@ -22,8 +22,7 @@
 
                 //Mostramos lo que el usuario a introducido con el formulario de busqueda
                 $titulo = $_POST['titulo'];
-                $desde = $_POST['inicio'];
-                $hasta = $_POST['fin'];
+                $date = $_POST['date'];
                 $pais = $_POST['pais'];
                 //$autor = $_POST['autor'];
 
@@ -35,18 +34,20 @@
                 {
                    echo "<p style='text-align:center; font-size: 20px'><b>Título:</b> $titulo</p>";
                 }
-                if($desde != "")
+                if($date != "")
                 {
-                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha desde:</b> $inicio</p>";
-                }
-                if($hasta != "")
-                {
-                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha hasta:</b> $fin</p>";
+                   echo "<p style='text-align:center; font-size: 20px'><b>Fecha:</b> $date</p>";
                 }
                 if($pais != "")
                 {
                    echo "<p style='text-align:center; font-size: 20px'><b>País:</b> $pais</p>";
                 }
+                /*
+                if($autor != "")
+                {
+                   echo "<p style='text-align:center; font-size: 20px'><b>Autor:</b> $autor</p>";
+                }
+                */
             ?>
 
             <div id="ordenacion">
@@ -112,62 +113,110 @@
 
             include("conexionBD.php");
 
-            //Lo pasamos a un formato que reconozca mysqli.
-            $titulo = mysqli_real_escape_string($conexion, $titulo);
-            $desde = mysqli_real_escape_string($conexion, $desde);
-            $hasta = mysqli_real_escape_string($conexion, $hasta);
-            $pais = mysqli_real_escape_string($conexion, $pais);
+                    //Lo pasamos a un formato que reconozca mysqli.
+                    $titulo = mysqli_real_escape_string($conexion, $_POST['titulo']);
+                    $date = mysqli_real_escape_string($conexion, $_POST['date']);
+                    $pais = mysqli_real_escape_string($conexion, $_POST['pais']);
 
-            $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.FRegistro, f.Alternativo, p.NomPais
-            FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais
-            WHERE f.Titulo LIKE '%$titulo%'
-            AND f.FRegistro BETWEEN '$desde' AND '$hasta' AND p.IdPais = '%$pais%' ORDER BY f.FRegistro DESC";
-            
-            if(!($resultado = $conexion->query($sentencia))) {
-                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
-                echo '</p>'; 
-                exit;
-            }
-
-            //Si no se ha encontrado ninguna coincidencia en la base de datos con la busqueda.
-            if (mysqli_num_rows($resultado) == 0) {
-                echo "<p style= 'text-align:center; font-size: 20px;'><b>No se encontró ninguna foto con ese filtro</b></p>";
-
-                $resultado->close();
-
-                $conexion->close(); 
-            }
-
-            else
-            {
-                echo 
-                "<section>
-                    <h2>Fotos</h2>
-                    <div class='seccionfoto'>";
-
-                    while($fila = $resultado->fetch_object()) {
-                            echo "<article>
-                            <a href='detalle.php?id=$fila->IdFoto'>
-                                <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
-                            </a>
-                            <h3><a href='detalle.php?id=1'>$fila->Titulo</a></h3>
-                            <p>Fecha: $fila->FRegistro</p>";
-                            //Si no tiene pais, no mostramos ese campo.
-                            if(!($fila->NomPais == ""))
-                            {
-                                echo "<p>País: $fila->NomPais</p>";
-                            }
-                        echo 
-                        "</article>";
+                    if($titulo != "" && $date == "" && $pais == "")
+                    {
+                       $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Titulo LIKE '%$titulo%' ORDER BY f.Fecha DESC"; 
                     }
-                
-                echo
-                    "</div>
-                </section>";
-                $resultado->close();
+                    else
+                    {
+                        if($titulo == "" && $date != "" && $pais == "")
+                        {
+                            $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Fecha = '$date' ORDER BY f.Fecha DESC";
+                        }
+                        else
+                        {
+                            if($titulo == "" && $date == "" && $pais != "")
+                            {
+                                $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE p.NomPais = '$pais' ORDER BY f.Fecha DESC";
+                            }
+                            else
+                            {
+                                if($titulo != "" && $date != "" && $pais == "")
+                                {
+                                    $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Titulo LIKE '%$titulo%' AND f.Fecha = $date ORDER BY f.Fecha DESC";
+                                }
+                                else
+                                {
+                                    if($titulo == "" && $date != "" && $pais != "")
+                                    {
+                                        $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Fecha = $date AND p.NomPais = '$pais' ORDER BY f.Fecha DESC";
+                                    }
+                                    else
+                                    {
+                                        if($titulo != "" && $date == "" && $pais != "")
+                                        {
+                                            $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Titulo LIKE '%$titulo%' AND p.NomPais = '$pais' ORDER BY f.Fecha DESC";
+                                        }
+                                        else
+                                        {
+                                            if($titulo != "" && $date != "" && $pais != "")
+                                            {
+                                                $sentencia = "SELECT f.IdFoto, f.Fichero, f.Titulo, f.Fecha, f.Alternativo, p.NomPais FROM fotos f LEFT JOIN paises p ON f.Pais=p.IdPais WHERE f.Titulo LIKE '%$titulo%' AND f.Fecha = $date AND p.NomPais = '$pais' ORDER BY f.Fecha DESC";
+                                            }
+                                            else
+                                            {
+                                                echo "<p style= 'text-align:center; font-size: 20px;'><b>No se encontró ninguna foto con ese filtro</b></p>";
 
-                $conexion->close(); 
-            }
+                                                $conexion->close();
+                                                exit;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if(!($resultado = $conexion->query($sentencia))) {
+                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                        echo '</p>'; 
+                        exit;
+                    }
+
+                    //Si no se ha encontrado ninguna coincidencia en la base de datos con la busqueda.
+                    if (mysqli_num_rows($resultado) == 0) {
+                        echo "<p style= 'text-align:center; font-size: 20px;'><b>No se encontró ninguna foto con ese filtro</b></p>";
+
+                        $resultado->close();
+
+                        $conexion->close(); 
+                    }
+
+                    else
+                    {
+                        echo 
+                        "<section>
+                            <h2>Fotos</h2>
+                            <div class='seccionfoto'>";
+
+                            while($fila = $resultado->fetch_object()) {
+                                 echo "<article>
+                                    <a href='detalle.php?id=$fila->IdFoto'>
+                                        <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                                    </a>
+                                    <h3><a href='detalle.php?id=IdFoto'>$fila->Titulo</a></h3>
+                                    <p>Fecha: $fila->Fecha</p>";
+                                    //Si no tiene pais, no mostramos ese campo.
+                                    if(!($fila->NomPais == ""))
+                                    {
+                                        echo "<p>País: $fila->NomPais</p>";
+                                    }
+                                echo 
+                                "</article>";
+                            }
+                        
+                        echo
+                            "</div>
+                        </section>";
+                        $resultado->close();
+
+                        $conexion->close(); 
+                    }
 
             ?>
         </section>

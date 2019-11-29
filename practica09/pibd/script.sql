@@ -162,10 +162,10 @@ insert into `ESTILOS` (`Nombre`, `Descripcion`, `Fichero`) values
 
 -- Insertamos datos en USUARIOS
 insert into `USUARIOS` (`NomUsuario`, `Clave`, `Email`, `Sexo`, `FNacimiento`, `Ciudad`, `Pais`, `Foto`, `FRegistro`, `Estilo`) values
-("Mateo", "hola", "mateo.31@outlook.es", 0, str_to_date("10/12/1996", "%d/%m/%Y"), "Cartagena", 35, "enlace", str_to_date("04/07/2009 20:00:38", "%d/%m/%Y %H:%i:%S"), 1),
-("Marcos", "adios", "marquitos@outlook.com", 0, str_to_date("21/10/1990", "%d/%m/%Y"), "Moztalia", 103, "enlace", str_to_date("14/02/2016 10:45:02", "%d/%m/%Y %H:%i:%S"), 2),
-("Sofía", "topota20", "sofiiii@gmail.com", 1, str_to_date("16/05/2001", "%d/%m/%Y"), "Cancatona", 67, "enlace", str_to_date("01/04/2019 05:30:30", "%d/%m/%Y %H:%i:%S"), 3),
-("Tamara", "Torrecillas", "tamarina@gmail.com", 1, str_to_date("25/12/1997", "%d/%m/%Y"), "Yuman", 110, "enlace", str_to_date("09/03/2017 23:53:01", "%d/%m/%Y %H:%i:%S"), 4);
+("Mateo", "hola", "mateo.31@outlook.es", 0, str_to_date("10/12/1996", "%d/%m/%Y"), "Cartagena", 35, "Images/Mateo.jpg", str_to_date("04/07/2009 20:00:38", "%d/%m/%Y %H:%i:%S"), 1),
+("Marcos", "adios", "marquitos@outlook.com", 0, str_to_date("21/10/1990", "%d/%m/%Y"), "Moztalia", 103, "Images/Marcos.jpg", str_to_date("14/02/2016 10:45:02", "%d/%m/%Y %H:%i:%S"), 2),
+("Sofía", "topota20", "sofiiii@gmail.com", 1, str_to_date("16/05/2001", "%d/%m/%Y"), "Cancatona", 67, "Images/sofia.jpg", str_to_date("01/04/2019 05:30:30", "%d/%m/%Y %H:%i:%S"), 3),
+("Tamara", "Torrecillas", "tamarina@gmail.com", 1, str_to_date("25/12/1997", "%d/%m/%Y"), "Yuman", 110, "Images/tamara.jpg", str_to_date("09/03/2017 23:53:01", "%d/%m/%Y %H:%i:%S"), 4);
 
 
 -- Insertamos datos en ALBUMES

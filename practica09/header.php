@@ -26,10 +26,4 @@
             </ul>
         </nav>
         <p><a href="accesibilidad.php">Accesibilidad</a></p>
-        <select>
-            <option value="css/style.css">Estilo Base</option>
-            <option value="css/letraGrande.css">Letra Grande</option>
-            <option value="css/altoContraste.css">Alto Contraste</option>
-            <option value="css/combinado.css">Letra Grande y Alto Contraste</option>
-        </select>
     </header>

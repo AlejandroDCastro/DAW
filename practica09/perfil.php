@@ -27,15 +27,21 @@
                             echo "<h3 style='color:red; text-align:center;'>Ya estás registrado como usuario de PI</h3>";
                         }
 
+
+                        echo
+                    "<a href='MisDatos.php?nombre=$nombre'>Mis datos</a>
+                    <a href=''>Darme de baja</a>
+                    <a href='misAlbumes.php'>Mis álbumes</a>
+                    <a href='crearAlbum.php'>Crear álbum</a>
+                    <a href='meteFotoAlbum.php'>Añadir foto a álbum</a>
+                    <a href='solicitud.php'>Solicitar album</a>
+                    <a href='configurar.php'>Configuración</a>
+                    <a href='salir.php'>Salir</a>";
+                    
+
                     ?>
 
-                    <a href="">Mis datos</a>
-                    <a href="">Darme de baja</a>
-                    <a href="misAlbumes.php">Mis álbumes</a>
-                    <a href="crearAlbum.php">Crear álbum</a>
-                    <a href="meteFotoAlbum.php">Añadir foto a álbum</a>
-                    <a href="solicitud.php">Solicitar álbum</a>
-                    <a href="salir.php">Salir</a>
+                    
                 </section>
             </section>
         </main>
