@@ -298,6 +298,18 @@ main > section > #ordenacion {
     right: 38px;
 }
 
+#misAlbumes {
+    padding-bottom: 35px;
+}
+
+#misAlbumes > p > a {
+    color: var(--color3);
+}
+
+#misAlbumes > p > a:hover {
+    text-decoration: none;
+}
+
 
 
 #formini
