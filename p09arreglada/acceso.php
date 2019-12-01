@@ -4,7 +4,7 @@
 	session_start();
 
 	// Sentencias para interactuar con la base de datos
-	include("conexionBD.php");
+	require("conexionBD.php");
 	$sentencia = "SELECT u.NomUsuario, u.Clave, e.Fichero
 		FROM usuarios u JOIN estilos e ON e.IdEstilo=u.Estilo
 		WHERE u.NomUsuario = ?";

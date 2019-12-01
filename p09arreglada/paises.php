@@ -1,5 +1,4 @@
 <?php
-    include("conexionBD.php");
 
     $sentencia = "SELECT * FROM paises";
                             
@@ -13,8 +12,4 @@
     {
         echo "<option value='$fila->NomPais'></option>";
     }
-                            
-    $resultado->close();
-
-    $conexion->close(); 
 ?>

@@ -307,7 +307,8 @@ main > section > #ordenacion {
 }
 
 #misAlbumes > p > a:hover,
-#misFotos a:hover {
+#misFotos a:hover,
+#detalleFoto > section > section > p > a:hover {
     text-decoration: none;
 }
 
@@ -315,6 +316,8 @@ main > section > #ordenacion {
     display: flex;
     flex-direction: row;
 }
+
+
 
 
 

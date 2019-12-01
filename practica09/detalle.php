@@ -3,7 +3,7 @@
 
     if (isset($_SESSION["logueado"])) {
 
-        $titulo = "Detalle - Pictures & Images";
+        $titulo = "Detalle Foto - Pictures & Images";
         $estilo = $_SESSION["estilo"];
 
         // Incluímos el head con el doctype
@@ -16,10 +16,10 @@
         $id = $_GET['id'];
 
         // Abrimos una conexion con el servidor de MySQL
-        include("conexionBD.php");
+        require("conexionBD.php");
 
         // Escribimos las sentencia SQL
-        $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.Titulo AS TAlbum, u.NomUsuario
+        $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.Titulo AS TAlbum, u.NomUsuario, u.IdUsuario
             FROM fotos f LEFT JOIN paises p ON p.IdPais=f.Pais
             JOIN albumes a ON a.IdAlbum=f.Album
             JOIN usuarios u ON u.IdUsuario=a.Usuario
@@ -41,7 +41,7 @@
         $resultado = $mysqli->get_result();
         if ($resultado->num_rows) {
             $fila = $resultado->fetch_object();
-            echo "<main>
+            echo "<main id='detalleFoto'>
                 <section>
                     <h1>Detalle de foto</h1>
                     <section class='printCentro'>";
@@ -63,7 +63,7 @@
             }
             echo "
             <p><b>Álbum</b>: $fila->TAlbum</p>
-            <p><b>Usuario</b>: $fila->NomUsuario</p>";
+            <p><b>Usuario</b>: <a href='perfilUsuario.php?id=$fila->IdUsuario'>$fila->NomUsuario</a></p>";
 
             echo "</section></section></main>";
         } else {
