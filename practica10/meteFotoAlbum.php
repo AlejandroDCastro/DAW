@@ -3,7 +3,7 @@
 
     if (isset($_SESSION["logueado"])) {
 
-        $titulo = "Crear Álbum - Pictures & Images";
+        $titulo = "Subir Foto - Pictures & Images";
         $estilo = $_SESSION["estilo"];
         $usu = $_SESSION["logueado"];
 
@@ -19,23 +19,32 @@
         <!-- CONTENIDO: Título contenido, Formulario -->
         <main>
             <section>
-                <h1>Añadir Foto a Álbum</h1>
-                <form id="formulario" method="POST">
+                <h1>Subir Foto</h1>
+                <?php
+                    if (isset($_GET['fallo'])) {
+                        if ($_GET['fallo'] == 1) {
+                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Debes subir una foto previamente</p>";
+                        } elseif ($_GET['fallo'] == 2) {
+                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Rellena todos los campos obligatorios</p>";
+                        }
+                    }
+                ?>
+                <form id="formulario" method="POST" action="resMeteFotoAlbum.php">
                     <div>
-                        <label for="titulo">Título:</label>
-                        <input type="text" id="titulo" placeholder="Introduce el título" class="formulario">
+                        <label for="titulo">Título(*):</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Introduce el título" class="formulario">
                     </div>
                     <div>
-                        <label for="desc">Descripción:</label>
-                        <input type="text" id="desc" placeholder="Introduce la descripción" class="formulario">
+                        <label for="desc">Descripción(*):</label>
+                        <input type="text" id="desc" name="desc" placeholder="Introduce la descripción" class="formulario">
                     </div>
                     <div>
                         <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" class="formulario">
+                        <input type="date" id="fecha" name="fecha" class="formulario">
                     </div>
                     <div>
-                        <label for="country">País:</label>
-                        <input list="countries"  name="pais" id="country" placeholder="Introduce tu país" class="formulario">
+                        <label for="pais">País:</label>
+                        <input list="countries" name="pais" id="pais" placeholder="Introduce tu país" class="formulario">
                         <datalist id="countries">
                             <?php
                                 require("paises.php");
@@ -43,20 +52,20 @@
                         </datalist>
                     </div>
                     <div>
-                        <label for="photo">Foto:</label>
-                        <input type="file" id="photo" accept="image/*">
+                        <label for="foto">Foto(*):</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
                     </div>
                     <div>
-                        <label for="alt">Texto Alternativo:</label>
-                        <input type="text" id="alt" placeholder="Introduce un texto alternativo" class="formulario">
+                        <label for="alt">Texto Alternativo(*):</label>
+                        <input type="text" id="alt" name="alt" placeholder="Introduce un texto alternativo" class="formulario">
                     </div>
                     <div>
-                        <label for="album">Álbum de PI (*):</label>
+                        <label for="album">Álbum de PI(*):</label>
                         <select id="album" name="album">
-                            <option value=""></option>
+                            <option value="0"></option>
                             
                             <?php
-                                $sentencia = "SELECT a.Titulo FROM albumes a
+                                $sentencia = "SELECT a.IdAlbum, a.Titulo FROM albumes a
                                 JOIN usuarios u ON a.Usuario=u.IdUsuario
                                 WHERE u.NomUsuario='$usu'";
                             
@@ -68,7 +77,7 @@
 
                                 if ($resultado->num_rows > 0) {
                                     while ($fila = $resultado->fetch_object()) {
-                                        echo "<option value='$fila->Titulo'>$fila->Titulo</option>";
+                                        echo "<option value='$fila->IdAlbum'>$fila->Titulo</option>";
                                     }
                                 }
 

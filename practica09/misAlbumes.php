@@ -31,7 +31,7 @@
                         }
                         if ($resultado->num_rows) {
                             while ($fila = $resultado->fetch_object()) {
-                                echo "<p style='font-size: 1.5em;'><a href='verAlbum.php?id=$fila->IdAlbum'>$fila->Titulo</a> - $fila->Descripcion</p>";
+                                echo "<p style='font-size: 1.5em;'><a href='verAlbumPrivada.php?id=$fila->IdAlbum'>$fila->Titulo</a> - $fila->Descripcion</p>";
                             }
                         } else {
                             echo "<p>No tienes ningún álbum todavía. <a href='crearAlbum.php'>Crea</a> uno nuevo justo ahora.</p>";

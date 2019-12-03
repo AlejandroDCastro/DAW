@@ -5,9 +5,9 @@
 
 	// Sentencias para interactuar con la base de datos
 	require("conexionBD.php");
-	$sentencia = "SELECT u.NomUsuario, u.Clave, e.Fichero
+	$sentencia = "SELECT u.IdUsuario, u.NomUsuario, u.Clave, e.Fichero
 		FROM usuarios u JOIN estilos e ON e.IdEstilo=u.Estilo
-		WHERE u.NomUsuario = ?";
+		WHERE BINARY u.NomUsuario = ?";
 	$mysqli = $conexion->prepare($sentencia);
 
 
@@ -41,6 +41,7 @@
 			if($fila->Clave == $pass) {
 				$extra = 'index.php';
 				$_SESSION['logueado'] = $nombre;
+				$_SESSION['id'] = $fila->IdUsuario;
 				$_SESSION['estilo'] = $fila->Fichero;
 			}
 		}
@@ -96,6 +97,7 @@
 
 				$extra = 'perfil.php';
 				$_SESSION['logueado'] = $nombre;
+				$_SESSION['id'] = $fila->IdUsuario;
 				$_SESSION['estilo'] = $fila->Fichero;
 			}
 		}

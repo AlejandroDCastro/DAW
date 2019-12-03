@@ -7,7 +7,7 @@
 	require("conexionBD.php");
 	$sentencia = "SELECT u.NomUsuario, u.Clave, e.Fichero
 		FROM usuarios u JOIN estilos e ON e.IdEstilo=u.Estilo
-		WHERE u.NomUsuario = ?";
+		WHERE BINARY u.NomUsuario = ?";
 	$mysqli = $conexion->prepare($sentencia);
 
 

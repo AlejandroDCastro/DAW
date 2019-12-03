@@ -17,14 +17,23 @@
         <main>
             <section>
                 <h1>Crear Álbum</h1>
-                <form id="formulario" method="POST" action="perfil.php">
+                <?php
+                    if (isset($_GET['fallo'])) {
+                        if ($_GET['fallo'] == 1) {
+                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Debes de crear un álbum previamente</p>";
+                        } elseif ($_GET['fallo'] == 2) {
+                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Introduce un título y una descripción</p>";
+                        }
+                    }
+                ?>
+                <form id="formulario" method="POST" action="resCrearAlbum.php">
                     <div>
                         <label for="titulo">Título:</label>
-                        <input type="text" id="titulo" placeholder="Introduce el título" class="formulario">
+                        <input type="text" id="titulo" name="titulo" placeholder="Introduce el título" class="formulario">
                     </div>
                     <div>
                         <label for="desc">Descripción:</label>
-                        <input type="text" id="desc" placeholder="Introduce la descripción" class="formulario">
+                        <input type="text" id="desc" name="desc" placeholder="Introduce la descripción" class="formulario">
                     </div>
                     <div>
                         <input type="submit" value="Enviar">

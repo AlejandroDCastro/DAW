@@ -3,7 +3,7 @@
 
     if (isset($_SESSION["logueado"])) {
 
-        $titulo = "Datos Usuario - Pictures & Images";
+        $titulo = "Mis datos - Pictures & Images";
         $estilo = $_SESSION["estilo"];
 
         // Incluímos el head con el doctype
@@ -22,7 +22,7 @@
 
                     include("conexionBD.php");
                     $nombre = $_GET['nombre'];
-                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,FNacimiento,NomPais,Ciudad FROM usuarios LEFT JOIN paises ON IdPais = Pais WHERE NomUsuario = ?";
+                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,Ciudad,FNacimiento,NomPais FROM usuarios LEFT JOIN paises ON IdPais = Pais WHERE NomUsuario = ?";
 
                     $stmt = $conexion->prepare($sentencia);
                     $stmt->bind_param('s', $nombre);
@@ -40,53 +40,55 @@
                         "
                         <form action='resRegistro.php' id='formulario' method='POST'>
                             <div>
-                                <label for='usu'>Tu nombre de usuario es: $fila->NomUsuario</label>
-                                <input type='text' name='usuario' id='usu' placeholder='Cambiar nombre' class='formulario'>
+                                <label for='usu'>Nombre</label>
+                                <input type='text' name='usuario' id='usu' value='$fila->NomUsuario' placeholder='Cambiar nombre' class='formulario'>
                             </div>
                             <div>
-                                <label for='pwd'>Tu contraseña actual es: $fila->Clave</label>
-                                <input type='password'  name='pass' id='pwd' placeholder='Cambiar contraseña' class='formulario'>
+                                <label for='pwd'>Contraseña</label>
+                                <input type='password'  name='pass' id='pwd' value='$fila->Clave' placeholder='Cambiar contraseña' class='formulario'>
                             </div>
                             <div>
-                                <label for='pwd2'>Repetir nueva contraseña:</label>
-                                <input type='password'  name='pass2' id='pwd2' placeholder='Repite la nueva contraseña' class='formulario'>
+                                <label for='pwd2'>Repetir contraseña</label>
+                                <input type='password'  name='pass2' id='pwd2' value='$fila->Clave' placeholder='Repite la nueva contraseña' class='formulario'>
                             </div>
                             <div>
-                                <label for='mail'>Tu dirección de email es: $fila->Email</label>
-                                <input type='text'  name='mail' id='mail' placeholder='Cambiar email' class='formulario'>
+                                <label for='mail'>Email</label>
+                                <input type='text'  name='mail' id='mail' value='$fila->Email' placeholder='Cambiar email' class='formulario'>
                             </div>
                             <div>
-                            ";
+                            <label>Sexo</label>";
                             if($fila->Sexo == 0)
                             {
-                                echo "<label>Tu sexo es: Hombre</label>";
+                                echo "<input type='radio' name='sex' value='hombre' id='hombre'checked> <label for='hombre'>Hombre</label><br>
+                                <input type='radio' name='sex' value='mujer' id='mujer'> <label for='mujer'>Mujer</label>";
                             }
                             else
                             {
-                                echo "<label>Tu sexo es: Mujer</label>";
-                            }
                                 echo "<input type='radio' name='sex' value='hombre' id='hombre'> <label for='hombre'>Hombre</label><br>
-                                <input type='radio' name='sex' value='mujer' id='mujer'> <label for='mujer'>Mujer</label>
+                                <input type='radio' name='sex' value='mujer' id='mujer' checked> <label for='mujer'>Mujer</label>";
+                            }
+                            echo 
+                            "
                             </div>
                             <div>
-                                <label for='date'>Tu fecha de nacimiento es: $fila->FNacimiento</label>
-                                <input type='text' name='fecha' id='date' class='formulario' placeholder='dd/mm/yyyy'>
+                                <label for='date'>Fecha de nacimiento</label>
+                                <input type='text' name='fecha' id='date' value='$fila->FNacimiento' class='formulario' placeholder='dd/mm/yyyy'>
                             </div>
                             <div>
-                                <label for='country'>Tu país es: $fila->NomPais</label>
-                                <input list='countries'  name='pais' id='country' placeholder='Cambiar país' class='formulario'>
-                                <datalist id='countries'>
-                                    <?php
-                                        include('paises.php');
-                                    ?>
-                                </datalist>
+                                <label for='country'>País</label>
+                                <input list='countries'  name='pais' id='country' placeholder='Cambiar país' value='$fila->NomPais' class='formulario'>
+                                <datalist id='countries'>";
+                                        require_once('paises.php');
+                            echo 
+                                "</datalist>
                             </div>
                             <div>
-                                <label for='city'>Tu ciudad es: $fila->Ciudad</label>
-                                <input type='text' name='ciudad' id='city' placeholder='Cambiar ciudad' class='formulario'>
+                                <label for='city'>Ciudad</label>
+                                <input type='text' name='ciudad' id='city'
+                                placeholder='Cambiar ciudad' value='$fila->Ciudad' class='formulario'>
                             </div>
                             <div>
-                                <label for='photo'>Foto:</label>
+                                <label for='photo'>Foto</label>
                                 <input type='file' id='photo' accept='image/*'>
                             </div>
                             <div>

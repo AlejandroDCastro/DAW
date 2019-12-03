@@ -32,8 +32,12 @@
                             header("Location: http://$host$uri/$extra");
                         }
 
-                        $sentencia = "SELECT u.Foto, u.NomUsuario, u.FRegistro,a.Titulo FROM usuarios u JOIN albumes a ON u.IdUsuario = a.Usuario WHERE u.IdUsuario = ?";
+                        //Sacamos los datos del usuario.
+                        $sentencia = "SELECT u.Foto, u.NomUsuario, u.FRegistro FROM usuarios u WHERE u.IdUsuario = ?";
+                        //Sacamos todos los albumes del usuario.
+                        $sentenciaAlbumes = "SELECT a.Titulo, a.IdAlbum FROM usuarios u JOIN albumes a ON u.IdUsuario = a.Usuario WHERE u.IdUsuario = '$id_usu'";
                         
+                        //Vamos mostrando todos los datos del usuario.
                         $stmt = $conexion->prepare($sentencia);
                         $stmt->bind_param('i', $id_usu);
                         if(!$stmt->execute()) {
@@ -52,13 +56,30 @@
                             <img width='400' src='$fila->Foto' alt='$fila->NomUsuario'>
                             </a>";
                             echo "<p style = 'text-align: center;  font-size:25px;'>Fecha de ingreso: $fila->FRegistro</p><br><br>";
-                            echo "<p style = 'text-align: center;  font-size:25px;'><u>Albumes</u></br>$fila->Titulo</p>
-                                    </article>";
                         } 
                         else
                         {
                             echo "Ese usuario no existe";
                         }
+
+                        //Vas recorriendo los albumes y mostrandolos por pantalla.
+                        if(!($resultadoAlbumes = $conexion->query($sentenciaAlbumes))) {
+                            echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                            echo '</p>'; 
+                            exit;
+                        }
+
+                        echo "<p style = 'text-align: center;  font-size:35px;'>Albumes</p><br>";
+                        while($filaAlbumes = $resultadoAlbumes->fetch_object())
+                        {
+                            echo "<p style = 'text-align: center;  font-size:25px;'><a href='verAlbumPublica.php?id=$filaAlbumes->IdAlbum'>$filaAlbumes->Titulo</a></p>";
+                        }
+                        echo "</article>";
+
+                        
+                            
+                        
+                        //Cerramos la conexion.
                         $resultado->close();
 
                         $conexion->close();

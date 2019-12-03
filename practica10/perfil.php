@@ -34,7 +34,7 @@
                         <a href='misAlbumes.php'>Mis álbumes</a>
                         <a href='misFotos.php'>Mis Fotos</a>
                         <a href='crearAlbum.php'>Crear álbum</a>
-                        <a href='meteFotoAlbum.php'>Añadir foto a álbum</a>
+                        <a href='meteFotoAlbum.php'>Subir foto a álbum</a>
                         <a href='solicitud.php'>Solicitar álbum</a>
                         <a href='configurar.php'>Configuración</a>
                         <a href='salir.php'>Salir</a>";

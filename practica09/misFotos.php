@@ -37,7 +37,7 @@
                                         <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
                                     </a>
                                     <h3><a href='detalle.php?id=$fila->IdFoto'>$fila->Titulo</a></h3>
-                                    <p>Álbum: <a href='verAlbum.php?id=$fila->IdAlbum'>$fila->TAlbum</a></p>
+                                    <p>Álbum: <a href='verAlbumPrivada.php?id=$fila->IdAlbum'>$fila->TAlbum</a></p>
                                 </article>";
                             }
                         } else {

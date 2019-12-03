@@ -8,8 +8,8 @@
         exit;
     }
 
-   	while($fila = $resultado->fetch_object())
+   	while($filas = $resultado->fetch_object())
     {
-        echo "<option value='$fila->NomPais'></option>";
+        echo "<option value='$filas->NomPais'></option>";
     }
 ?>
