@@ -6,10 +6,11 @@
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     $url = "http://$host$uri";
 
+    // Cogemos los datos enviados por POST
     $tituloFoto = $_POST['titulo'];
     $descripcion = $_POST['desc'];
     $fecha = $_POST['fecha'];
-    if ($fecha == "") {
+    if ($fecha == "00-00-0000") {
         $fecha = null;
     }
     $pais = $_POST['pais'];
@@ -41,24 +42,55 @@
             <section>
                 <h1>Subir Foto</h1>
                 <section class="printCentro">
-                    <h2>Foto Subida</h2>
                     
                     <?php
 
+                        $fregistro = date("Y-m-d H:i:s");
+                        $fichero = "Image/$foto";
+
                         require("conexionBD.php");
-                        $sentencia = "INSERT INTO fotos (`Titulo`, `Descripcion`, `Fecha`, `Pais`, `Album`, `Fichero`, `Alternativo`, `FRegistro`)
-                                        VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
-                        $mysqli = $conexion->prepare($sentencia);
-                        $mysqli->bind_param('ss', $tituloFoto, $descripcion);
-                        if (!$mysqli->execute()) {
-                            echo '<p>Error al actualizar el estilo en la BD' .$conexion->error. '</p>';
-                            exit;
+
+                        // Averiguamos el id del pais escogido
+                        if ($pais != null) {
+                            $sentencia = "SELECT * FROM paises WHERE NomPais='$pais'";
+                            $resultado = $conexion->query($sentencia);
+                            $fila = $resultado->fetch_object();
+                            $idPais = $fila->IdPais;
+                        } else {
+                            $idPais = null;
                         }
 
-                        echo "<h3>Has creado un álbum: $tituloFoto</h3>";
-                        echo "<h4>Introduce tu primera fotografía en este álbum. Pulsa <a href='meteFotoAlbum.php'>aquí</a></h4>";
+                        // Averiguamos el nombre del álbum escogido
+                        $sentencia = "SELECT Titulo FROM albumes WHERE IdAlbum='$album'";
+                        $resultado = $conexion->query($sentencia);
+                        $fila = $resultado->fetch_object();
+                        $nomAlbum = $fila->Titulo;
 
+                        // Realizamos la inserción de la foto en la BD
+                        $sentencia = "INSERT INTO fotos (`Titulo`, `Descripcion`, `Fecha`, `Pais`, `Album`, `Fichero`, `Alternativo`, `FRegistro`)
+                        VALUES ('$tituloFoto', '$descripcion', '$fecha', '$idPais', '$album', '$fichero', '$alt', '$fregistro')";
+                        if($conexion->query($sentencia)) {
+                            echo "<h2>Has subido una foto:</h2>";
+                        }
 
+                        echo "<p>Título: $tituloFoto</p>";
+                        echo "<p>Descripción: $descripcion</p>";
+                        if ($fecha != null) {
+                            echo "<p>Fecha: $fecha</p>";
+                        } else {
+                            echo "<p>Fecha: No consta</p>";
+                        }
+                        if ($pais != null) {
+                            echo "<p>País: $pais</p>";
+                        } else {
+                            echo "<p>País: No consta</p>";
+                        }
+                        echo "<p>Álbum: $nomAlbum</p>";
+                        echo "<p>Texto Alternativo: $alt</p>";
+                        echo "<p>Fecha Registro: $fregistro</p>";
+
+                        $resultado->close();
+                        $conexion->close();
                     ?>
 
                     <a href="perfil.php" style="margin-top: 60px;">Aceptar</a>

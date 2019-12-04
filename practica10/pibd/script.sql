@@ -95,6 +95,7 @@ create table `SOLICITUDES` (
     `Descripcion` text(4000) not null,
     `Email` text(200) not null,
     `Direccion` text not null,
+    `Telefono` text(20) not null,
     `Color` text not null,
     `Copias` int not null,
     `Resolucion` int not null,

@@ -23,14 +23,18 @@
                         $nombre = $_SESSION["logueado"];
                         echo "<h2>¡Bienvenido $nombre!</h2>";
 
-                        if (isset($_GET["error"])  &&  $_GET["error"] == 1) {
-                            echo "<h3 style='color:red; text-align:center;'>Ya estás registrado como usuario de PI</h3>";
+                        if (isset($_GET["error"])) {
+                            if ($_GET["error"] == 1) {
+                                echo "<h3 style='color:red; text-align:center;'>Ya estás registrado como usuario de PI</h3>";
+                            } elseif ($_GET["error"] == 2) {
+                                echo "<h3 style='color:red; text-align:center;'>Selecciona la opción adecuada en tu menú</h3>";
+                            }
                         }
 
 
                         echo
                         "<a href='misDatos.php?nombre=$nombre'>Mis datos</a>
-                        <a href=''>Darme de baja</a>
+                        <a href='darBaja.php'>Darme de baja</a>
                         <a href='misAlbumes.php'>Mis álbumes</a>
                         <a href='misFotos.php'>Mis Fotos</a>
                         <a href='crearAlbum.php'>Crear álbum</a>

@@ -77,7 +77,11 @@
 
                                 if ($resultado->num_rows > 0) {
                                     while ($fila = $resultado->fetch_object()) {
-                                        echo "<option value='$fila->IdAlbum'>$fila->Titulo</option>";
+                                        if (isset($_GET['album'])  &&  $fila->IdAlbum == $_GET['album']) {
+                                            echo "<option value='$fila->IdAlbum' selected>$fila->Titulo</option>";
+                                        } else {
+                                            echo "<option value='$fila->IdAlbum'>$fila->Titulo</option>";
+                                        }
                                     }
                                 }
 

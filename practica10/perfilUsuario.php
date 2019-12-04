@@ -81,7 +81,6 @@
                         
                         //Cerramos la conexion.
                         $resultado->close();
-
                         $conexion->close();
 
                     ?>

@@ -67,6 +67,7 @@
                         WHERE a.IdAlbum=$id_album";
                         $resultado = $conexion->query($sentencia);
                         echo "<div class='seccionfoto' style='padding-top: 30px'>";
+                        $numFotos = $resultado->num_rows;
                         while ($fila = $resultado->fetch_object()) {
                             echo "<article>
                                     <a href='detalle.php?id=$fila->IdFoto'>
@@ -78,6 +79,10 @@
 
                         echo "<div>";
 
+                        if ($numFotos == 0) {
+                            echo "<p><b>No tienes fotos en este álbum todavía.</b></p>";
+                        }
+
 
                         // Cerramos conexiones
                         $resultado->close();
@@ -85,6 +90,9 @@
 
                     ?>
 
+                </section>
+                <section class="printCentro">
+                    <a href="meteFotoAlbum.php?album=<?php echo "$id_album" ?>">Subir foto a este álbum</a>
                 </section>
             </section>
         </main>

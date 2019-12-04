@@ -25,7 +25,6 @@
             <section>
                 <h1>Crear Álbum</h1>
                 <section class="printCentro">
-                    <h2>Álbum creado</h2>
                     
                     <?php
 
@@ -41,9 +40,12 @@
                             exit;
                         }
 
-                        echo "<h3>Has creado un álbum: $tituloAlbum</h3>";
+                        echo "<h2>Has creado un álbum:</h2>";
+                        echo "<p><b>Título</b>: $tituloAlbum</p>";
+                        echo "<p><b>Descripción</b>: $descripcion</p>";
                         echo "<h4>Introduce tu primera fotografía en este álbum. Pulsa <a href='meteFotoAlbum.php'>aquí</a></h4>";
 
+                        $conexion->close();
 
                     ?>
 

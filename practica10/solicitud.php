@@ -62,32 +62,45 @@
                         <h2>Formulario de solicitud</h2>
                         <p>Rellena el siguiente formulario aportando todos los detalles para confeccionar tu álbum. (*) Indica un campo obligatorio.</p>
                         <form id="formulario" method="POST" action="resSolicitud.php">
+                        
+                            <?php
+
+                            if (isset($_GET['error'])) {
+                                if ($_GET['error'] == 1) {
+                                    echo "<p style='color:red; text-align:center; padding-bottom: 30px;'><b>Debes solicitar un álbum previamente</b></p>";
+                                } elseif ($_GET['error'] == 2) {
+                                    echo "<p style='color:red; text-align:center; padding-bottom: 30px;'><b>Rellena todos los campos obligatorios</b></p>";
+                                }
+                            }
+
+                            ?>
+
                             <div>
-                                <label for="nombre">Nombre (*):</label>
-                                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" maxlength="200" required autofocus class="formulario">
+                                <label for="nombre">Nombre(*):</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" maxlength="200" autofocus class="formulario">
                             </div>
                             <div>
-                                <label for="titulo">Título del álbum (*):</label>
-                                <input type="text" id="titulo" name="titulo" placeholder="Escribe su título" required maxlength="200" class="formulario">
+                                <label for="titulo">Título del álbum(*):</label>
+                                <input type="text" id="titulo" name="titulo" placeholder="Escribe su título" maxlength="200" class="formulario">
                             </div>
                             <div>
-                                <label for="texto">Texto adicional:</label>
+                                <label for="texto">Texto adicional(*):</label>
                                 <textarea id="texto" name="texto" placeholder="Dedicatoria, descrición de su contenido, etc." maxlength="4000" class="formulario"></textarea>
                             </div>
                             <div>
-                                <label for="email">Correo electrónico (*):</label>
-                                <input type="email" name="email" id="email" placeholder="Escribe tu email" required maxlength="200" class="formulario">
+                                <label for="email">Correo electrónico(*):</label>
+                                <input type="email" name="email" id="email" placeholder="Escribe tu email" maxlength="200" class="formulario">
                             </div>
                             <div>
-                                <label for="direccion">Dirección (*):</label>
-                                <input type="text" id="direccion" name="direccion" placeholder="Calle" required class="formulario">
-                                <input type="number" id="num" name="num" placeholder="Número" min="0" required class="formulario">
+                                <label for="direccion">Dirección(*):</label>
+                                <input type="text" id="direccion" name="direccion" placeholder="Calle(*)" class="formulario">
+                                <input type="number" id="num" name="num" placeholder="Número(*)" min="1" class="formulario">
                                 <input type="text" id="piso" name="piso" placeholder="Piso" class="formulario">
                                 <input type="text" id="puerta" name="puerta" placeholder="Puerta" class="formulario">
-                                <input type="text" id="cp" name="cp" placeholder="CP" required class="formulario">
-                                <input type="text" id="localidad" name="localidad" placeholder="Localidad" required class="formulario">
-                                <input type="text" id="provincia" name="provincia" placeholder="Provincia" required class="formulario">
-                                <input list="countries" id="country" name="country" placeholder="País" required class="formulario">
+                                <input type="text" id="cp" name="cp" placeholder="CP(*)" class="formulario">
+                                <input type="text" id="localidad" name="localidad" placeholder="Localidad(*)" class="formulario">
+                                <input type="text" id="provincia" name="provincia" placeholder="Provincia(*)" class="formulario">
+                                <input list="countries" id="country" name="country" placeholder="País(*)" class="formulario">
                                 <datalist id="countries">
                                     <?php
                                         require("paises.php");
@@ -95,19 +108,19 @@
                                 </datalist>
                             </div>
                             <div>
-                                <label for="telefono">Teléfono:</label>
+                                <label for="telefono">Teléfono(*):</label>
                                 <input type="tel" id="telefono" name="telefono" placeholder="### ## ## ##" class="formulario">
                             </div>
                             <div>
-                                <label for="color">Color de portada:</label>
+                                <label for="color">Color de portada(*):</label>
                                 <input type="color" id="color" name="color" value="#000000" >
                             </div>
                             <div>
-                                <label for="copias">Número de copias:</label>
+                                <label for="copias">Número de copias(*):</label>
                                 <input type="number" id="copias" name="copias" value="1" min="1" class="formulario">
                             </div>
                             <div>
-                                <label for="resolucion">Resolución de impresión:</label>
+                                <label for="resolucion">Resolución de impresión(*):</label>
                                 <select id="resolucion" name="resolucion">
                                     <option value="150">150 dpi</option>
                                     <option value="300">300 dpi</option>
@@ -118,13 +131,13 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="album">Álbum de PI (*):</label>
+                                <label for="album">Álbum de PI(*):</label>
                                 <select id="album" name="album">
                                     <option value=""></option>
                                     
                                     <?php
 
-                                        $sentencia = "SELECT a.Titulo FROM albumes a
+                                        $sentencia = "SELECT a.IdAlbum, a.Titulo FROM albumes a
                                             JOIN usuarios u ON a.Usuario=u.IdUsuario
                                             WHERE u.NomUsuario='$usu'";
                                         
@@ -136,7 +149,7 @@
 
                                         if ($resultado->num_rows > 0) {
                                             while ($fila = $resultado->fetch_object()) {
-                                                echo "<option value='$fila->Titulo'>$fila->Titulo</option>";
+                                                echo "<option value='$fila->IdAlbum'>$fila->Titulo</option>";
                                             }
                                         }
 
@@ -147,7 +160,7 @@
                                 <?php  
 
                                         if ($resultado->num_rows == 0) {
-                                            echo "<p>Todavía no tienes nigún álbum. <a href='crearAlbum.php'>Crea</a> uno justo ahora.</p>";
+                                            echo "<p style='color: blue;'>Todavía no tienes nigún álbum. <a href='crearAlbum.php'>Crea</a> uno justo ahora.</p>";
                                         }
 
                                         $resultado->close();
@@ -156,7 +169,7 @@
                                 ?>
                             </div>
                             <div>
-                                <label for="fecha">Fecha aproximada de recepción:</label>
+                                <label for="fecha">Fecha aproximada de recepción(*):</label>
                                 <input id="fecha" name="fecha" type="date" class="formulario">
                             </div>
                             <div>

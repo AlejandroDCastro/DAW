@@ -63,6 +63,9 @@
         </main>
 
 <?php
+        $resultado->close();
+        $conexion->close();
+        
         require_once("footer.php");
 
     } else {

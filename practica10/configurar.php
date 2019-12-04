@@ -43,6 +43,9 @@
                             }
                         }
 
+                        $resultado->close();
+                        $conexion->close();
+
                     ?>
 
                 </section>

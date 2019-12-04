@@ -42,7 +42,9 @@
 				$extra = 'index.php';
 				$_SESSION['logueado'] = $nombre;
 				$_SESSION['id'] = $fila->IdUsuario;
+				$_SESSION['pass'] = $fila->Clave;
 				$_SESSION['estilo'] = $fila->Fichero;
+
 			}
 		}
 	}
@@ -98,6 +100,7 @@
 				$extra = 'perfil.php';
 				$_SESSION['logueado'] = $nombre;
 				$_SESSION['id'] = $fila->IdUsuario;
+				$_SESSION['pass'] = $fila->Clave;
 				$_SESSION['estilo'] = $fila->Fichero;
 			}
 		}
