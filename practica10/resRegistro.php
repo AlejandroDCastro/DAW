@@ -57,7 +57,7 @@
 
 			if($pais != "")
 			{
-				echo "<li><b>País:</b> $pais</li>";
+				echo "<li><b>País:</b> $paisId</li>";
 			}
 
 			if($ciudad != "")

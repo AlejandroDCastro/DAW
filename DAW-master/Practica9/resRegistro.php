@@ -20,7 +20,6 @@
 
         include("comprobarDatosUsuario.php");
 
-
         if ($datosCorrectos == true) {
             move_uploaded_file($tmp_name, "img/$fichero_subido");
 

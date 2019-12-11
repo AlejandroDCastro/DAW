@@ -115,7 +115,7 @@
                     <a href='detalle.php?id=$fila->IdFoto'>
                         <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
                     </a>
-                    <h3><a href='detalle.php?id=1'>$fila->Titulo</a></h3>
+                    <h3><a href='detalle.php?id=$fila->IdFoto'>$fila->Titulo</a></h3>
                     <p>Fecha: $fila->FRegistro</p>";
                     //Si no tiene pais, no mostramos ese campo.
                     if(!($fila->NomPais == ""))
