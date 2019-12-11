@@ -92,7 +92,7 @@
                             <?php
 
                                 if ($resultado->num_rows == 0) {
-                                    echo "<p>Todavía no tienes nigún álbum. <a href='crearAlbum.php'>Crea</a> uno justo ahora.</p>";
+                                    echo "<p>Todavía no tienes ningún álbum. <a href='crearAlbum.php'>Crea</a> uno justo ahora.</p>";
                                 }
 
                                 $resultado->close();

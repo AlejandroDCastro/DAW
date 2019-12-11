@@ -46,7 +46,7 @@
                     <?php
 
                         $fregistro = date("Y-m-d H:i:s");
-                        $fichero = "Image/$foto";
+                        $fichero = "Images/$foto";
 
                         require("conexionBD.php");
 

@@ -52,9 +52,19 @@
                             $fila = $resultado->fetch_object();
                             echo "<article>
                                 <h2 style = 'text-align: center; font-size:30px; margin-bottom: 5px;'>$fila->NomUsuario</h2>";
-                            echo "<a href='$fila->Foto'>
-                            <img width='400' src='$fila->Foto' alt='$fila->NomUsuario'>
+                            if($fila->Foto != "")
+                            {
+                                echo "<a href='$fila->Foto'>
+                            <img  width='400' src='$fila->Foto' alt='$fila->NomUsuario'>
                             </a>";
+                            }
+                            else
+                            {
+                                echo "<a href='Images/SinFoto.jpg'>
+                            <img  width='400' src='Images/SinFoto.jpg' alt='$fila->NomUsuario'>
+                            </a>";
+                            }
+                            
                             echo "<p style = 'text-align: center;  font-size:25px;'>Fecha de ingreso: $fila->FRegistro</p><br><br>";
                         } 
                         else

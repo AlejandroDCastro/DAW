@@ -33,7 +33,7 @@
         $mysqli = $conexion->prepare($sentencia);
         $mysqli->bind_param('i', $estilo_seleccionado);
         if (!$mysqli->execute()) {
-            echo '<p>Error al actualizar el estilo en la BD' .$conexion->connect_error. '</p>';
+            echo '<p>Error al buscar el pais en la BD' .$conexion->connect_error. '</p>';
             exit;
         }
 

@@ -1,10 +1,10 @@
 <?php
 
     // Creamos el título de la tabla...
-    echo '<h2>Precios</h2>';
+    echo "<h2>Precios</h2>";
 
     // Creamos la nueva tabla...
-    echo '<table>';
+    echo "<table>";
 
     // Primera fila...
     echo <<<priFILA
@@ -32,7 +32,7 @@
     $precio_pag_ = 0.10;
     $precio_ = 0;
     for ($i=1; $i<=15; $i++) {
-        echo '<tr>';
+        echo "<tr>";
         if ($i >= 5  &&  $i <= 11) {
             $precio_pag_ = 0.08;
         } elseif ($i > 11) {
@@ -42,28 +42,28 @@
         for ($j=1; $j<=6; $j++) {
             switch ($j) {
                 case 1:
-                    echo '<td>', $i, '</td>';
+                    echo "<td>", $i, "</td>";
                     break;
                 case 2:
-                    echo '<td>', 3*$i, '</td>';
+                    echo "<td>", 3*$i, "</td>";
                     break;
                 case 3:
-                    echo '<td>', round($precio_, 2), '</td>';
+                    echo "<td>", round($precio_, 2), "</td>";
                     break;
                 case 4:
-                    echo '<td>', round($precio_ + (3*$i)*0.02, 2), '</td>';
+                    echo "<td>", round($precio_ + (3*$i)*0.02, 2), "</td>";
                     break;
                 case 5:
-                    echo '<td>', round($precio_ + (3*$i)*0.05, 2), '</td>';
+                    echo "<td>", round($precio_ + (3*$i)*0.05, 2), "</td>";
                     break;
                 case 6:
-                    echo '<td>', round($precio_ + ((3*$i)*0.05) + ((3*$i)*0.02), 2), '</td>';
+                    echo "<td>", round($precio_ + ((3*$i)*0.05) + ((3*$i)*0.02), 2), "</td>";
                     break;
             }
         }
-        echo '</tr>';
+        echo "</tr>";
     }
 
-    echo '</table>';
+    echo "</table>";
 
 ?>

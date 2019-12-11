@@ -13,23 +13,58 @@
 	$pass = $_POST['pass'];
 	$pass2 = $_POST['pass2'];
 	$mail = $_POST['mail'];
+
 	if(isset($_POST['sex']))
 	{
 		$sex = $_POST['sex'];
 	} else {
 		$sex = "";
 	}
+
 	$fecha = $_POST['fecha'];
 	$pais = $_POST['pais'];
+	$estilo = $_POST['estilo'];
+
 	$ciudad = $_POST['ciudad'];
 
+	//En el caso de que haya un error, nos guardamos los datos para que no tenga que volver a introducirlos.
+	$_SESSION['usu'] = $usuario;
+	$_SESSION['pass'] = $pass;
+	$_SESSION['pass2'] = $pass2;
+	$_SESSION['mail'] = $mail;
+	$_SESSION['sex'] = $sex;
+	$_SESSION['fecha'] = $fecha;
+	$_SESSION['pais'] = $pais;
+	$_SESSION['estilo'] = $estilo;
+	$_SESSION['ciudad'] = $ciudad;
 
-	if($usuario != ""  &&  $pass != ""  &&  $pass2 != "")
+	if($usuario != ""  &&  $pass != ""  &&  $pass2 != "" && $mail != "" && $sex != "" && $fecha != "")
 	{
 		if($pass == $pass2)
 		{
+			require("validarDatos.php");
 
-			// Creamos la pagina con los datos introducidos por el usuario.
+			if($hazRegistro == TRUE)
+			{
+				//Sacamos la fecha en la que se ha realizado el registro.
+			$fechaReg = date("Y-m-d H:i:s");
+			// Si hemos llegado hasta este punto, creamos el nuevo usuario.
+			$sentenciaRegistro = "INSERT INTO usuarios (NomUsuario,Clave,Email,Sexo,FNacimiento,Ciudad,Pais,FRegistro,Estilo) VALUES  ('$usuario', '$passCifrada', '$mail', '$sexId', '$fecha', '$ciudad', '$paisId', '$fechaReg', '$estiloId')";
+
+			$conexion->query($sentenciaRegistro);
+			//Borramos las variables de la sesion donde guardabamos los datos  de registro.
+			$_SESSION = array();
+			session_destroy();
+			//Iniciamos sesion con el usuario nuevo.
+			session_start();
+			$sacaId = "SELECT * FROM usuarios WHERE BINARY NomUsuario = '$usuario'";
+			$elId = $conexion->query($sacaId);
+			$fila = $elId->fetch_object();
+			$_SESSION['logueado'] = $usuario;
+			$_SESSION['id'] = $fila->IdUsuario;
+			$_SESSION["estilo"] = $estilosesion;			
+			
+
 			echo "<main><section><h1>Registro correcto</h1>
 					<section class='printCentro'><h2>Registro realizado con éxito, tus datos son:</h2><ul>
 					<li><b>Nombre:</b> $usuario</li>
@@ -57,7 +92,7 @@
 
 			if($pais != "")
 			{
-				echo "<li><b>País:</b> $paisId</li>";
+				echo "<li><b>País:</b> $pais</li>";
 			}
 
 			if($ciudad != "")
@@ -65,16 +100,30 @@
 				echo "<li><b>Ciudad:</b> $ciudad</li>";
 			}
 
-			echo "</ul><a href='perfil.php'>Aceptar</a></section></section></main>";
+			if($estilo != "")
+			{
+				echo "<li><b>Estilo:</b> $estilo</li>";
+			}
 
-			// Cada vez que un usuario se registra lo normal es que aparezca ya logueado...
-			$_SESSION["logueado"] = "OK";
+			echo "</ul><a href='perfil.php'>Aceptar</a></section></section></main>";
+        	
+        	$elId->close();
+        	$conexion->close();
+        	
+			}
+			else
+			{
+				$conexion->close();
+				exit;
+			}
+			
+
 		}
 		else
 		{
 			$host = $_SERVER['HTTP_HOST']; 
 			$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		 	$extra = 'registro.php?error=2'; 
+		 	$extra = 'registro.php?error=noCoinciden'; 
 		 	header("Location: http://$host$uri/$extra"); 
 			exit;
 		}
@@ -83,7 +132,7 @@
 	{
 		$host = $_SERVER['HTTP_HOST']; 
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	 	$extra = 'registro.php?error=1'; 
+	 	$extra = 'registro.php?error=norellenados'; 
 	 	header("Location: http://$host$uri/$extra"); 
 		exit;
 	}

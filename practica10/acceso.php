@@ -38,11 +38,10 @@
 		$resultado = $mysqli->get_result();
 		if ($resultado->num_rows) {
 			$fila = $resultado->fetch_object();
-			if($fila->Clave == $pass) {
+			if(password_verify($pass, $fila->Clave)) {
 				$extra = 'index.php';
 				$_SESSION['logueado'] = $nombre;
 				$_SESSION['id'] = $fila->IdUsuario;
-				$_SESSION['pass'] = $fila->Clave;
 				$_SESSION['estilo'] = $fila->Fichero;
 
 			}
@@ -69,7 +68,7 @@
 		$resultado = $mysqli->get_result();
 		if ($resultado->num_rows) {
 			$fila = $resultado->fetch_object();
-			if($fila->Clave == $pass) {
+			if(password_verify($pass, $fila->Clave)) {
 				//El usuario quiere se le recuerde.
 				if(isset($_POST['recuerdame']))
 				{
@@ -100,7 +99,6 @@
 				$extra = 'perfil.php';
 				$_SESSION['logueado'] = $nombre;
 				$_SESSION['id'] = $fila->IdUsuario;
-				$_SESSION['pass'] = $fila->Clave;
 				$_SESSION['estilo'] = $fila->Fichero;
 			}
 		}

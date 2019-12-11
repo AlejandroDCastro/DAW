@@ -56,7 +56,7 @@
 
                 </section>
                 <section class="printCentro">
-                    <h2>Confirmación para eleminar tu cuenta</h2>
+                    <h2>Confirmación para eliminar tu cuenta</h2>
                         <form id="formulario" action="eliminarUsuario.php" method="POST">
 
                             <?php

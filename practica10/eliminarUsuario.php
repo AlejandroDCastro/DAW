@@ -14,7 +14,28 @@
         $origenCorrecto = false;
     }
 
-    if (isset($_SESSION["logueado"])  &&  $origenCorrecto  &&  $pass == $_SESSION['pass']) {
+    //Comprobamos que la pass introducida y la de la base de datos coinciden.
+    require("conexionBD.php");
+
+    $idUsu = $_SESSION['id'];
+    $hasheada = "";
+    $sentenciaPass = "SELECT Clave FROM usuarios WHERE IdUsuario=?";
+    $mysqli = $conexion->prepare($sentenciaPass);
+    $mysqli->bind_param('i', $idUsu);
+    if (!$mysqli->execute()) {
+        echo '<p>Error al buscar el password en la BD' .$conexion->error. '</p>';
+        exit;
+    }
+    $passBD = $mysqli->get_result();
+    if ($passBD->num_rows) {
+        $hasheada = $passBD->fetch_object();
+    }
+
+    $passBD->close();
+    $conexion->close();
+
+
+    if (isset($_SESSION["logueado"])  &&  $origenCorrecto  &&  password_verify($pass, $hasheada->Clave)) {
 
         $titulo = "Dar de baja - Pictures & Images";
         $estilo = $_SESSION["estilo"];

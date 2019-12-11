@@ -20,12 +20,46 @@
 
                     <?php
 
+                    //Preparamos los errores que nos pueden llegar desde la validación.
+                    if(isset($_GET['error'])) {
+                        if ($_GET['error'] == 'contramala') {
+                            echo "<h3 style='color:red; text-align:center;'>Contraseña actual introducida erronea</h3>";
+                        } 
+                        if ($_GET['error'] == 'norellenados') {
+                            echo "<h3 style='color:red; text-align:center;'>Hay campos sin rellenar</h3>";
+                        } 
+                        if ($_GET['error'] == 'nombre'){
+                            echo "<h3 style='color:red; text-align:center;'>Nombre inválido</h3>";
+                        } 
+                        if ($_GET['error'] == 'password'){
+                            echo "<h3 style='color:red; text-align:center;'>Contraseña inválida</h3>";
+                        } 
+                        if ($_GET['error'] == 'noCoinciden') {
+                            echo "<h3 style='color:red; text-align:center;'>Las contraseñas no coinciden</h3>";
+                        } 
+                        if ($_GET['error'] == 'email'){
+                            echo "<h3 style='color:red; text-align:center;'>Email inválido</h3>";
+                        }
+                        if ($_GET['error'] == 'sexo'){
+                            echo "<h3 style='color:red; text-align:center;'>Sexo inválido</h3>";
+                        } 
+                        if ($_GET['error'] == 'fecha'){
+                            echo "<h3 style='color:red; text-align:center;'>Fecha de nacimiento inválida</h3>";
+                        }
+                        if ($_GET['error'] == 'pais'){
+                            echo "<h3 style='color:red; text-align:center;'>Pais no existente</h3>";
+                        }
+                        if ($_GET['error'] == 'estilo'){
+                            echo "<h3 style='color:red; text-align:center;'>Ese estilo de página no existe</h3>";
+                        }
+                    }
+
                     include("conexionBD.php");
-                    $nombre = $_GET['nombre'];
-                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,Ciudad,FNacimiento,NomPais FROM usuarios LEFT JOIN paises ON IdPais = Pais WHERE NomUsuario = ?";
+                    $id = $_SESSION['id'];
+                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,Ciudad,FNacimiento,NomPais,Nombre FROM usuarios LEFT JOIN paises ON IdPais = Pais LEFT JOIN estilos ON Estilo = IdEstilo WHERE IdUsuario = ?";
 
                     $stmt = $conexion->prepare($sentencia);
-                    $stmt->bind_param('s', $nombre);
+                    $stmt->bind_param('i', $id);
                     if(!$stmt->execute()) {
                         echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
                         echo '</p>'; 
@@ -36,20 +70,30 @@
                     if($resultado->num_rows) 
                     {
                         $fila = $resultado->fetch_object();
+
+                        //Cambiamos fecha de nacimiento de YYYY/MM/DD a DD/MM/YYYY
+                        $fechaAntigua = $fila->FNacimiento;
+                        $valoresAntiguos = explode('-', $fechaAntigua);
+
+                        $fechaNueva = $valoresAntiguos[2]."/".$valoresAntiguos[1]."/".$valoresAntiguos[0];
+
+                        $resultado->close();
+                        $conexion->close();
+
                         echo
                         "
-                        <form action='resRegistro.php' id='formulario' method='POST'>
+                        <form action='resMisDatos.php' id='formulario' method='POST'>
                             <div>
                                 <label for='usu'>Nombre</label>
-                                <input type='text' name='usuario' id='usu' value='$fila->NomUsuario' placeholder='Cambiar nombre' class='formulario'>
+                                <input type='text' name='usuario' id='usu' value='$fila->NomUsuario' placeholder='Cambiar nombre. (3-15 caracteres)' class='formulario'>
                             </div>
                             <div>
-                                <label for='pwd'>Contraseña</label>
-                                <input type='password'  name='pass' id='pwd' value='$fila->Clave' placeholder='Cambiar contraseña' class='formulario'>
+                                <label for='pwd'>¿Quieres cambiar la contraseña?</label>
+                                <input type='password'  name='pass' id='pwd'  placeholder='La nueva contraseña debe tener al menos una mayúscula, una minúscula y un número. (6-15 caracteres)' class='formulario'>
                             </div>
                             <div>
                                 <label for='pwd2'>Repetir contraseña</label>
-                                <input type='password'  name='pass2' id='pwd2' value='$fila->Clave' placeholder='Repite la nueva contraseña' class='formulario'>
+                                <input type='password'  name='pass2' id='pwd2' placeholder='Repite la nueva contraseña' class='formulario'>
                             </div>
                             <div>
                                 <label for='mail'>Email</label>
@@ -59,28 +103,46 @@
                             <label>Sexo</label>";
                             if($fila->Sexo == 0)
                             {
-                                echo "<input type='radio' name='sex' value='hombre' id='hombre'checked> <label for='hombre'>Hombre</label><br>
-                                <input type='radio' name='sex' value='mujer' id='mujer'> <label for='mujer'>Mujer</label>";
+                                echo "<input type='radio' name='sex' value='Hombre' id='hombre'checked> <label for='hombre'>Hombre</label><br>
+                                <input type='radio' name='sex' value='Mujer' id='mujer'> <label for='mujer'>Mujer</label>";
                             }
                             else
                             {
-                                echo "<input type='radio' name='sex' value='hombre' id='hombre'> <label for='hombre'>Hombre</label><br>
-                                <input type='radio' name='sex' value='mujer' id='mujer' checked> <label for='mujer'>Mujer</label>";
+                                echo "<input type='radio' name='sex' value='Hombre' id='hombre'> <label for='hombre'>Hombre</label><br>
+                                <input type='radio' name='sex' value='Mujer' id='mujer' checked> <label for='mujer'>Mujer</label>";
                             }
                             echo 
                             "
                             </div>
                             <div>
                                 <label for='date'>Fecha de nacimiento</label>
-                                <input type='text' name='fecha' id='date' value='$fila->FNacimiento' class='formulario' placeholder='dd/mm/yyyy'>
+                                <input type='text' name='fecha' id='date' value='$fechaNueva' class='formulario' placeholder='dd/mm/yyyy'>
                             </div>
                             <div>
                                 <label for='country'>País</label>
                                 <input list='countries'  name='pais' id='country' placeholder='Cambiar país' value='$fila->NomPais' class='formulario'>
                                 <datalist id='countries'>";
+                                        require('conexionBD.php');
+
                                         require_once('paises.php');
+                                        $resultado->close();
+                                        $conexion->close();
                             echo 
                                 "</datalist>
+                            </div>
+                            <div>
+                                <label for='estilo'>Estilo de página:</label>
+                                <input list='sty'  name='estilo' id='estilo' value='$fila->Nombre' placeholder='Estilo' class='formulario'>
+                                <datalist id='sty'>
+                                ";
+                                        require('conexionBD.php');
+
+                                        require_once('estilos.php');
+                                        
+                                        $resultado->close();
+                                        $conexion->close();
+                                echo "
+                                </datalist>
                             </div>
                             <div>
                                 <label for='city'>Ciudad</label>
@@ -90,6 +152,10 @@
                             <div>
                                 <label for='photo'>Foto</label>
                                 <input type='file' id='photo' accept='image/*'>
+                            </div>
+                            <div>
+                                <label style='text-align:center;' for='pwdActual'>Introduce tu contraseña actual</label>
+                                <input type='password'  name='passActual' id='pwdActual' placeholder='Contraseña actual' class='formulario'>
                             </div>
                             <div>
                                 <input type='submit' value='Enviar'>
@@ -102,8 +168,6 @@
                         echo "Este usuario no existe";
                     }
 
-                    $resultado->close();
-                    $conexion->close(); 
                     ?>
         </section>
     </main>
