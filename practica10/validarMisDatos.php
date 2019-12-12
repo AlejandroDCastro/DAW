@@ -4,6 +4,7 @@ require("conexionBD.php");
 //Expresiones regulares
 $regNombre = "/^[a-zA-Z][a-zA-Z0-9]{2,14}$/";
 $regPass = "/(?=\w*[0-9])(?=\w*[A-Z])(?=\w*[a-z])[a-zA-Z0-9-_]{6,15}$/";
+$regCiudad = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ\s]+$/";
 //Booleano que comprueba que todo este bien.
 $hazRegistro = TRUE;
 //String que va concatenando errores.
@@ -252,6 +253,23 @@ else
 {
 	$estiloId = 1;
 	$estilosesion = 'css/style.css';
+}
+
+//Comprobamos que meta solo letras y espacios en blanco en la ciudad.
+if($ciudad != "")
+{
+	if(!preg_match($regCiudad, $ciudad))
+	{
+		if($extra == "")
+		{
+			$extra = 'misDatos.php?error11=ciudad';
+		}
+		else
+		{
+			$extra = $extra . '&&error11=ciudad';
+		}
+		$hazRegistro = FALSE;
+	}
 }
 
 ?>

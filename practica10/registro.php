@@ -49,6 +49,10 @@
                         if (isset($_GET['error8']) && $_GET['error8'] == 'estilo'){
                         	echo "<h3 style='color:red; text-align:center;'>Ese estilo de página no existe</h3>";
                         }
+                        if(isset($_GET['error9']) && $_GET['error9'] == 'ciudad')
+                        {
+                            echo "<h3 style='color:red; text-align:center;'>La ciudad solo puede tener letras y espacios en blanco</h3>";
+                        }
                     
                 ?>
 
