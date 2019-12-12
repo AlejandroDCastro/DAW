@@ -47,6 +47,15 @@
 				//Sacamos la fecha en la que se ha realizado el registro.
 			$fechaReg = date("Y-m-d H:i:s");
 			// Si hemos llegado hasta este punto, creamos el nuevo usuario.
+			$usuario = mysqli_real_escape_string($conexion,$usuario);
+		    $passCifrada = mysqli_real_escape_string($conexion, $passCifrada);
+            $mail = mysqli_real_escape_string($conexion, $mail);
+		    $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+		    $paisId = mysqli_real_escape_string($conexion, $paisId);
+		    $sexId = mysqli_real_escape_string($conexion, $sexId);
+		    $estiloId = mysqli_real_escape_string($conexion, $estiloId);
+		    $fecha = mysqli_real_escape_string($conexion, $fecha);
+		    $fechaReg = mysqli_real_escape_string($conexion, $fechaReg);
 			$sentenciaRegistro = "INSERT INTO usuarios (NomUsuario,Clave,Email,Sexo,FNacimiento,Ciudad,Pais,FRegistro,Estilo) VALUES  ('$usuario', '$passCifrada', '$mail', '$sexId', '$fecha', '$ciudad', '$paisId', '$fechaReg', '$estiloId')";
 
 			$conexion->query($sentenciaRegistro);

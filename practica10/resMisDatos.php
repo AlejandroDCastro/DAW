@@ -57,15 +57,33 @@
 
 				if($hazRegistro == TRUE)
 				{
-				// Si hemos llegado hasta este punto, modificamos los datos del usuario.
+				
+
 					if($pass != "")
 					{
+						// Si hemos llegado hasta este punto, modificamos los datos del usuario.
+		                $usuario = mysqli_real_escape_string($conexion,$usuario);
+		                $passCifrada = mysqli_real_escape_string($conexion, $passCifrada);
+		                $mail = mysqli_real_escape_string($conexion, $mail);
+		                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+		                $paisId = mysqli_real_escape_string($conexion, $paisId);
+		                $sexId = mysqli_real_escape_string($conexion, $sexId);
+		                $estilo = mysqli_real_escape_string($conexion, $estilo);
+		                $fecha = mysqli_real_escape_string($conexion, $fecha);
 						$sentenciaRegistro = "UPDATE usuarios 
 						SET NomUsuario = '$usuario', Clave = '$passCifrada', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Estilo = '$estiloId'
 						WHERE IdUsuario=?";
 					}
 					else
 					{
+						// Si hemos llegado hasta este punto, modificamos los datos del usuario.
+		                $usuario = mysqli_real_escape_string($conexion,$usuario);
+		                $mail = mysqli_real_escape_string($conexion, $mail);
+		                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+		                $paisId = mysqli_real_escape_string($conexion, $paisId);
+		                $sexId = mysqli_real_escape_string($conexion, $sexId);
+		                $estilo = mysqli_real_escape_string($conexion, $estilo);
+		                $fecha = mysqli_real_escape_string($conexion, $fecha);
 						$sentenciaRegistro = "UPDATE usuarios 
 						SET NomUsuario = '$usuario', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Estilo = '$estiloId'
 						WHERE IdUsuario=?";
