@@ -104,26 +104,27 @@
 
 
                         // Insertamos la solicitud en la base de datos
-                     /*   $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                         $mysqli = $conexion->prepare($sentencia);
-                        $mysqli->bind_param('issssssiisisd', $idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio);
+                        $mysqli->bind_param('issssssiisisd', $idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio_);
                         if ($mysqli->execute()) {
                             echo "<h2>Se registrado correctamente la solicitud de tu álbum.</h2>";
                         } else {
                             echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
                             echo '</p>'; 
                             exit;
-                        }*/
-
-         /*               $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES ($idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio)";
+                        }
+                        
+                       /*
+                        $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES ('$idAlbum', '$nombre', '$tituloAlbum', '$texto', '$email', '$direccion', '$color', '$copias', '$resolucion', '$fecha', '$impresion', '$fregistro', '$precio_')";
                         if(!$conexion->query($sentencia)) {
                             echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
                             echo '</p>'; 
                             exit;
                         } else {
                             echo "<h2>Se registrado correctamente la solicitud de tu álbum.</h2>";
-                        }
-*/
+                        }*/
+
 
                         echo '<h3>Coste total del álbum: ', $precio_, '€</h3>';
                         echo '<ul>';
