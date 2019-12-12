@@ -22,36 +22,34 @@
                 <?php
 
                     //Preparamos los errores que nos pueden llegar desde la validación.
-                    if(isset($_GET['error'])) {
-                        if ($_GET['error'] == 'norellenados') {
+                        if (isset($_GET['error']) && $_GET['error'] == 'norellenados') {
                             echo "<h3 style='color:red; text-align:center;'>Hay campos sin rellenar</h3>";
                         } 
-                        if ($_GET['error'] == 'nombre'){
-                        	echo "<h3 style='color:red; text-align:center;'>Nombre inválido</h3>";
+                        if (isset($_GET['error1']) && $_GET['error1'] == 'nombre'){
+                        	echo "<h3 style='color:red; text-align:center;'>Formato nombre inválido</h3>";
                         } 
-                        if ($_GET['error'] == 'password'){
-                        	echo "<h3 style='color:red; text-align:center;'>Contraseña inválida</h3>";
+                        if (isset($_GET['error2']) && $_GET['error2'] == 'password'){
+                        	echo "<h3 style='color:red; text-align:center;'>Formato contraseña inválido</h3>";
                         } 
-                        if ($_GET['error'] == 'noCoinciden') {
+                        if (isset($_GET['error3']) && $_GET['error3'] == 'noCoinciden') {
                             echo "<h3 style='color:red; text-align:center;'>Las contraseñas no coinciden</h3>";
                         } 
-                        if ($_GET['error'] == 'email'){
-                        	echo "<h3 style='color:red; text-align:center;'>Email inválido</h3>";
+                        if (isset($_GET['error4']) && $_GET['error4'] == 'email'){
+                        	echo "<h3 style='color:red; text-align:center;'>Formato email inválido</h3>";
                         }
-                        if ($_GET['error'] == 'sexo'){
+                        if (isset($_GET['error5']) && $_GET['error5'] == 'sexo'){
                         	echo "<h3 style='color:red; text-align:center;'>Sexo inválido</h3>";
                         } 
-                        if ($_GET['error'] == 'fecha'){
+                        if (isset($_GET['error6']) && $_GET['error6'] == 'fecha'){
                         	echo "<h3 style='color:red; text-align:center;'>Fecha de nacimiento inválida</h3>";
                         }
-                        if ($_GET['error'] == 'pais'){
+                        if (isset($_GET['error7']) && $_GET['error7'] == 'pais'){
                         	echo "<h3 style='color:red; text-align:center;'>Pais no existente</h3>";
                         }
-                        if ($_GET['error'] == 'estilo'){
+                        if (isset($_GET['error8']) && $_GET['error8'] == 'estilo'){
                         	echo "<h3 style='color:red; text-align:center;'>Ese estilo de página no existe</h3>";
                         }
-                    }
-
+                    
                 ?>
 
                 <form action="resRegistro.php" id="formulario" method="POST">

@@ -6,25 +6,51 @@ $regNombre = "/^[a-zA-Z][a-zA-Z0-9]{2,14}$/";
 $regPass = "/(?=\w*[0-9])(?=\w*[A-Z])(?=\w*[a-z])[a-zA-Z0-9-_]{6,15}$/";
 //Booleano que comprueba que todo este bien.
 $hazRegistro = TRUE;
+//Va recogiendo los errores si los encuentra.
+$extra = "";
 
 //Comprobamos que el nombre tenag el formato correcto.
 if(!preg_match($regNombre, $usuario))
 {
-	$host = $_SERVER['HTTP_HOST']; 
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	$extra = 'registro.php?error=nombre'; 
-	header("Location: http://$host$uri/$extra");
+	if($extra == "")
+	{
+		$extra = 'registro.php?error1=nombre'; 
+	}
+	else
+	{
+		$extra = $extra . '&&error1=nombre';
+	}
+
+	$hazRegistro = FALSE;
+}
+
+//Comrpobamos que las contraseñas sean iguales.
+if($pass != $pass2)
+{
+	if($extra == "")
+	{
+		$extra = 'registro.php?error3=noCoinciden'; 
+	}
+	else
+	{
+		$extra = $extra . '&&error3=noCoinciden';
+	}
+	
 	$hazRegistro = FALSE;
 }
 
 //Comprobamos que el password tiene el formato correcto.
 if(!preg_match($regPass, $pass) || !preg_match($regPass, $pass2))
 {
-    
-	$host = $_SERVER['HTTP_HOST']; 
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	$extra = 'registro.php?error=password'; 
-	header("Location: http://$host$uri/$extra");
+    if($extra == "")
+	{
+		$extra = 'registro.php?error2=password'; 
+	}
+	else
+	{
+		$extra = $extra . '&&error2=password';
+	}
+	
 	$hazRegistro = FALSE;
 }
 //Ciframos la contraseña.
@@ -39,11 +65,14 @@ $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
 //Comprobamos que el email tenga el formato correcto con un filter.
 if(!filter_var($mail,FILTER_VALIDATE_EMAIL))
 {
-    
-	$host = $_SERVER['HTTP_HOST']; 
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	$extra = 'registro.php?error=email'; 
-	header("Location: http://$host$uri/$extra");
+	if($extra == "")
+	{
+		$extra = 'registro.php?error4=email'; 
+	}
+	else
+	{
+		$extra = $extra . '&&error4=email';
+	}
 	$hazRegistro = FALSE;
 }
 
@@ -60,11 +89,14 @@ else
 	}
 	else
 	{
-       
-		$host = $_SERVER['HTTP_HOST']; 
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		$extra = 'registro.php?error=sexo'; 
-		header("Location: http://$host$uri/$extra");
+       if($extra == "")
+		{
+			$extra = 'registro.php?error5=sexo'; 
+		}
+		else
+		{
+			$extra = $extra . '&&error5=sexo';
+		}
 		$hazRegistro = FALSE;
 	}
 }
@@ -82,11 +114,14 @@ if(!(count($valores) == 3 && (is_numeric($valores[0])
 && checkdate($valores[1], $valores[0], $valores[2])
 && strtotime($fecha) <= $now))
 {
-    
-	$host = $_SERVER['HTTP_HOST']; 
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-	$extra = 'registro.php?error=fecha'; 
-	header("Location: http://$host$uri/$extra");
+	if($extra == "")
+	{
+		$extra = 'registro.php?error6=fecha'; 
+	}
+	else
+	{
+		$extra = $extra . '&&error6=fecha';
+	}
 	$hazRegistro = FALSE;
 }
 
@@ -105,11 +140,14 @@ if($pais != "")
 	$resultadoPaises = $mysqli->get_result();
 	if($mysqli->affected_rows == 0)
 	{
-        
-		$host = $_SERVER['HTTP_HOST']; 
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		$extra = 'registro.php?error=pais'; 
-		header("Location: http://$host$uri/$extra");
+        if($extra == "")
+		{
+			$extra = 'registro.php?error7=pais'; 
+		}
+		else
+		{
+			$extra = $extra . '&&error7=pais';
+		}
 		$hazRegistro = FALSE;
 	}
 	else
@@ -139,10 +177,14 @@ if($estilo != "")
 	$resultadoEstilo = $mysqli->get_result();
 	if($mysqli->affected_rows == 0)
 	{
-		$host = $_SERVER['HTTP_HOST']; 
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		$extra = 'registro.php?error=estilo'; 
-		header("Location: http://$host$uri/$extra");
+		if($extra == "")
+		{
+			$extra = 'registro.php?error8=estilo'; 
+		}
+		else
+		{
+			$extra = $extra . '&&error8=estilo';
+		}
 		$hazRegistro = FALSE;
 	}
 	else

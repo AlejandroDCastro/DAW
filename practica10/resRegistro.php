@@ -40,8 +40,6 @@
 
 	if($usuario != ""  &&  $pass != ""  &&  $pass2 != "" && $mail != "" && $sex != "" && $fecha != "")
 	{
-		if($pass == $pass2)
-		{
 			require("validarDatos.php");
 
 			if($hazRegistro == TRUE)
@@ -113,20 +111,12 @@
 			}
 			else
 			{
+				$host = $_SERVER['HTTP_HOST']; 
+				$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
+			 	header("Location: http://$host$uri/$extra"); 
 				$conexion->close();
 				exit;
 			}
-			
-
-		}
-		else
-		{
-			$host = $_SERVER['HTTP_HOST']; 
-			$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); 
-		 	$extra = 'registro.php?error=noCoinciden'; 
-		 	header("Location: http://$host$uri/$extra"); 
-			exit;
-		}
 	}
 	else
 	{
