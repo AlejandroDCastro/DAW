@@ -22,7 +22,7 @@
 
                     //Preparamos los errores que nos pueden llegar desde la validación.
                         if (isset($_GET['error']) && $_GET['error'] == 'contramala') {
-                            echo "<h3 style='color:red; text-align:center;'>Contraseña actual introducida erronea</h3>";
+                            echo "<h3 style='color:red; text-align:center;'>Contraseña actual introducida errónea</h3>";
                         } 
                         if (isset($_GET['error']) && $_GET['error'] == 'norellenados') {
                             echo "<h3 style='color:red; text-align:center;'>Hay campos sin rellenar</h3>";
@@ -90,7 +90,7 @@
                             </div>
                             <div>
                                 <label for='pwd'>¿Quieres cambiar la contraseña?</label>
-                                <input type='password'  name='pass' id='pwd'  placeholder='La nueva contraseña debe tener al menos una mayúscula, una minúscula y un número. (6-15 caracteres)' class='formulario'>
+                                <input type='password'  name='pass' id='pwd'  placeholder='Debe tener al menos una mayúscula, una minúscula y un número. (6-15 caracteres)' class='formulario'>
                             </div>
                             <div>
                                 <label for='pwd2'>Repetir contraseña</label>
@@ -125,7 +125,7 @@
                                 <datalist id='countries'>";
                                         require('conexionBD.php');
 
-                                        require_once('paises.php');
+                                        require('paises.php');
                                         $resultado->close();
                                         $conexion->close();
                             echo 
@@ -138,7 +138,7 @@
                                 ";
                                         require('conexionBD.php');
 
-                                        require_once('estilos.php');
+                                        require('estilos.php');
                                         
                                         $resultado->close();
                                         $conexion->close();

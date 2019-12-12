@@ -50,7 +50,7 @@
             <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
             <h2>$fila->Titulo</h2>
             <p><b>Descripción</b>: $fila->Descripcion</p>";
-            if (isset($fila->Fecha)) {
+            if (isset($fila->Fecha)  &&  $fila->Fecha != "0000-00-00") {
                 $fecha = explode("-", $fila->Fecha);
                 echo "<p><b>Fecha</b>: $fecha[2]-$fecha[1]-$fecha[0]</p>";
             } else {

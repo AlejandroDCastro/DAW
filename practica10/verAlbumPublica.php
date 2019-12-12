@@ -55,10 +55,17 @@
                         echo "</p>";
                         
                         // Fechas del álbum
-                        $sentencia = "SELECT min(Fecha) as minFecha, max(Fecha) as maxFecha FROM fotos WHERE Album=$id_album";
+                        $sentencia = "SELECT DATE_FORMAT(min(Fecha), '%Y-%m-%d') as minFecha, DATE_FORMAT(max(Fecha), '%Y-%m-%d') as maxFecha FROM fotos WHERE Album=$id_album";
                         $resultado = $conexion->query($sentencia);
                         $fila = $resultado->fetch_object();
-                        echo "<p style='text-align:center;'><u>Desde</u>: $fila->minFecha <u>Hasta</u>: $fila->maxFecha</p>";
+                        $fechaMaxima = $fila->maxFecha;
+                        $fechaMinima = $fila->minFecha;
+                        if ($fechaMinima == "0000-00-00"  ||  $fechaMinima == "null"  ||  $fechaMinima == "") {
+                            $fechaMinima = "?";
+                        } if ($fechaMaxima == "0000-00-00"  ||  $fechaMaxima == "null"  ||  $fechaMaxima == "") {
+                            $fechaMaxima = "?";
+                        }
+                        echo "<p style='text-align:center;'><u>Desde</u>: $fechaMinima <u>Hasta</u>: $fechaMaxima</p>";
 
                         // Fotos del álbum
                         $sentencia = "SELECT f.IdFoto, f.Titulo, f.Fichero, f.Alternativo, a.IdAlbum

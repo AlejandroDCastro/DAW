@@ -43,7 +43,7 @@
                         echo "<h2>Has creado un álbum:</h2>";
                         echo "<p><b>Título</b>: $tituloAlbum</p>";
                         echo "<p><b>Descripción</b>: $descripcion</p>";
-                        echo "<h4>Introduce tu primera fotografía en este álbum. Pulsa <a href='meteFotoAlbum.php'>aquí</a></h4>";
+                        echo "<h4 style='margin-top: 15px;'>Introduce tu primera fotografía en este álbum. Pulsa <a href='meteFotoAlbum.php'>aquí</a></h4>";
 
                         $conexion->close();
 

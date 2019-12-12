@@ -108,10 +108,6 @@
                                 </datalist>
                             </div>
                             <div>
-                                <label for="telefono">Teléfono(*):</label>
-                                <input type="tel" id="telefono" name="telefono" placeholder="### ## ## ##" class="formulario">
-                            </div>
-                            <div>
                                 <label for="color">Color de portada(*):</label>
                                 <input type="color" id="color" name="color" value="#000000" >
                             </div>

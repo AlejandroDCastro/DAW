@@ -10,11 +10,11 @@
     $tituloFoto = $_POST['titulo'];
     $descripcion = $_POST['desc'];
     $fecha = $_POST['fecha'];
-    if ($fecha == "00-00-0000") {
+    if ($fecha == "0000-00-00") {
         $fecha = null;
     }
     $pais = $_POST['pais'];
-    if ($pais == "") {
+    if ($pais == ""  ||  $pais == "0") {
         $pais = null;
     }
     $foto = $_POST['foto'];

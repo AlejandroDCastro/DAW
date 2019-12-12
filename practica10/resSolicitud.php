@@ -16,14 +16,13 @@
     $localidad = $_POST['localidad'];
     $provincia = $_POST['provincia'];
     $pais = $_POST['country'];
-    $telefono = $_POST['telefono'];
     $color = $_POST['color'];
     $copias = $_POST['copias'];
     $resolucion = $_POST['resolucion'];
     $idAlbum = $_POST['album'];
     $fecha = $_POST['fecha'];
 
-    if ($nombre != ""  &&  $tituloAlbum != ""  &&  $texto != ""  &&  $email != ""  &&  $direccion != ""  &&  $numero != ""  &&  $cp != ""  &&  $localidad != ""  &&  $provincia != ""  &&  $pais != ""  &&  $telefono != ""  &&  $idAlbum != "0"  &&  $fecha != "0000-00-00") {
+    if ($nombre != ""  &&  $tituloAlbum != ""  &&  $texto != ""  &&  $email != ""  &&  $direccion != ""  &&  $numero != ""  &&  $cp != ""  &&  $localidad != ""  &&  $provincia != ""  &&  $pais != ""  &&  $idAlbum != "0"  &&  $fecha != "0000-00-00") {
         $camposRellenos = true;
     } else {
         $camposRellenos = false;
@@ -105,13 +104,26 @@
 
 
                         // Insertamos la solicitud en la base de datos
-                        $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Telefono`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                     /*   $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                         $mysqli = $conexion->prepare($sentencia);
-                        $mysqli->bind_param('isssssssiisisd', $idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $telefono, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio);
+                        $mysqli->bind_param('issssssiisisd', $idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio);
                         if ($mysqli->execute()) {
                             echo "<h2>Se registrado correctamente la solicitud de tu álbum.</h2>";
-                        }
+                        } else {
+                            echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                            echo '</p>'; 
+                            exit;
+                        }*/
 
+         /*               $sentencia = "INSERT INTO solicitudes (`Album`, `Nombre`, `Titulo`, `Descripcion`, `Email`, `Direccion`, `Color`, `Copias`, `Resolucion`, `Fecha`, `IColor`, `FRegistro`, `Coste`) VALUES ($idAlbum, $nombre, $tituloAlbum, $texto, $email, $direccion, $color, $copias, $resolucion, $fecha, $impresion, $fregistro, $precio)";
+                        if(!$conexion->query($sentencia)) {
+                            echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . $conexion->connect_error; 
+                            echo '</p>'; 
+                            exit;
+                        } else {
+                            echo "<h2>Se registrado correctamente la solicitud de tu álbum.</h2>";
+                        }
+*/
 
                         echo '<h3>Coste total del álbum: ', $precio_, '€</h3>';
                         echo '<ul>';
@@ -120,7 +132,6 @@
                         echo '<li><b>Texto adicional</b>: ', $texto, '</li>';
                         echo '<li><b>Correo electrónico</b>: ', $email, '</li>';
                         echo '<li><b>Dirección</b>: ', $direccion, '</li>';
-                        echo '<li><b>Teléfono</b>: ', $telefono, '</li>';
                         echo '<li><b>Color de portada</b>: ', $color, '</li>';
                         echo '<li><b>Número de copias</b>: ', $copias, '</li>';
                         echo '<li><b>Resolución</b>: ', $resolucion, ' dpi</li>';
