@@ -19,7 +19,7 @@
         require("conexionBD.php");
 
         // Escribimos las sentencia SQL
-        $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.Titulo AS TAlbum, u.NomUsuario, u.IdUsuario
+        $sentencia = "SELECT f.Fichero, f.Alternativo, f.Titulo, f.Descripcion, f.Fecha, p.NomPais, a.IdAlbum, a.Titulo AS TAlbum, u.NomUsuario, u.IdUsuario
             FROM fotos f LEFT JOIN paises p ON p.IdPais=f.Pais
             JOIN albumes a ON a.IdAlbum=f.Album
             JOIN usuarios u ON u.IdUsuario=a.Usuario
@@ -62,7 +62,7 @@
                 echo "<p><b>País</b>: No consta</p>";
             }
             echo "
-            <p><b>Álbum</b>: $fila->TAlbum</p>
+            <p><b>Álbum</b>: <a href='verAlbumPrivada.php?id=$fila->IdAlbum'>$fila->TAlbum</a></p>
             <p><b>Usuario</b>: <a href='perfilUsuario.php?id=$fila->IdUsuario'>$fila->NomUsuario</a></p>";
 
             echo "</section></section></main>";
