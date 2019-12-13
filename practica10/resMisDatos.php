@@ -98,7 +98,26 @@
 				    $conexion->close();
 
 					$_SESSION['logueado'] = $usuario;
-					$_SESSION["estilo"] = $estilosesion;			
+					$_SESSION["estilo"] = $estilosesion;
+					//Si esta recordarme, actualiza la cookie.
+					if(isset($_COOKIE['recordar']))
+					{
+						//Creamos un array con los datos del usuario y lo pasamos a string.
+						if($pass != "")
+						{
+							$datos = array($usuario,$passCifrada,getdate());
+							$datosString = json_encode($datos);
+							setcookie('recordar', $datosString, time() + 90*24*60*60, '/', null, false, true);
+						}
+						else
+						{
+							$datos = array($usuario,$passConfirmar,getdate());
+							$datosString = json_encode($datos);
+							setcookie('recordar', $datosString, time() + 90*24*60*60, '/', null, false, true);
+						}
+						
+
+					}		
 					
 
 					echo "<main><section><h1>Datos cambiados correctamente</h1>
