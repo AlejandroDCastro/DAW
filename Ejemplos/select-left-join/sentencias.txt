@@ -1,0 +1,7 @@
+SELECT * FROM foto f, album a, pais p, usuario u
+
+
+SELECT * FROM foto f LEFT JOIN album a ON f.album = a.id LEFT JOIN pais p ON f.pais = p.id LEFT JOIN usuario u ON a.usuario = u.id
+
+
+SELECT * FROM foto f, album a, pais p, usuario u WHERE f.album = a.id AND a.usuario = u.id AND f.pais = p.id
