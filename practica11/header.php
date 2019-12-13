@@ -2,8 +2,8 @@
     <header id="cabecera">
         <figure>
             <a href="index.php">
-                <img width="250" src="Images/logotipo.png" alt="Logotipo de PI">
-                <img src="Images/logotipo2.png" alt="Logotipo de PI">
+                <img width="250" src="Images/Fotos/logotipo.png" alt="Logotipo de PI">
+                <img src="Images/Fotos/logotipo2.png" alt="Logotipo de PI">
             </a>
         </figure>
         <div><a href="index.php">PI - Pictures & Images</a></div>

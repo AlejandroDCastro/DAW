@@ -60,8 +60,8 @@
                             }
                             else
                             {
-                                echo "<a href='Images/SinFoto.jpg'>
-                            <img  width='400' src='Images/SinFoto.jpg' alt='$fila->NomUsuario'>
+                                echo "<a href='Images/Perfiles/SinFoto.jpg'>
+                            <img  width='400' src='Images/Perfiles/SinFoto.jpg' alt='$fila->NomUsuario'>
                             </a>";
                             }
                             

@@ -13,7 +13,7 @@
     ?>
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
-    <link rel="shortcut icon" href="Images/logotipo2.png" type="image/png">
+    <link rel="shortcut icon" href="Images/Fotos/logotipo2.png" type="image/png">
     <title>
         <?php
             echo $titulo;
