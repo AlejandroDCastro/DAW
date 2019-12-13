@@ -26,7 +26,7 @@
         $camposRellenos = true;
     }
 
-    if (isset($_SESSION["logueado"])  &&  ($pag_anterior == ("$url/meteFotoAlbum.php")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=1")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=2"))  &&  $camposRellenos) {
+    if (isset($_SESSION["logueado"])  &&  ($pag_anterior == ("$url/meteFotoAlbum.php")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=1")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=2")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?album=$album"))  &&  $camposRellenos) {
 
         $titulo = "Subir Foto - Pictures & Images";
         $estilo = $_SESSION["estilo"];
