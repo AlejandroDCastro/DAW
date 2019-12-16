@@ -17,19 +17,41 @@
     if ($pais == ""  ||  $pais == "0") {
         $pais = null;
     }
-    $foto = $_POST['foto'];
     $alt = $_POST['alt'];
     $album = $_POST['album'];
 
+    // Posibles mensajes de error a la hora de subir un fichero
+/*    $msgError = array(0 => "No hay error, el fichero se subió con éxito", 
+               1 => "El tamaño del fichero supera la directiva 
+                   upload_max_filesize el php.ini", 
+               2 => "El tamaño del fichero supera la directiva 
+                   MAX_FILE_SIZE especificada en el formulario HTML", 
+               3 => "El fichero fue parcialmente subido", 
+               4 => "No se ha subido un fichero", 
+               6 => "No existe un directorio temporal", 
+               7 => "Fallo al escribir el fichero al disco", 
+               8 => "La subida del fichero fue detenida por la extensión");
+*/
+
+
     // Comprobamos si faltan datos
-    if ($tituloFoto != ""  &&  $descripcion != ""  &&  $foto != ""  &&  $alt != ""  &&  $album != "0") {
+    if ($tituloFoto != ""  &&  $descripcion != ""  &&  $_FILES["foto"]["error"] == 0  &&  $alt != ""  &&  $album != "0") {
         $camposRellenos = true;
     }
+    
 
-    if (isset($_SESSION["logueado"])  &&  ($pag_anterior == ("$url/meteFotoAlbum.php")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=1")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=2")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?album=$album"))  &&  $camposRellenos) {
+    if (isset($_SESSION["logueado"])  &&  ($pag_anterior == ("$url/meteFotoAlbum.php")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=1")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=2")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?fallo=3")  ||  $pag_anterior == ("$url/meteFotoAlbum.php?album=$album"))  &&  $camposRellenos) {
 
         $titulo = "Subir Foto - Pictures & Images";
         $estilo = $_SESSION["estilo"];
+
+        // Comprobamos si el fichero pasado por parámetro es image de tipo MIME
+        $arrayFoto = explode("/", $_FILES["foto"]["type"]);
+        if ($arrayFoto[0] != "image") {
+            $extra = 'meteFotoAlbum.php?fallo=3';
+            header("Location: http://$host$uri/$extra");
+            exit;
+        }
 
         // Incluímos el head con el doctype
         require_once("head.php");
@@ -44,9 +66,6 @@
                 <section class="printCentro">
                     
                     <?php
-
-                        $fregistro = date("Y-m-d H:i:s");
-                        $fichero = "Images/Fotos/$foto";
 
                         require("conexionBD.php");
 
@@ -66,9 +85,29 @@
                         $fila = $resultado->fetch_object();
                         $nomAlbum = $fila->Titulo;
 
+                        // Creamos la fecha de registro
+                        $fregistro = date("Y-m-d H:i:s");
+
+                        // Obtenemos el nombre del fichero
+                        $nomFoto = $_FILES["foto"]["name"];
+                        $num = 0;
+                        $nomFichero = "Images/Fotos/$num$nomFoto";
+
+                        // Comprobamos si el fichero existe en el servidor
+                        while (true) {
+                            if (file_exists($nomFichero)) {
+                                $num++;
+                                $nomFichero = "Images/Fotos/$num$nomFoto";
+                            } else {
+                                move_uploaded_file($_FILES["foto"]["tmp_name"], $nomFichero);
+                                break;
+                            }
+                        }
+                        
+
                         // Realizamos la inserción de la foto en la BD
                         $sentencia = "INSERT INTO fotos (`Titulo`, `Descripcion`, `Fecha`, `Pais`, `Album`, `Fichero`, `Alternativo`, `FRegistro`)
-                        VALUES ('$tituloFoto', '$descripcion', '$fecha', '$idPais', '$album', '$fichero', '$alt', '$fregistro')";
+                        VALUES ('$tituloFoto', '$descripcion', '$fecha', '$idPais', '$album', '$nomFichero', '$alt', '$fregistro')";
                         if($conexion->query($sentencia)) {
                             echo "<h2>Has subido una foto:</h2>";
                         }
@@ -103,7 +142,7 @@
         require_once("footer.php");
 
     } else {
-        if ($pag_anterior != ("$url/meteFotoAlbum.php")  &&  $pag_anterior != ("$url/meteFotoAlbum.php?fallo=1")  &&  $pag_anterior != ("$url/meteFotoAlbum.php?fallo=2")) {
+        if ($pag_anterior != ("$url/meteFotoAlbum.php")  &&  $pag_anterior != ("$url/meteFotoAlbum.php?fallo=1")  &&  $pag_anterior != ("$url/meteFotoAlbum.php?fallo=2")  &&  $pag_anterior != ("$url/meteFotoAlbum.php?fallo=3")) {
             $extra = 'meteFotoAlbum.php?fallo=1'; 
         } else {
             $extra = 'meteFotoAlbum.php?fallo=2';

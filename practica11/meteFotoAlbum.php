@@ -23,13 +23,15 @@
                 <?php
                     if (isset($_GET['fallo'])) {
                         if ($_GET['fallo'] == 1) {
-                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Debes subir una foto previamente</p>";
+                            echo "<h2 style='color:red; text-align:center; padding-bottom: 30px;'>Debes subir una foto previamente</h2>";
                         } elseif ($_GET['fallo'] == 2) {
-                            echo "<p style='color:red; text-align:center; padding-bottom: 30px;'>Rellena todos los campos obligatorios</p>";
+                            echo "<h2 style='color:red; text-align:center; padding-bottom: 30px;'>Rellena todos los campos obligatorios</h2>";
+                        } elseif ($_GET['fallo'] == 3) {
+                            echo "<h2 style='color:red; text-align:center; padding-bottom: 30px;'>El fichero debe ser una imagen</h2>";
                         }
                     }
                 ?>
-                <form id="formulario" method="POST" action="resMeteFotoAlbum.php">
+                <form id="formulario" method="POST" action="resMeteFotoAlbum.php" enctype="multipart/form-data">
                     <div>
                         <label for="titulo">Título(*):</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Introduce el título" class="formulario">

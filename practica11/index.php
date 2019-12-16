@@ -220,7 +220,6 @@
 
         echo "</section>";
         
-
         $resultado->close();
         $conexion->close();
         ?>

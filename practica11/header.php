@@ -15,7 +15,8 @@
                 <?php
 
                     if (isset($_SESSION["logueado"])) {
-                        echo '<li><a href="perfil.php"><i class="icon-user"></i>Perfil</a></li>
+                        echo '<li><a href="meteFotoAlbum.php"><i class="icon-plus"></i>Subir foto a Álbum</a></li>
+                            <li><a href="perfil.php"><i class="icon-user"></i>Perfil</a></li>
                             <li><a href="salir.php"><i class="icon-logout"></i>Salir</a></li>';
                     } else {
                         echo '<li><a href="registro.php"><i class="icon-wpforms"></i>Registro</a></li>';
