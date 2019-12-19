@@ -54,10 +54,13 @@
                         if (isset($_GET['error11']) && $_GET['error11'] == 'ciudad'){
                             echo "<h3 style='color:red; text-align:center;'>La ciudad solo puede tener letras y espacios en blanco</h3>";
                         }
+                        if (isset($_GET['error12']) && $_GET['error12'] == 'foto'){
+                            echo "<h3 style='color:red; text-align:center;'>La ciudad solo puede tener letras y espacios en blanco</h3>";
+                        }
 
                     include("conexionBD.php");
                     $id = $_SESSION['id'];
-                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,Ciudad,FNacimiento,NomPais,Nombre FROM usuarios LEFT JOIN paises ON IdPais = Pais LEFT JOIN estilos ON Estilo = IdEstilo WHERE IdUsuario = ?";
+                    $sentencia = "SELECT NomUsuario,Clave,Sexo,Email,Ciudad,FNacimiento,Foto,NomPais,Nombre FROM usuarios LEFT JOIN paises ON IdPais = Pais LEFT JOIN estilos ON Estilo = IdEstilo WHERE IdUsuario = ?";
 
                     $stmt = $conexion->prepare($sentencia);
                     $stmt->bind_param('i', $id);
@@ -83,7 +86,7 @@
 
                         echo
                         "
-                        <form action='resMisDatos.php' id='formulario' method='POST'>
+                        <form enctype='multipart/form-data' action='resMisDatos.php' id='formulario' method='POST'>
                             <div>
                                 <label for='usu'>Nombre</label>
                                 <input type='text' name='usuario' id='usu' value='$fila->NomUsuario' placeholder='Cambiar nombre. (3-15 caracteres)' class='formulario'>
@@ -150,10 +153,30 @@
                                 <input type='text' name='ciudad' id='city'
                                 placeholder='Cambiar ciudad' value='$fila->Ciudad' class='formulario'>
                             </div>
+                            ";
+                            if($fila->Foto != "")
+                            {
+                                $laFotoPerfil = 'Images/Perfiles/' . $fila->NomUsuario . '.jpg';
+                                echo "
+                                <a style='margin-left: 20px;' href='$laFotoPerfil'>
+                                <img width='400' src='$laFotoPerfil' alt='$fila->NomUsuario'>
+                                </a><br>
                             <div>
-                                <label for='photo'>Foto</label>
-                                <input type='file' id='photo' accept='image/*'>
+                                <label for='photo'>Insertar nueva foto</label><br>
+                                <input type='file' name='file' id='photo' accept='image/jpeg'>
                             </div>
+                            ";
+                            }
+                            else
+                            {
+                               echo "
+                            <div>
+                                <label for='photo'>No tienes foto de perfil. ¿Quieres insertar una foto?</label><br>
+                                <input type='file' name='file' id='photo' accept='image/jpeg'>
+                            </div>"; 
+                            }
+
+                            echo "
                             <div>
                                 <label style='text-align:center;' for='pwdActual'>Introduce tu contraseña actual</label>
                                 <input type='password'  name='passActual' id='pwdActual' placeholder='Contraseña actual' class='formulario'>

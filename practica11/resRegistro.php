@@ -56,7 +56,7 @@
 		    $estiloId = mysqli_real_escape_string($conexion, $estiloId);
 		    $fecha = mysqli_real_escape_string($conexion, $fecha);
 		    $fechaReg = mysqli_real_escape_string($conexion, $fechaReg);
-			$sentenciaRegistro = "INSERT INTO usuarios (NomUsuario,Clave,Email,Sexo,FNacimiento,Ciudad,Pais,FRegistro,Estilo) VALUES  ('$usuario', '$passCifrada', '$mail', '$sexId', '$fecha', '$ciudad', '$paisId', '$fechaReg', '$estiloId')";
+			$sentenciaRegistro = "INSERT INTO usuarios (NomUsuario,Clave,Email,Sexo,FNacimiento,Ciudad,Pais,Foto,FRegistro,Estilo) VALUES  ('$usuario', '$passCifrada', '$mail', '$sexId', '$fecha', '$ciudad', '$paisId', '$nombreFoto', '$fechaReg', '$estiloId')";
 
 			$conexion->query($sentenciaRegistro);
 			//Borramos las variables de la sesion donde guardabamos los datos  de registro.
@@ -110,6 +110,11 @@
 			if($estilo != "")
 			{
 				echo "<li><b>Estilo:</b> $estilo</li>";
+			}
+
+			if($nombreFoto != "")
+			{
+				echo "<li><b>Foto:</b></li><br><img width='400' src='$rutaImagen' alt='$nombreFoto'>";
 			}
 
 			echo "</ul><a href='perfil.php'>Aceptar</a></section></section></main>";

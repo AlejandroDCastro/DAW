@@ -58,8 +58,8 @@
 				if($hazRegistro == TRUE)
 				{
 				
-
-					if($pass != "")
+					//Meter contraseña solo.
+					if($pass != "" &&  $nombreFoto == "")
 					{
 						// Si hemos llegado hasta este punto, modificamos los datos del usuario.
 		                $usuario = mysqli_real_escape_string($conexion,$usuario);
@@ -76,17 +76,50 @@
 					}
 					else
 					{
-						// Si hemos llegado hasta este punto, modificamos los datos del usuario.
-		                $usuario = mysqli_real_escape_string($conexion,$usuario);
-		                $mail = mysqli_real_escape_string($conexion, $mail);
-		                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
-		                $paisId = mysqli_real_escape_string($conexion, $paisId);
-		                $sexId = mysqli_real_escape_string($conexion, $sexId);
-		                $estilo = mysqli_real_escape_string($conexion, $estilo);
-		                $fecha = mysqli_real_escape_string($conexion, $fecha);
-						$sentenciaRegistro = "UPDATE usuarios 
-						SET NomUsuario = '$usuario', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Estilo = '$estiloId'
-						WHERE IdUsuario=?";
+						//Mete contraseña y foto nueva.
+						if($pass != "" &&  $nombreFoto != "")
+						{
+			                $usuario = mysqli_real_escape_string($conexion,$usuario);
+			                $mail = mysqli_real_escape_string($conexion, $mail);
+			                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+			                $paisId = mysqli_real_escape_string($conexion, $paisId);
+			                $sexId = mysqli_real_escape_string($conexion, $sexId);
+			                $estilo = mysqli_real_escape_string($conexion, $estilo);
+			                $fecha = mysqli_real_escape_string($conexion, $fecha);
+							$sentenciaRegistro = "UPDATE usuarios 
+							SET NomUsuario = '$usuario', Clave = '$passCifrada', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Foto = '$nombreFoto', Estilo = '$estiloId'
+							WHERE IdUsuario=?";
+						}
+						else
+						{
+								//Mete foto nueva solo.
+							if($pass == "" &&  $nombreFoto != "")
+							{
+				                $usuario = mysqli_real_escape_string($conexion,$usuario);
+				                $mail = mysqli_real_escape_string($conexion, $mail);
+				                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+				                $paisId = mysqli_real_escape_string($conexion, $paisId);
+				                $sexId = mysqli_real_escape_string($conexion, $sexId);
+				                $estilo = mysqli_real_escape_string($conexion, $estilo);
+				                $fecha = mysqli_real_escape_string($conexion, $fecha);
+								$sentenciaRegistro = "UPDATE usuarios 
+								SET NomUsuario = '$usuario', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Foto = '$nombreFoto', Estilo = '$estiloId'
+								WHERE IdUsuario=?";
+							}
+							else
+							{
+								$usuario = mysqli_real_escape_string($conexion,$usuario);
+				                $mail = mysqli_real_escape_string($conexion, $mail);
+				                $ciudad = mysqli_real_escape_string($conexion, $ciudad);
+				                $paisId = mysqli_real_escape_string($conexion, $paisId);
+				                $sexId = mysqli_real_escape_string($conexion, $sexId);
+				                $estilo = mysqli_real_escape_string($conexion, $estilo);
+				                $fecha = mysqli_real_escape_string($conexion, $fecha);
+								$sentenciaRegistro = "UPDATE usuarios 
+								SET NomUsuario = '$usuario', Email = '$mail', Sexo = '$sexId', FNacimiento = '$fecha', Ciudad = '$ciudad', Pais = '$paisId', Estilo = '$estiloId'
+								WHERE IdUsuario=?";
+							}
+						}
 					}
 
 					$mysqli = $conexion->prepare($sentenciaRegistro);

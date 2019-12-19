@@ -53,10 +53,14 @@
                         {
                             echo "<h3 style='color:red; text-align:center;'>La ciudad solo puede tener letras y espacios en blanco</h3>";
                         }
+                        if(isset($_GET['error10']) && $_GET['error10'] == 'foto')
+                        {
+                            echo "<h3 style='color:red; text-align:center;'>Formato de foto inválido.</h3>";
+                        }
                     
                 ?>
 
-                <form action="resRegistro.php" id="formulario" method="POST">
+                <form enctype="multipart/form-data" action="resRegistro.php" id="formulario" method="POST">
 					<?php
 					//Si el usuario se ha equivocado en algo, conservamos sus datos para que no tenga que volver a ponerlos.
 					if(isset($_SESSION["usu"]))
@@ -159,7 +163,7 @@
                     </div>
                     <div>
                         <label for='photo'>Foto:</label>
-                        <input type='file' id='photo' accept='image/*'>
+                        <input type='file' name='file' id='photo' accept='image/jpeg'>
                     </div>
                     <div>
                         <input type='submit' value='Enviar'>
@@ -234,7 +238,7 @@
                     </div>
                     <div>
                         <label for="photo">Foto:</label>
-                        <input type="file" id="photo" accept="image/*">
+                        <input type="file" name="file" id="photo" accept="image/jpeg">
                     </div>
                     <div>
                         <input type="submit" value="Enviar">

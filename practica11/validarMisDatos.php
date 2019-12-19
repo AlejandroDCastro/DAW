@@ -272,4 +272,38 @@ if($ciudad != "")
 	}
 }
 
+//Comprobaciones de foto.
+$nombreFoto = "";
+$rutaImagen = "";
+//Comprobamos que se haya rellenado el campo de foto.
+if($_FILES['file']['size'] != 0)
+{
+	if ($_FILES["file"]["error"] > 0) {
+	    if($extra == "")
+			{
+				$extra = 'registro.php?error12=foto';
+			}
+			else
+				
+			{
+				$extra = $extra . '&&error12=foto';
+			}
+	    $hazRegistro = false;
+	}
+	else
+	{
+		$tmp_name = $_FILES["file"]["tmp_name"];
+		$nombreFoto = $_FILES["file"]["name"];
+		$fichero_subido = $usuario . ".jpg";
+		//Ruta para previsualizar la imagen.
+		$rutaImagen = "Images/Perfiles/$fichero_subido";
+		//Si ya tenia una foto subida, la borra y luego inserta la nueva.
+		if(file_exists($rutaImagen))
+   		{
+   			unlink($rutaImagen);
+   		}
+		move_uploaded_file($tmp_name, $rutaImagen);
+	}
+}
+
 ?>

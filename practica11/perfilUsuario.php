@@ -54,8 +54,9 @@
                                 <h2 style = 'text-align: center; font-size:30px; margin-bottom: 5px;'>$fila->NomUsuario</h2>";
                             if($fila->Foto != "")
                             {
-                                echo "<a href='$fila->Foto'>
-                            <img  width='400' src='$fila->Foto' alt='$fila->NomUsuario'>
+                                $fotoPerfil = 'Images/Perfiles/' . $fila->NomUsuario . '.jpg';
+                                echo "<a href='$fotoPerfil'>
+                            <img  width='400' src='$fotoPerfil' alt='$fila->NomUsuario'>
                             </a>";
                             }
                             else
