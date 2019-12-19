@@ -47,7 +47,7 @@
                     <section class='printCentro'>";
             
             echo "
-            <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+            <img width='400' src='Images/Fotos/$fila->Fichero' alt='$fila->Alternativo'>
             <h2>$fila->Titulo</h2>
             <p><b>Descripción</b>: $fila->Descripcion</p>";
             if (isset($fila->Fecha)  &&  $fila->Fecha != "0000-00-00") {

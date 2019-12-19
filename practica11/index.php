@@ -113,7 +113,7 @@
             while($fila = $resultado->fetch_object()) {
                 echo "<article>
                     <a href='detalle.php?id=$fila->IdFoto'>
-                        <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                        <img width='400' src='Images/Fotos/$fila->Fichero' alt='$fila->Alternativo'>
                     </a>
                     <h3><a href='detalle.php?id=$fila->IdFoto'>$fila->Titulo</a></h3>
                     <p><b>Fecha</b>: $fila->FRegistro</p>";
@@ -160,7 +160,7 @@
             // Mostramos la información en la página web
             echo "<article>
                     <a style='display:flex;' href='detalle.php?id=$fila->IdFoto'>
-                        <img style='margin:auto;' width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                        <img style='margin:auto;' width='400' src='Images/Fotos/$fila->Fichero' alt='$fila->Alternativo'>
                     </a>
                     <h3 style='padding:10px;'><a href='detalle.php?id=$fila->IdFoto'>$fila->Titulo</a></h3>
                     <p><b>Descripción</b>: $fila->Descripcion</p>";

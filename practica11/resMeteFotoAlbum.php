@@ -100,14 +100,15 @@
                                 $nomFichero = "Images/Fotos/$num$nomFoto";
                             } else {
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $nomFichero);
+                                $nombreFoto = $num . $nomFoto;
                                 break;
                             }
                         }
-                        
+
 
                         // Realizamos la inserción de la foto en la BD
                         $sentencia = "INSERT INTO fotos (`Titulo`, `Descripcion`, `Fecha`, `Pais`, `Album`, `Fichero`, `Alternativo`, `FRegistro`)
-                        VALUES ('$tituloFoto', '$descripcion', '$fecha', '$idPais', '$album', '$nomFichero', '$alt', '$fregistro')";
+                        VALUES ('$tituloFoto', '$descripcion', '$fecha', '$idPais', '$album', '$nombreFoto', '$alt', '$fregistro')";
                         if($conexion->query($sentencia)) {
                             echo "<h2>Has subido una foto:</h2>";
                         }

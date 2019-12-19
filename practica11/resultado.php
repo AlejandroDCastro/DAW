@@ -133,7 +133,7 @@
                         while($fila = $resultado->fetch_object()) {
                                 echo "<article>
                                 <a href='detalle.php?id=$fila->IdFoto'>
-                                    <img width='400' src='$fila->Fichero' alt='$fila->Alternativo'>
+                                    <img width='400' src='Images/Fotos/$fila->Fichero' alt='$fila->Alternativo'>
                                 </a>
                                 <h3><a href='detalle.php?id=IdFoto'>$fila->Titulo</a></h3>";
                                 if ($fila->Fecha != "") {
