@@ -195,6 +195,10 @@
 					{
 						echo "<li><b>Estilo:</b> $estilo</li>";
 					}
+					if($nombreFoto != "")
+					{
+						echo "<li><b>Foto:</b></li><br><img width='400' src='$rutaImagen' alt='$nombreFoto'>";
+					}
 
 					echo "</ul><a href='perfil.php'>Aceptar</a></section></section></main>";
 		        	
