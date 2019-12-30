@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
     <title>Ejemplo JQuery</title>
 </head>
 <body>
@@ -12,22 +15,29 @@
             <h2>Formulario</h2>
         </hgroup>
         <nav>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="informacion.html">Información</a></li>
-            <li><a href="formulario.html">Formulario</a></li>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="informacion.html">Información</a></li>
+                <li><a href="formulario.html">Formulario</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
+    <main id="form">
         <h3>Completa el formulario</h3>
         <form action="">
-            <p>Nombre: <input type="text"></p>
-            <p>Contraseña: <input type="pwd"></p>
-            <p>Email: <input type="mail"></p>
+            <p id="nombre">Nombre: <input type="text" id="nombre"></p>
+            <p id="pass"><label>Contraseña: </label><input type="password" id="pass"></p>
+            <p id="pass2">Repetir contraseña: <input type="password"></p>
+            <p id="email">Email: <input type="mail" id="email"></p>
             <p>
-                Sexo: <br>
-                Hombre <input type="radio" id="hombre">
-                Mujer <input type="radio" id="mujer">
+                Estado Civil: <br>
+                Soltero <input type="radio" value="soltero" name="estado">
+                Casado <input type="radio" value="casado" name="estado">
+                Viudo <input type="radio" value="viudo" name="estado">
+                Otro <input type="radio" value="otro" name="estado">
             </p>
+            <p id="otroestado">Otro estado civil <textarea cols="30" rows="5"></textarea></p>
+            <p><input type="submit" value="Enviar"></p>
         </form>
     </main>
     <footer>

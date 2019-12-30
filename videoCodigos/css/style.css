@@ -1,3 +1,100 @@
 * {
-    
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
+
+p, h1, h2, h3, li {
+    color: #fff;
+}
+
+header {
+    width: 100%;
+}
+
+    header>hgroup {
+        text-align: center;
+        padding: 10px;
+        background-color: #0080ff;
+    }
+
+nav {
+    width: 100%;
+}
+
+    nav>ul {
+        width: 100%;
+        background-color: #00e600;
+        text-align: center;
+    }
+
+        nav>ul>li {
+            display: inline-block;
+            padding: 10px 0;
+        }
+
+            nav>ul>li>a {
+                padding: 10px 20px;
+                text-decoration: none;
+                color: #fff;
+            }
+
+            nav>ul>li>a:hover {
+                background-color: #fff;
+                color: #00e600;
+            }
+
+main {
+    background-color: #e60000;
+    height: 77vh;
+}
+
+    main>h3,
+    main>p {
+        padding: 10px;
+    }
+
+    main>ol,
+    main>ul {
+        margin: auto 30px;
+        padding: 20px;
+    }
+
+    main>form {
+        padding: 20px;
+    }
+
+        main>form>p {
+            padding: 5px;
+        }
+
+        input[type='radio'] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            display: block;
+        }
+
+        main>p>span,
+        #pass2, #otroestado {
+            display: none;
+        }
+
+    #info>select {
+        margin: 7px;
+    }
+
+button {
+    display: block;
+}
+
+footer {
+    background-color: #cc0099;
+    display: flex;
+    justify-content: space-between;
+}
+
+    footer>p {
+        padding: 5px;
+    }

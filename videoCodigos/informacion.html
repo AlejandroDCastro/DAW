@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
     <title>Ejemplo JQuery</title>
 </head>
 <body>
@@ -12,12 +15,14 @@
             <h2>Información</h2>
         </hgroup>
         <nav>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="informacion.html">Información</a></li>
-            <li><a href="formulario.html">Formulario</a></li>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="informacion.html">Información</a></li>
+                <li><a href="formulario.html">Formulario</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
+    <main id="info">
         <p>JQuery es una librería de JavaScript (JavaScript es un lenguaje de programación muy usado en desarrollo web). Esta librería de código abierto, simplifica la tarea de programar en JavaScript y permite agregar interactividad a un sitio web sin tener conocimientos del lenguaje (Write less, do more).</p>
         <p>Sus principales funcionalidades son:</p>
         <ul>
@@ -27,6 +32,11 @@
             <li>Ejecución de peticiones asíncronas (AJAX)</li>
             <li>Ofrecer compatibilidad en la programación en JavaScript con distintos navegadores</li>
         </ul>
+        <select name="letra" id="letra">
+            <option value="p">Pequeña</option>
+            <option value="n" selected>Normal</option>
+            <option value="g">Grande</option>
+        </select>
     </main>
     <footer>
         <p>Alejandro Castro Valero</p>

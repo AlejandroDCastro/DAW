@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
     <title>Ejemplo JQuery</title>
 </head>
 <body>
@@ -12,18 +15,27 @@
             <h2>Página Principal</h2>
         </hgroup>
         <nav>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="informacion.html">Información</a></li>
-            <li><a href="formulario.html">Formulario</a></li>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="informacion.html">Información</a></li>
+                <li><a href="formulario.html">Formulario</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
+    <main id="index">
         <h3>Ejemplos a mostrar:</h3>
         <ol>
-            <li>Página Principal: Desplazamiento de texto</li>
+            <li>Página Principal: Alineación del texto</li>
+            <li>Información: Cambiar tamaño del texto</li>
             <li>Formulario: Aparición y Desaparición de inputs</li>
-            <li>Información: Cambiar color del texto</li>
         </ol>
+        <p>
+            Left: <input type="radio" name="align" value="left">
+            Center: <input type="radio" name="align" value="center">
+            Rigth: <input type="radio" name="align" value="right">
+            <button>Cambia Alineación</button>
+            <span>Selecciona una alineación</span>
+        </p>
     </main>
     <footer>
         <p>Alejandro Castro Valero</p>
