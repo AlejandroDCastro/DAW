@@ -41,16 +41,25 @@ $(document).ready(function() {
     });
 
 
-    $("#pass").keypress(function() {
+    $("#pass>input").keypress(function() {
         $("#pass2").fadeIn();
     });
 
 
-    $("#pass").focusout(function() {
-        var val = $("#pass").text();
-        console.log(val);
-        if ($("#pass").val() == "") {
+    $("#pass>input").focusout(function() {
+        if ($("#pass>input").val() == "") {
             $("#pass2").fadeOut();
+        }
+    });
+
+
+    $("input[name='estado']").click(function() {
+        var estado = $("input[name='estado']:checked").val();
+
+        if (estado == "otro") {
+            $("#otroestado").slideDown("slow");
+        } else {
+            $("#otroestado").slideUp("slow");
         }
     });
 
