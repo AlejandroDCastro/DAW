@@ -25,7 +25,7 @@ $(document).ready(function() {
 
     $("main>select").change(function() {
 
-        var tamanyo = $("main>select").val();
+        var tamanyo = $(this).val();
         var texto = $("#info");
 
         if (tamanyo == "p") {
@@ -47,7 +47,7 @@ $(document).ready(function() {
 
 
     $("#pass>input").focusout(function() {
-        if ($("#pass>input").val() == "") {
+        if ($(this).val() == "") {
             $("#pass2").fadeOut();
         }
     });
