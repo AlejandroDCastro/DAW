@@ -76,11 +76,6 @@ main {
             display: block;
         }
 
-        main>p>span,
-        #pass2, #otroestado {
-            display: none;
-        }
-
     #info>select {
         margin: 7px;
     }
